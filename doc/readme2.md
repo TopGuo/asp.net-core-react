@@ -25,3 +25,38 @@ application -> 应用程序
 `dotnet new classlib -o application`
 将新程序集添加到sln中
 `dotnet sln add src/application/application.csproj`
+
+```
+./src
+├── application
+│   ├── application.csproj
+│   └── obj
+├── domain
+│   ├── domain.csproj
+│   └── obj
+├── infrastructure
+│   ├── infrastructure.csproj
+│   └── obj
+└── web
+    ├── ClientApp
+    ├── Controllers
+    ├── Pages
+    ├── Program.cs
+    ├── Properties
+    ├── Startup.cs
+    ├── appsettings.Development.json
+    ├── appsettings.json
+    ├── bin
+    └── web.csproj
+```
+## 添加项目之间引用
+web->application
+`dotnet add web/web.csproj reference application/application.csproj`
+application->domain
+`dotnet add src/application/application.csproj reference src/domain/domain.csproj`
+application->infrastructure
+`otnet add src/application/application.csproj reference src/infrastructure/infrastructure.csproj`
+
+## 建库加实体
+
+
