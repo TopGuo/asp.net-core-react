@@ -1,3 +1,0 @@
-
-dotnet ef dbcontext scaffold "Server=39.100.98.114;Database=baixiaosheng_1;User=guo;Password=Yaya123...;"
- "Pomelo.EntityFrameworkCore.MySql" -o entitys --context-dir context
