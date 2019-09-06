@@ -3,9 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 # appsettings.json
-./src/web/appsettings.*
+src/web/appsettings.json
 # cert
-./doc/certs/
+doc/certs/
 # User-specific files
 *.suo
 *.user
