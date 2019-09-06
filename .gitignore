@@ -4,6 +4,7 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 # appsettings.json
 src/web/appsettings.json
+**/appsettings.json
 # cert
 doc/certs/
 # User-specific files
