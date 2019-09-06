@@ -62,5 +62,37 @@ vscode
 5. 启动项目 -p 指定项目启动文件 src/web 里面有Program.cs 致我们的启动项目文件
 `dotnet run -p src/web/`
 6. 项目启动ok
-![WX20190906-122334](https://i.imgur.com/q2nuf9A.png)
-7. 
+![WX20190906-122334](/assets/WX20190906-122334.png)
+7. 浏览web/ClientApp/package.json
+```
+"scripts": {
+    "start": "rimraf ./build && react-scripts start",
+    "build": "react-scripts build",
+    "test": "cross-env CI=true react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "lint": "eslint ./src/"
+  }
+```
+scripts里集成了几个命令 用来启动 react 这个项目 或者build这个项目 启动这个项目之前需要加上npm
+`npm start`
+`npm build`
+`npm test`
+...
+执行目录要在ClinetApp文件夹下
+8. build react 项目
+![WX20190906-132807](/assets/WX20190906-132807.png)
+9. 发布项目
+在sln同一个层次创建release文件夹用来存放发布文件
+`dotnet publish -c release -o ../../release/`
+将项目发布出去
+![WX20190906-133251](/assets/WX20190906-133251.png)
+10. 执行发布文件
+`dotnet release/web.dll`
+11. 关于环境变量设置推文
+[https://docs.microsoft.com/zh-cn/aspnet/core/fundamentals/environments?view=aspnetcore-2.2](https://docs.microsoft.com/zh-cn/aspnet/core/fundamentals/environments?view=aspnetcore-2.2)
+
+## 项目已经推送到GitHub
+地址:
+[https://github.com/TopGuo/asp.net-core-react](https://github.com/TopGuo/asp.net-core-react)
+
+
