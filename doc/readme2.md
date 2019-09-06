@@ -59,4 +59,78 @@ application->infrastructure
 
 ## 建库加实体
 
+```
+CREATE TABLE `admin_action` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '权限ID',
+  `action_name` varchar(30) DEFAULT NULL COMMENT '权限名称',
+  `code` varchar(50) NOT NULL COMMENT '权限代码，用于快速区分权限',
+  `info` varchar(100) DEFAULT NULL COMMENT '权限备注信息',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `enable` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='权限表';
+
+CREATE TABLE `admin_role_action` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '岗位权限、关联ID',
+  `role_id` int(11) NOT NULL COMMENT '岗位ID',
+  `action_id` int(11) NOT NULL COMMENT '权限ID',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '关联时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `rright` (`role_id`,`action_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='权限关联表';
+
+CREATE TABLE `admin_roles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '岗位ID',
+  `role_name` varchar(50) DEFAULT NULL COMMENT '岗位名称',
+  `info` varchar(100) DEFAULT NULL COMMENT '备注',
+  `is_deleted` tinyint(1) DEFAULT '0' COMMENT '是否删除 0:未删除，1：已经删除',
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`role_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='岗位表';
+
+CREATE TABLE `admin_users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(11) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `nickname` varchar(30) DEFAULT NULL,
+  `role_id` int(11) NOT NULL,
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='管理用户表';
+```
+建库 创建这几个表 然后采用dbfrist 的方式 生成实体entity 参考如下链接
+[https://docs.microsoft.com/zh-cn/ef/core/miscellaneous/cli/dotnet#dotnet-ef-dbcontext-scaffold](https://docs.microsoft.com/zh-cn/ef/core/miscellaneous/cli/dotnet#dotnet-ef-dbcontext-scaffold)
+为数据库的DbContext和实体类型生成代码。 为了使此命令生成实体类型, 数据库表必须具有主键
+`EF Core 提供两种主要方法来保持 EF Core 模型和数据库架构同步。至于我们应该选用哪个方法，请确定你是希望以 EF Core 模型为准还是以数据库为准。`两种方式各有优点 不一定 code frist 就牛逼！例如我就喜欢设计好数据库 然后生成实体 这种方式属于db frist！
+
+这里我们使用mysql 需要安装mysql provider for ef core
+
+`dotnet add package Pomelo.EntityFrameworkCore.MySql --version 2.2.0`
+
+强调1 这里的Design 必须安装！！！
+
+`dotnet add package Microsoft.EntityFrameworkCore.Design`
+
+下面这两个命令是拓展参数
+
+`dotnet ef dbcontext scaffold "Server=localhost;Database=ef;User=root;Password=123456;" "Pomelo.EntityFrameworkCore.MySql"`
+
+`dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models -t Blog -t Post --context-dir Context -c BlogContext`
+
+强调2 修改你的csproj项目TargetFramework 不能是netstandard 要换成netcoreapp
+
+![WX20190906-213359@2x](/assets/WX20190906-213359@2x.png)
+
+我最终执行命令如下：
+
+```
+dotnet ef dbcontext scaffold "Server=***;Database=****;User=****;Password=***...;"
+ "Pomelo.EntityFrameworkCore.MySql" -o entitys --context-dir context
+ ```
+![WX20190906-213615@2x](/assets/WX20190906-213615@2x.png)
+
+
+
+
+
 
