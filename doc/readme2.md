@@ -129,8 +129,131 @@ dotnet ef dbcontext scaffold "Server=***;Database=****;User=****;Password=***...
  ```
 ![WX20190906-213615@2x](/assets/WX20190906-213615@2x.png)
 
+## repositorys
+在domain下创建 repository 这里主要放服务接口
 
+```
 
+├── LICENSE
+├── README.md
+├── asp.net-core-react.sln
+├── assets
+│   ├── WX20190906-122334.png
+│   ├── WX20190906-132807.png
+│   ├── WX20190906-133251.png
+│   ├── WX20190906-213359@2x.png
+│   └── WX20190906-213615@2x.png
+├── doc
+│   ├── certs
+│   │   └── 1.txt
+│   ├── img
+│   │   ├── WX20190906-122334.png
+│   │   ├── WX20190906-132807.png
+│   │   ├── WX20190906-133251.png
+│   │   ├── WX20190906-213359@2x.png
+│   │   └── WX20190906-213615@2x.png
+│   └── readme2.md
+├── release
+│   ├── ClientApp
+│   │   └── build
+│   │       ├── asset-manifest.json
+│   │       ├── favicon.ico
+│   │       ├── index.html
+│   │       ├── manifest.json
+│   │       ├── service-worker.js
+│   │       └── static
+│   ├── appsettings.Development.json
+│   ├── appsettings.json
+│   ├── web.Views.dll
+│   ├── web.Views.pdb
+│   ├── web.config
+│   ├── web.deps.json
+│   ├── web.dll
+│   ├── web.pdb
+│   └── web.runtimeconfig.json
+└── src
+    ├── application
+    │   ├── application.csproj
+    │   ├── bin
+    │   │   └── Debug
+    │   ├── obj
+    │   │   ├── Debug
+    │   │   ├── application.csproj.nuget.cache
+    │   │   ├── application.csproj.nuget.dgspec.json
+    │   │   ├── application.csproj.nuget.g.props
+    │   │   ├── application.csproj.nuget.g.targets
+    │   │   └── project.assets.json
+    │   └── services
+    │       ├── AccountService.cs
+    │       ├── DbRepository.cs
+    │       ├── OrderService.cs
+    │       └── bases
+    ├── domain
+    │   ├── bin
+    │   │   └── Debug
+    │   ├── context
+    │   │   └── baixiaosheng_1Context.cs
+    │   ├── domain.csproj
+    │   ├── entitys
+    │   │   ├── AdminActions.cs
+    │   │   ├── AdminRoleAction.cs
+    │   │   ├── AdminRoles.cs
+    │   │   └── AdminUsers.cs
+    │   ├── obj
+    │   │   ├── Debug
+    │   │   ├── domain.csproj.EntityFrameworkCore.targets
+    │   │   ├── domain.csproj.nuget.cache
+    │   │   ├── domain.csproj.nuget.dgspec.json
+    │   │   ├── domain.csproj.nuget.g.props
+    │   │   ├── domain.csproj.nuget.g.targets
+    │   │   └── project.assets.json
+    │   └── repository
+    │       ├── IAccountService.cs
+    │       ├── IDbRepository.cs
+    │       └── IOrderService.cs
+    ├── infrastructure
+    │   ├── Extensions
+    │   │   └── ServiceExtension.cs
+    │   ├── bin
+    │   │   └── Debug
+    │   ├── infrastructure.csproj
+    │   └── obj
+    │       ├── Debug
+    │       ├── infrastructure.csproj.nuget.cache
+    │       ├── infrastructure.csproj.nuget.dgspec.json
+    │       ├── infrastructure.csproj.nuget.g.props
+    │       ├── infrastructure.csproj.nuget.g.targets
+    │       └── project.assets.json
+    └── web
+        ├── ClientApp
+        │   └── package-lock.json
+        ├── Controllers
+        │   └── SampleDataController.cs
+        ├── Pages
+        │   ├── Error.cshtml
+        │   ├── Error.cshtml.cs
+        │   └── _ViewImports.cshtml
+        ├── Program.cs
+        ├── Properties
+        │   └── launchSettings.json
+        ├── Startup.cs
+        ├── appsettings.Development.json
+        ├── appsettings.json
+        ├── bin
+        │   ├── Debug
+        │   └── Release
+        ├── obj
+        │   ├── Debug
+        │   ├── project.assets.json
+        │   ├── web.csproj.EntityFrameworkCore.targets
+        │   ├── web.csproj.nuget.cache
+        │   ├── web.csproj.nuget.dgspec.json
+        │   ├── web.csproj.nuget.g.props
+        │   └── web.csproj.nuget.g.targets
+        └── web.csproj
 
+40 directories, 77 files
+```
+接下来写react！
 
 

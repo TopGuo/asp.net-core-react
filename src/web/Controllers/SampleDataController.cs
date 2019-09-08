@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using domain.repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace web.Controllers
@@ -9,6 +9,13 @@ namespace web.Controllers
     [Route("api/[controller]")]
     public class SampleDataController : Controller
     {
+        IAccountService AccountService;
+        IOrderService OrderService;
+        public SampleDataController(IAccountService accountService, IOrderService orderService)
+        {
+            AccountService = _ = accountService;
+            OrderService = orderService;
+        }
         private static string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -17,6 +24,8 @@ namespace web.Controllers
         [HttpGet("[action]")]
         public IEnumerable<WeatherForecast> WeatherForecasts()
         {
+            var user = AccountService.GetAdminUsers();
+            var orderNum=OrderService.GetOrderNum("");
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

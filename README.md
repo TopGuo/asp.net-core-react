@@ -96,4 +96,6 @@ scripts里集成了几个命令 用来启动 react 这个项目 或者build这�
 地址:
 [https://github.com/TopGuo/asp.net-core-react](https://github.com/TopGuo/asp.net-core-react)
 
+[第二章节](https://github.com/TopGuo/asp.net-core-react/blob/master/doc/readme2.md)
+
 

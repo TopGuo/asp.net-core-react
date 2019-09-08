@@ -1,15 +1,17 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace domain.entitys
 {
     public partial class baixiaosheng_1Context : DbContext
     {
-        public baixiaosheng_1Context()
+        public baixiaosheng_1Context(IConfiguration configuration)
         {
+            Configuration = configuration;
         }
-
+        public IConfiguration Configuration { get; }
         public baixiaosheng_1Context(DbContextOptions<baixiaosheng_1Context> options)
             : base(options)
         {
@@ -24,7 +26,12 @@ namespace domain.entitys
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql("");
+                var conStr = Configuration.GetConnectionString("baixiaosheng1");
+                optionsBuilder.UseMySql(conStr,
+                mySqlOptions =>
+                     {
+                         mySqlOptions.ServerVersion(new Version(5, 7, 24), ServerType.MySql); // replace with your Server Version and Type
+                     });
             }
         }
 
