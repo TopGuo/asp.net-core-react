@@ -13,7 +13,7 @@ namespace web.Controllers
         IOrderService OrderService;
         public SampleDataController(IAccountService accountService, IOrderService orderService)
         {
-            AccountService = _ = accountService;
+            AccountService = accountService;
             OrderService = orderService;
         }
         private static string[] Summaries = new[]
@@ -25,9 +25,9 @@ namespace web.Controllers
         public IEnumerable<WeatherForecast> WeatherForecasts()
         {
             var user = AccountService.GetAdminUsers();
-            var orderNum=OrderService.GetOrderNum("");
+            var orderNum = OrderService.GetOrderNum("");
             var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            return Enumerable.Range(1, 9).Select(index => new WeatherForecast
             {
                 DateFormatted = DateTime.Now.AddDays(index).ToString("d"),
                 TemperatureC = rng.Next(-20, 55),

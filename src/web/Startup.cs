@@ -24,10 +24,10 @@ namespace web
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             // In production, the React files will be served from this directory
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/build";
-            });
+            // services.AddSpaStaticFiles(configuration =>
+            // {
+            //     configuration.RootPath = "ClientApp/build";
+            // });
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IOrderService, OrderService>();
             //
@@ -51,7 +51,7 @@ namespace web
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
+            // app.UseSpaStaticFiles();
 
             app.UseMvc(routes =>
             {
@@ -62,7 +62,7 @@ namespace web
 
             app.UseSpa(spa =>
             {
-                spa.Options.SourcePath = "ClientApp";
+                spa.Options.SourcePath = "app";
 
                 if (env.IsDevelopment())
                 {
