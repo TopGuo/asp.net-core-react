@@ -22,13 +22,13 @@ namespace infrastructure.extensions
         private string _message;
 
         [Description("e.g. 200:success; 500:system error; 404:not found; 401:Unauthorized ")]
-        public int Status { get; set; } = 200;
+        public int Status { get; set; } = SUCCESS_STASTUS;
         [JsonIgnore]
         public bool Success
         {
             get
             {
-                return Status == 200;
+                return Status == SUCCESS_STASTUS;
             }
         }
         [Description("response extend data")]
@@ -62,7 +62,7 @@ namespace infrastructure.extensions
                 _message = value;
             }
         }
-        public static void SetDefaultMessage(string message)
+        public void SetDefaultMessage(string message)
         {
             _msg = message;
         }
