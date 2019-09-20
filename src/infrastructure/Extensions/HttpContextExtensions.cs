@@ -33,7 +33,7 @@ namespace infrastructure.extensions
             JValue val2;
             if (value is JObject || value is JArray)
             {
-                foreach (JToken item in (IEnumerable<JToken>)(value as JToken))
+                foreach (JToken item in (value as JToken))
                 {
                     AddToBackingStore(store, item);
                 }

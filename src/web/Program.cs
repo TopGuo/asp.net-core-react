@@ -19,6 +19,12 @@ namespace web
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .ConfigureLogging(build =>
+                {
+                    build.AddFilter("Microsoft", LogLevel.Error)
+                    .AddFilter("System", LogLevel.Error)
+                    .AddFile();
+                })
                 .UseUrls("http://127.0.0.1:8090")
                 .UseStartup<Startup>();
     }

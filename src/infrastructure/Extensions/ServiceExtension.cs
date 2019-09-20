@@ -9,7 +9,6 @@ namespace infrastructure.Extensions
     {
         private static IHttpContextAccessor _httpContextAccessor;
         private static IServiceProvider _serviceProvider;
-
         private static IDataProtector _dataProtector => ServiceProvider.GetDataProtector("Asp.NetCore", "XingChengWuXian", "NiaoWo");
 
         public static IServiceCollection RegisterService(this IServiceCollection services)
@@ -36,10 +35,12 @@ namespace infrastructure.Extensions
                 return _serviceProvider;
             }
         }
+        
         public static HttpContext HttpContext => _httpContextAccessor?.HttpContext;
 
         public static object New(Type type)
         {
+            
             return ActivatorUtilities.CreateInstance(ServiceProvider, type, Array.Empty<object>());
         }
         public static T New<T>()
@@ -78,7 +79,7 @@ namespace infrastructure.Extensions
             }
             return default(T);
         }
-
+        
         public static object Get(Type type)
         {
             try

@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using domain.enums;
 using domain.models;
 using infrastructure.extensions;
-using infrastructure.Extensions;
 using infrastructure.utils;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
@@ -107,6 +106,7 @@ namespace web.Controllers.bases
             {
                 context.ExceptionHandled = true;
                 //log record
+                LogUtil<UserController>.Error(context.Exception, context.Exception.Message);
                 if (context.HttpContext.IsAjaxRequest())
                 {
 #if DEBUG
