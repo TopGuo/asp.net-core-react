@@ -1,5 +1,5 @@
 using System;
-using infrastructure.Extensions;
+using infrastructure.extensions;
 using Microsoft.Extensions.Logging;
 
 namespace infrastructure.utils

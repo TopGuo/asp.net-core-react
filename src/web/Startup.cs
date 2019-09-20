@@ -1,12 +1,13 @@
 using application.services;
 using domain.repository;
-using infrastructure.Extensions;
+using infrastructure.extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 
 namespace web
 {
@@ -22,7 +23,11 @@ namespace web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddJsonOptions(setupAction =>
+            {
+                setupAction.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                setupAction.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
             // In production, the React files will be served from this directory
             // services.AddSpaStaticFiles(configuration =>
             // {

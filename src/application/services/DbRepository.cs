@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using domain.repository;
-using infrastructure.Extensions;
+using infrastructure.extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace application.services

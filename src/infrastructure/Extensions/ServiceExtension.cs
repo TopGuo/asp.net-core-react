@@ -1,15 +1,14 @@
 using System;
-using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace infrastructure.Extensions
+namespace infrastructure.extensions
 {
     public static class ServiceExtension
     {
         private static IHttpContextAccessor _httpContextAccessor;
         private static IServiceProvider _serviceProvider;
-        private static IDataProtector _dataProtector => ServiceProvider.GetDataProtector("Asp.NetCore", "XingChengWuXian", "NiaoWo");
+        
 
         public static IServiceCollection RegisterService(this IServiceCollection services)
         {
@@ -95,15 +94,6 @@ namespace infrastructure.Extensions
                 }
                 return service;
             }
-        }
-
-        public static string Protect(string plaintext)
-        {
-            return _dataProtector.Protect(plaintext);
-        }
-        public static string UnProtect(string protectedData)
-        {
-            return _dataProtector.Unprotect(protectedData);
         }
     }
 }

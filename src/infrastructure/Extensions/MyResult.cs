@@ -22,13 +22,13 @@ namespace infrastructure.extensions
         private string _message;
 
         [Description("e.g. 200:success; 500:system error; 404:not found; 401:Unauthorized ")]
-        public int Status { get; set; } = SUCCESS_STASTUS;
+        public int Code { get; set; } = SUCCESS_STASTUS;
         [JsonIgnore]
         public bool Success
         {
             get
             {
-                return Status == SUCCESS_STASTUS;
+                return Code == SUCCESS_STASTUS;
             }
         }
         [Description("response extend data")]
@@ -38,7 +38,7 @@ namespace infrastructure.extensions
             {
                 if (!Success)
                 {
-                    defaultData = null;
+                    defaultData = default(T);
                 }
                 return defaultData;
             }
@@ -76,7 +76,7 @@ namespace infrastructure.extensions
         }
         public MyResult(int status, string message)
         {
-            Status = status;
+            Code = status;
             _message = message;
         }
         public MyResult(Enum status, string message = "")
@@ -89,7 +89,7 @@ namespace infrastructure.extensions
         }
         public MyResult(int status, string message, Exception ex = null)
         {
-            Status = status;
+            Code = status;
             if (ex != null)
             {
                 Error(ex, false);
@@ -101,7 +101,7 @@ namespace infrastructure.extensions
         }
         public virtual MyResult<T> SetError(string errorMessage)
         {
-            Status = 501;
+            Code = 501;
             _message = errorMessage;
             return this;
         }
@@ -109,7 +109,7 @@ namespace infrastructure.extensions
         {
             if (exception == null) throw new NullReferenceException("exception canot be null");
             Data = null;
-            if (Status == 200) Status = 500;
+            if (Code == 200) Code = 500;
             StringBuilder stringBuilder = new StringBuilder();
             while (exception != null)
             {
@@ -125,7 +125,7 @@ namespace infrastructure.extensions
         }
         public virtual MyResult<T> SetStatus(Exception exception, bool showStackTrace = false)
         {
-            Status = 500;
+            Code = 500;
             StringBuilder stringBuilder = new StringBuilder();
             while (exception != null)
             {
@@ -141,7 +141,7 @@ namespace infrastructure.extensions
         }
         public virtual MyResult<T> SetStatus(Enum status, string message = "")
         {
-            Status = Convert.ToInt32(status);
+            Code = Convert.ToInt32(status);
             if (string.IsNullOrEmpty(message))
             {
                 _message = GetEnumToString(status);

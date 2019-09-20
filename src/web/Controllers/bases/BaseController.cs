@@ -14,6 +14,7 @@ namespace web.Controllers.bases
     {
         SortedDictionary<string, string> ReqParams = new SortedDictionary<string, string>();
         protected const string TOKEN_NAME = "token";
+        protected const string Sign = "sign";
         protected SourceType SourceType { get; set; }
         protected TokenModel TokenModel { get; set; }
 
@@ -62,9 +63,14 @@ namespace web.Controllers.bases
                 else
                 {
                     var token = string.Empty;
+                    var sign = string.Empty;
                     if (ReqParams.ContainsKey(TOKEN_NAME))
                     {
                         token = ReqParams[TOKEN_NAME];
+                    }
+                    if (ReqParams.ContainsKey(Sign))
+                    {
+                        sign = ReqParams[Sign];
                     }
                     //can get token from server redis now only get form params
                     // ..
@@ -75,25 +81,82 @@ namespace web.Controllers.bases
                         {
                             context.Result = new ObjectResult(new MyResult<object>(ErrorCode.Unauthorized, "token is empty you are error！"));
                         }
+                        else if (string.IsNullOrEmpty(sign))
+                        {
+                            context.Result = new ObjectResult(new MyResult<object>(ErrorCode.Unauthorized, "sign is empty you are error！"));
+                        }
                         else
                         {
-                            //checktoken
+                            var model = CheckToken(token, sign);
+                            if (model.Success)
+                            {
+                                //ok
+                            }
+                            if (!model.Success)
+                            {
+                                context.Result = new ObjectResult(model);
+                            }
 
                         }
                     }
                     else
                     {
-
+                        if (string.IsNullOrEmpty(token))
+                        {
+                            TokenModel = new TokenModel();
+                        }
+                        else
+                        {
+                            var json = DataProtectionUtil.UnProtect(token);
+                            if (string.IsNullOrEmpty(json))
+                            {
+                                TokenModel = new TokenModel();
+                            }
+                            else
+                            {
+                                TokenModel = json.GetModel<TokenModel>();
+                            }
+                        }
                     }
                 }
 
             }
             catch (System.Exception ex)
             {
-                //log record
-                throw ex;
+                LogUtil<ApiBaseController>.Error(ex, ex.Message);
+                context.Result = new ObjectResult(new MyResult<object>(ErrorCode.SystemError, $"请求失败{ex.Message}"));
             }
             return base.OnActionExecutionAsync(context, next);
+        }
+
+        private MyResult<object> CheckToken(string token, string sign)
+        {
+            MyResult<object> result = new MyResult<object>();
+            try
+            {
+                //sign==
+                //token==
+                string json = DataProtectionUtil.UnProtect(token);
+                if (string.IsNullOrEmpty(json))
+                {
+                    return result.SetStatus(ErrorCode.ReLogin, "token error 请重新登录");
+                }
+                TokenModel = json.GetModel<TokenModel>();
+                if (TokenModel == null)
+                {
+                    return result.SetStatus(ErrorCode.InvalidToken, "非法token");
+                }
+                if (TokenModel.Id < 1)
+                {
+                    return result.SetStatus(ErrorCode.InvalidToken, "无效token");
+                }
+
+            }
+            catch (System.Exception ex)
+            {
+                return result.SetStatus(ErrorCode.SystemError, $"请求失败{ex.Message}");
+            }
+            return result;
         }
 
         /// <summary>
@@ -105,7 +168,6 @@ namespace web.Controllers.bases
             if (context.Exception != null)
             {
                 context.ExceptionHandled = true;
-                //log record
                 LogUtil<UserController>.Error(context.Exception, context.Exception.Message);
                 if (context.HttpContext.IsAjaxRequest())
                 {
