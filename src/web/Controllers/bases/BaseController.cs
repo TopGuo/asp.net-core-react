@@ -135,6 +135,10 @@ namespace web.Controllers.bases
             try
             {
                 //sign==
+                if (!SecurityUtil.ValidSign(sign, token, Constants.Key))
+                {
+                    return result.SetStatus(ErrorCode.ReLogin, "sign error 请联系管理员");
+                }
                 //token==
                 string json = DataProtectionUtil.UnProtect(token);
                 if (string.IsNullOrEmpty(json))

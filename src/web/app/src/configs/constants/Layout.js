@@ -29,10 +29,10 @@ export const Menu_List = [
                 path: '/risklog'
             },
             {
-                key:'2-4',
-                title:'三代联动',
-                icon:'fire',
-                submenu:[
+                key: '2-4',
+                title: '三代联动',
+                icon: 'fire',
+                submenu: [
                     {
                         key: '2-4-1',
                         title: '操作日志1',

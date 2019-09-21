@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Form, Icon, Input, Button, message } from 'antd'
-import axios from 'axios'
 import Gapp from '../../configs/models/ConfigInfoModel';
+import { Post } from '../../utils/HttpReq';
 export default class Login extends Component {
     constructor(props) {
         super(props)
@@ -20,8 +20,17 @@ export default class Login extends Component {
             message.warn('密码不能为空');
             return;
         }
-        axios.post('api/User/Login',{username:this.state.username,password:this.state.password,token:"xniaowo"}).then((res) => {
-            console.log(res);
+        Post('api/User/Login', { username: this.state.username, password: this.state.password }).then(res => {
+            let { data } = res;
+            if (data.code === 200) {
+                Gapp.userInfo.userName = data.data.userName;
+                Gapp.userInfo.token = data.data.token;
+                Gapp.userInfo.isLogin = true;
+                localStorage.setItem("token", data.data.token);
+                this.props.history.replace("/main");
+            } else {
+                message.error(data.message)
+            }
         })
     }
     render() {

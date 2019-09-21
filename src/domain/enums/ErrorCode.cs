@@ -11,5 +11,7 @@ namespace domain.enums
         ReLogin = 10001,
         [Description("非法token")]
         InvalidToken = 10002,
+        [Description("sign 签名非法")]
+        ErrorSign = 10003,
     }
 }

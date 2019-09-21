@@ -1,3 +1,4 @@
+using domain.models;
 using infrastructure.extensions;
 using infrastructure.utils;
 using Microsoft.AspNetCore.Authorization;
@@ -12,6 +13,24 @@ namespace web.Controllers
         [HttpPost]
         [AllowAnonymous]
         public MyResult<object> Login([FromBody]UserModel model)
+        {
+            MyResult<object> result = new MyResult<object>();
+            TokenModel tokenModel = new TokenModel();
+            tokenModel.Id = 1001;
+            tokenModel.Mobile = "18333103619";
+            tokenModel.Code = "";
+            tokenModel.Source = domain.enums.SourceType.Web;
+            var data = new
+            {
+                token = DataProtectionUtil.Protect(tokenModel.GetJson()),
+                userName = "鸟窝"
+            };
+            result.Data = data;
+            return result;
+        }
+
+        [HttpPost]
+        public MyResult<object> Login2([FromBody]UserModel model)
         {
             MyResult<object> result = new MyResult<object>();
 

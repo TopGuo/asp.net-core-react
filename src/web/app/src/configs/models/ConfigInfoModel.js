@@ -1,5 +1,6 @@
 class ConfigInfoModel {
     userInfo = {
+        id: -1,
         isLogin: false,
         userName: '鸟窝',
         passWord: '',
@@ -22,8 +23,8 @@ class ConfigInfoModel {
         C12: '#DA4F49',
         C13: '#0088CC',
     }
-    appSetting={
-        loginTitle:'星辰无限 勇创未来'
+    appSetting = {
+        loginTitle: '星辰无限 勇创未来'
     }
 }
 export default new ConfigInfoModel();
