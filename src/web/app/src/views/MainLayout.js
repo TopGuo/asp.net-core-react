@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom'
-import { Layout, Menu, Icon, Button, Breadcrumb } from 'antd'
+import { Layout, Menu, Icon, Button, Breadcrumb, message } from 'antd'
 import { Menu_List } from '../configs/constants/Layout'
+import logoUrl from '../sources/img/loginBackground.png';
 import Home from './Home'
 import AdminList from '../views/admin/AdminList';
 export default class MainLayout extends Component {
@@ -18,15 +19,25 @@ export default class MainLayout extends Component {
      * renderSider
      */
     renderSider = () => {
+        let name;
+        if (!this.state.collapsed) {
+            name = <span style={{ paddingLeft: 10 }}>星辰无限管理后台</span>;
+        }
         return (
             <Layout.Sider
                 collapsible
                 collapsed={this.state.collapsed}
                 onCollapse={() => this.onCollapse()}
             >
+                <div style={styles.logo}>
+                    <img style={{ width: 35, height: 35, borderRadius: '50%' }} src={logoUrl} alt="" />
+                    {name}
+                </div>
+
                 <Menu
                     mode="inline"
                     theme="dark"
+                    selectedKeys={[this.props.location.pathname]}
                 >
                     {
                         Menu_List.map(v => this.renderMenu(v))
@@ -73,7 +84,7 @@ export default class MainLayout extends Component {
         if (breadcrumbItem.hasOwnProperty('submunu') && breadcrumbItem['submenu'].length > 0) {
             breadcrumb1.splice(1, 0, breadcrumbItem['title']);
         }
-        this.setState({breadcrumb: breadcrumb1})
+        this.setState({ breadcrumb: breadcrumb1 })
     }
     /**
      * onCollapse public
@@ -96,7 +107,9 @@ export default class MainLayout extends Component {
                     <Icon type="user" style={{ fontSize: 20 }}></Icon>
                     <p style={{ margin: 0, marginLeft: 8 }}>{`管理员`} {`鸟窝`}</p>
                     <Button type="primary" onClick={() => {
-                        alert('登出成功！')
+                        localStorage.removeItem("token");
+                        this.props.history.push("/login");
+                        message.success("退出登录成功!")
                     }} style={{ marginLeft: 10 }}>登出</Button>
                 </div>
             </Layout.Header>
@@ -106,20 +119,16 @@ export default class MainLayout extends Component {
      * renderContent
      */
     renderContent() {
-        console.log('this.props.match.path',this.props.match.path)
         return (
             <Layout.Content style={styles.content}>
                 <Breadcrumb style={{ margin: '16px 0' }}>
                     {this.state.breadcrumb.map((item, index) => <Breadcrumb.Item key={index.toString()}>{item}</Breadcrumb.Item>)}
                 </Breadcrumb>
                 <div style={{ display: 'flex', flex: 1, flexDirection: 'column' }}>
-                    {/* {this.props.children} */}
-                    <Router>
-                        <Switch>
-                            <Route path='/' exact component={Home}></Route>
-                            <Route path={`${this.props.match.path}/admin`} component={AdminList} ></Route>
-                        </Switch>
-                    </Router>
+                    <Switch>
+                        <Route path='/' exact component={Home}></Route>
+                        <Route path={`${this.props.match.path}/admin`} component={AdminList} ></Route>
+                    </Switch>
                 </div>
             </Layout.Content>
         )
@@ -142,4 +151,5 @@ export default class MainLayout extends Component {
 const styles = {
     header: { display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', background: '#fff' },
     content: { display: 'flex', flex: 1, flexDirection: 'column', margin: '0 10px' },
+    logo: { display: 'flex', alignItems: 'center', justifyContent: 'center', height: 64, color: 'rgba(255, 255, 255, 0.65)' }
 };

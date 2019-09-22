@@ -13,5 +13,7 @@ namespace domain.enums
         InvalidToken = 10002,
         [Description("sign 签名非法")]
         ErrorSign = 10003,
+        [Description("用户名或密码有误")]
+        ErrorUserNameOrPass=10004,
     }
 }

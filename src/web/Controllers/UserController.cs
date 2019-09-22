@@ -1,3 +1,4 @@
+using domain.enums;
 using domain.models;
 using infrastructure.extensions;
 using infrastructure.utils;
@@ -15,6 +16,10 @@ namespace web.Controllers
         public MyResult<object> Login([FromBody]UserModel model)
         {
             MyResult<object> result = new MyResult<object>();
+            if (!model.UserName.Equals("1") || !model.PassWord.Equals("1"))
+            {
+                return result.SetStatus(ErrorCode.ErrorUserNameOrPass);
+            }
             TokenModel tokenModel = new TokenModel();
             tokenModel.Id = 1001;
             tokenModel.Mobile = "18333103619";

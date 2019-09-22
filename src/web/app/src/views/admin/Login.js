@@ -10,6 +10,7 @@ export default class Login extends Component {
             password: ''
         }
     }
+
     handleSubmit = () => {
         let { username, password } = this.state;
         if (username === '') {
@@ -29,6 +30,8 @@ export default class Login extends Component {
                 localStorage.setItem("token", data.data.token);
                 this.props.history.replace("/main");
             } else {
+                localStorage.removeItem("token");
+                Gapp.userInfo.isLogin = false;
                 message.error(data.message)
             }
         })
