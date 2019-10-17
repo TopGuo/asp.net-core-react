@@ -32,7 +32,7 @@ namespace web.Controllers
         [AllowAnonymous]
         public MyResult<object> Login([FromBody]UserModel model)
         {
-            
+            // MyDapper myDapper=new MyDapper()
             MyResult<object> result = new MyResult<object>();
             if (!model.UserName.Equals("1") || !model.PassWord.Equals("1"))
             {

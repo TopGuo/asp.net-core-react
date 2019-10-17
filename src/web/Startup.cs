@@ -1,4 +1,5 @@
 using application.services;
+using domain.configs;
 using domain.repository;
 using infrastructure.extensions;
 using Microsoft.AspNetCore.Builder;
@@ -35,7 +36,8 @@ namespace web
             // });
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IOrderService, OrderService>();
-            services.AddScoped<MyDapper>();
+            // services.AddScoped<MyDapper>();
+            services.Configure<ConnectionStringList>(Configuration.GetSection("ConnectionStrings"));
             //
             services.RegisterService();
         }
