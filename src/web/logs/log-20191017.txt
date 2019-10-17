@@ -6846,3 +6846,857 @@ Compiling...
 2019-10-17 12:51:31.631 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQILVOTL62L" sending FIN because: "The client closed the connection."
 2019-10-17 12:51:31.631 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQILVOTL62L" disconnecting.
 2019-10-17 12:51:31.632 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQILVOTL62L" stopped.
+2019-10-17 13:14:22.179 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQILVOTL633" received FIN.
+2019-10-17 13:14:22.179 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQILVOTL633" sending FIN because: "The client closed the connection."
+2019-10-17 13:14:22.179 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQILVOTL633" disconnecting.
+2019-10-17 13:14:22.255 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 2315438.4534ms 101 
+2019-10-17 13:14:22.256 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQILVOTL633" stopped.
+2019-10-17 15:33:14.740 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQILVOTL634" started.
+2019-10-17 15:33:14.788 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 POST http://127.0.0.1:8090/api/User/GetAdminUsers application/json;charset=UTF-8 293
+2019-10-17 15:33:14.814 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: POST requests are not supported
+2019-10-17 15:33:14.837 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: 1 candidate(s) found for the request path '/api/User/GetAdminUsers'
+2019-10-17 15:33:14.863 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: Endpoint 'web.Controllers.UserController.GetAdminUsers (web)' with route pattern 'api/User/GetAdminUsers' is valid for the request path '/api/User/GetAdminUsers'
+2019-10-17 15:33:14.889 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request matched endpoint 'web.Controllers.UserController.GetAdminUsers (web)'
+2019-10-17 15:33:14.889 +08:00 [Information] Microsoft.AspNetCore.Routing.EndpointMiddleware: Executing endpoint 'web.Controllers.UserController.GetAdminUsers (web)'
+2019-10-17 15:33:14.891 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Route matched with {action = "GetAdminUsers", controller = "User", page = ""}. Executing controller action with signature domain.repository.MyResult`1[System.Collections.Generic.List`1[domain.entitys.AdminUsers]] GetAdminUsers(domain.models.BaseModel) on controller web.Controllers.UserController (web).
+2019-10-17 15:33:14.891 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of authorization filters (in the following order): None
+2019-10-17 15:33:14.891 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+2019-10-17 15:33:14.891 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)
+2019-10-17 15:33:14.891 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of exception filters (in the following order): None
+2019-10-17 15:33:14.891 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+2019-10-17 15:33:14.892 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Attempting to bind parameter 'model' of type 'domain.models.BaseModel' ...
+2019-10-17 15:33:14.893 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Attempting to bind parameter 'model' of type 'domain.models.BaseModel' using the name '' in request data ...
+2019-10-17 15:33:14.893 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Rejected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonPatchInputFormatter' for content type 'application/json;charset=UTF-8'.
+2019-10-17 15:33:14.893 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonInputFormatter' for content type 'application/json;charset=UTF-8'.
+2019-10-17 15:33:14.893 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQILVOTL634", Request id "0HLQILVOTL634:00000001": started reading request body.
+2019-10-17 15:33:14.893 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQILVOTL634", Request id "0HLQILVOTL634:00000001": done reading request body.
+2019-10-17 15:33:14.894 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Done attempting to bind parameter 'model' of type 'domain.models.BaseModel'.
+2019-10-17 15:33:14.894 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Done attempting to bind parameter 'model' of type 'domain.models.BaseModel'.
+2019-10-17 15:33:14.894 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Attempting to validate the bound parameter 'model' of type 'domain.models.BaseModel' ...
+2019-10-17 15:33:14.894 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Done attempting to validate the bound parameter 'model' of type 'domain.models.BaseModel'.
+2019-10-17 15:33:14.897 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executing action method web.Controllers.UserController.GetAdminUsers (web) - Validation state: Valid
+2019-10-17 15:33:16.331 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executed action method web.Controllers.UserController.GetAdminUsers (web), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 1433.4852ms.
+2019-10-17 15:33:16.331 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: List of registered output formatters, in the following order: Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter, Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter, Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter, Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter
+2019-10-17 15:33:16.331 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: No information found on request to perform content negotiation.
+2019-10-17 15:33:16.331 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2019-10-17 15:33:16.331 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: Attempting to select the first formatter in the output formatters list which can write the result.
+2019-10-17 15:33:16.332 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter' and content type 'application/json' to write the response.
+2019-10-17 15:33:16.332 +08:00 [Information] Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor: Executing ObjectResult, writing value of type 'domain.repository.MyResult`1[[System.Collections.Generic.List`1[[domain.entitys.AdminUsers, domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2019-10-17 15:33:16.332 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executed action web.Controllers.UserController.GetAdminUsers (web) in 1440.1032ms
+2019-10-17 15:33:16.332 +08:00 [Information] Microsoft.AspNetCore.Routing.EndpointMiddleware: Executed endpoint 'web.Controllers.UserController.GetAdminUsers (web)'
+2019-10-17 15:33:16.332 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQILVOTL634" completed keep alive response.
+2019-10-17 15:33:16.333 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 1564.118ms 200 application/json; charset=utf-8
+2019-10-17 15:43:32.704 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQILVOTL634" received FIN.
+2019-10-17 15:43:32.704 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQILVOTL634" sending FIN because: "The client closed the connection."
+2019-10-17 15:43:32.704 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQILVOTL634" disconnecting.
+2019-10-17 15:43:32.704 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQILVOTL634" stopped.
+2019-10-17 16:44:00.795 +08:00 [Debug] Microsoft.AspNetCore.Hosting.Internal.WebHost: Hosting starting
+2019-10-17 16:44:00.888 +08:00 [Information] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager: User profile is available. Using '/Users/topbrids/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2019-10-17 16:44:00.895 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository: Reading data from file '/Users/topbrids/.aspnet/DataProtection-Keys/key-b3709fd7-4305-419a-830b-40f0df2936c5.xml'.
+2019-10-17 16:44:00.919 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository: Reading data from file '/Users/topbrids/.aspnet/DataProtection-Keys/key-993f6a9a-e549-4764-98ce-83462af1c165.xml'.
+2019-10-17 16:44:00.921 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager: Found key {b3709fd7-4305-419a-830b-40f0df2936c5}.
+2019-10-17 16:44:00.924 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager: Found key {993f6a9a-e549-4764-98ce-83462af1c165}.
+2019-10-17 16:44:00.929 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.KeyManagement.DefaultKeyResolver: Considering key {993f6a9a-e549-4764-98ce-83462af1c165} with expiration date 2020-01-14 14:10:29Z as default key.
+2019-10-17 16:44:00.976 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.TypeForwardingActivator: Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2019-10-17 16:44:00.985 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ManagedAuthenticatedEncryptorFactory: Using managed symmetric algorithm 'System.Security.Cryptography.Aes'.
+2019-10-17 16:44:00.985 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ManagedAuthenticatedEncryptorFactory: Using managed keyed hash algorithm 'System.Security.Cryptography.HMACSHA256'.
+2019-10-17 16:44:00.989 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingProvider: Using key {993f6a9a-e549-4764-98ce-83462af1c165} as the default key.
+2019-10-17 16:44:00.990 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.Internal.DataProtectionStartupFilter: Key ring with default key {993f6a9a-e549-4764-98ce-83462af1c165} was loaded during application startup.
+2019-10-17 16:44:01.050 +08:00 [Debug] Microsoft.AspNetCore.Mvc.MvcJsonOptions: Compatibility switch AllowInputFormatterExceptionMessages in type MvcJsonOptions is using compatibility value True for version Version_2_2
+2019-10-17 16:44:01.081 +08:00 [Debug] Microsoft.AspNetCore.Mvc.MvcOptions: Compatibility switch AllowCombiningAuthorizeFilters in type MvcOptions is using compatibility value True for version Version_2_2
+2019-10-17 16:44:01.081 +08:00 [Debug] Microsoft.AspNetCore.Mvc.MvcOptions: Compatibility switch AllowBindingHeaderValuesToNonStringModelTypes in type MvcOptions is using compatibility value True for version Version_2_2
+2019-10-17 16:44:01.081 +08:00 [Debug] Microsoft.AspNetCore.Mvc.MvcOptions: Compatibility switch AllowValidatingTopLevelNodes in type MvcOptions is using compatibility value True for version Version_2_2
+2019-10-17 16:44:01.081 +08:00 [Debug] Microsoft.AspNetCore.Mvc.MvcOptions: Compatibility switch InputFormatterExceptionPolicy in type MvcOptions is using compatibility value MalformedInputExceptions for version Version_2_2
+2019-10-17 16:44:01.081 +08:00 [Debug] Microsoft.AspNetCore.Mvc.MvcOptions: Compatibility switch SuppressBindingUndefinedValueToEnumType in type MvcOptions is using compatibility value True for version Version_2_2
+2019-10-17 16:44:01.081 +08:00 [Debug] Microsoft.AspNetCore.Mvc.MvcOptions: Compatibility switch EnableEndpointRouting in type MvcOptions is using compatibility value True for version Version_2_2
+2019-10-17 16:44:01.081 +08:00 [Debug] Microsoft.AspNetCore.Mvc.MvcOptions: Compatibility switch MaxValidationDepth in type MvcOptions is using compatibility value 32 for version Version_2_2
+2019-10-17 16:44:01.081 +08:00 [Debug] Microsoft.AspNetCore.Mvc.MvcOptions: Compatibility switch AllowShortCircuitingValidationWhenNoValidatorsArePresent in type MvcOptions is using compatibility value True for version Version_2_2
+2019-10-17 16:44:01.089 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ApiBehaviorOptions: Compatibility switch SuppressMapClientErrors in type ApiBehaviorOptions is using default value False
+2019-10-17 16:44:01.089 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ApiBehaviorOptions: Compatibility switch SuppressUseValidationProblemDetailsForInvalidModelStateResponses in type ApiBehaviorOptions is using default value False
+2019-10-17 16:44:01.089 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ApiBehaviorOptions: Compatibility switch AllowInferringBindingSourceForCollectionTypesAsFromQuery in type ApiBehaviorOptions is using default value False
+2019-10-17 16:44:01.093 +08:00 [Debug] Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions: Compatibility switch AllowAreas in type RazorPagesOptions is using compatibility value True for version Version_2_2
+2019-10-17 16:44:01.093 +08:00 [Debug] Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions: Compatibility switch AllowMappingHeadRequestsToGetHandler in type RazorPagesOptions is using compatibility value True for version Version_2_2
+2019-10-17 16:44:01.093 +08:00 [Debug] Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions: Compatibility switch AllowDefaultHandlingForOptionsRequests in type RazorPagesOptions is using compatibility value True for version Version_2_2
+2019-10-17 16:44:01.103 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions: Compatibility switch AllowRecompilingViewsOnFileChange in type RazorViewEngineOptions is using explicitly configured value True
+2019-10-17 16:44:01.135 +08:00 [Debug] Microsoft.AspNetCore.Mvc.MvcViewOptions: Compatibility switch SuppressTempDataAttributePrefix in type MvcViewOptions is using compatibility value True for version Version_2_2
+2019-10-17 16:44:01.135 +08:00 [Debug] Microsoft.AspNetCore.Mvc.MvcViewOptions: Compatibility switch AllowRenderingMaxLengthAttribute in type MvcViewOptions is using compatibility value True for version Version_2_2
+2019-10-17 16:44:01.205 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ModelBinderFactory: Registered model binder providers, in the following order: Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexTypeModelBinderProvider
+2019-10-17 16:44:01.975 +08:00 [Information] Microsoft.AspNetCore.SpaServices: Starting create-react-app server on port 61863...
+2019-10-17 16:44:02.104 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer: Failed to locate the development https certificate at '(null)'.
+2019-10-17 16:44:02.129 +08:00 [Debug] Microsoft.AspNetCore.Hosting.Internal.WebHost: Hosting started
+2019-10-17 16:44:02.130 +08:00 [Debug] Microsoft.AspNetCore.Hosting.Internal.WebHost: Loaded hosting startup assembly web
+2019-10-17 16:44:02.322 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIROKIKJD9" started.
+2019-10-17 16:44:02.460 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIROKIKJDA" started.
+2019-10-17 16:44:02.488 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/  
+2019-10-17 16:44:02.515 +08:00 [Debug] Microsoft.AspNetCore.HostFiltering.HostFilteringMiddleware: Wildcard detected, all requests with hosts will be allowed.
+2019-10-17 16:44:02.517 +08:00 [Warning] Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware: Failed to determine the https port for redirect.
+2019-10-17 16:44:02.538 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path / does not match a supported file type
+2019-10-17 16:44:02.571 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/'
+2019-10-17 16:44:02.572 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:44:06.811 +08:00 [Information] Microsoft.AspNetCore.SpaServices: > rapp@0.1.0 start /Users/topbrids/netcore/asp.net-core-react/src/web/app
+> react-app-rewired start
+
+Starting the development server...
+
+2019-10-17 16:44:18.362 +08:00 [Information] Microsoft.AspNetCore.SpaServices: 
+Compiled with warnings.
+
+2019-10-17 16:44:18.362 +08:00 [Information] Microsoft.AspNetCore.SpaServices: 
+./src/views/admin/AdminList.js
+
+2019-10-17 16:44:18.588 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIROKIKJDB" started.
+2019-10-17 16:44:18.599 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIROKIKJD9" completed keep alive response.
+2019-10-17 16:44:18.599 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 16111.5104ms 200 text/html; charset=UTF-8
+2019-10-17 16:44:18.600 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQIROKIKJDA" received FIN.
+2019-10-17 16:44:18.605 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQIROKIKJDA" sending FIN because: "The client closed the connection."
+2019-10-17 16:44:18.606 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIROKIKJDA" disconnecting.
+2019-10-17 16:44:18.611 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIROKIKJDA" stopped.
+2019-10-17 16:44:18.618 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/static/js/bundle.js  
+2019-10-17 16:44:18.620 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /static/js/bundle.js does not match an existing file
+2019-10-17 16:44:18.659 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/static/js/bundle.js'
+2019-10-17 16:44:18.659 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:44:18.668 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIROKIKJDC" started.
+2019-10-17 16:44:18.673 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/static/js/0.chunk.js  
+2019-10-17 16:44:18.674 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /static/js/0.chunk.js does not match an existing file
+2019-10-17 16:44:18.674 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/static/js/0.chunk.js'
+2019-10-17 16:44:18.674 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:44:18.699 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIROKIKJDD" started.
+2019-10-17 16:44:18.700 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/static/js/main.chunk.js  
+2019-10-17 16:44:18.700 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /static/js/main.chunk.js does not match an existing file
+2019-10-17 16:44:18.701 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/static/js/main.chunk.js'
+2019-10-17 16:44:18.701 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:44:18.725 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIROKIKJDB" completed keep alive response.
+2019-10-17 16:44:18.725 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 107.021ms 200 application/javascript; charset=UTF-8
+2019-10-17 16:44:18.768 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIROKIKJDC" completed keep alive response.
+2019-10-17 16:44:18.768 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 94.752ms 304 
+2019-10-17 16:44:18.768 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIROKIKJDD" completed keep alive response.
+2019-10-17 16:44:18.768 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 68.4098ms 304 
+2019-10-17 16:44:19.511 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/static/media/loginBackground.261b2c42.png  
+2019-10-17 16:44:19.511 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /static/media/loginBackground.261b2c42.png does not match an existing file
+2019-10-17 16:44:19.511 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/static/media/loginBackground.261b2c42.png'
+2019-10-17 16:44:19.511 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:44:19.570 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIROKIKJDD" completed keep alive response.
+2019-10-17 16:44:19.570 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 59.077ms 304 
+2019-10-17 16:44:20.385 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/sockjs-node/info?t=1571301860379  
+2019-10-17 16:44:20.385 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /sockjs-node/info does not match a supported file type
+2019-10-17 16:44:20.385 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/sockjs-node/info'
+2019-10-17 16:44:20.385 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:44:20.406 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIROKIKJDE" started.
+2019-10-17 16:44:20.427 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/favicon.ico  
+2019-10-17 16:44:20.427 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /favicon.ico does not match an existing file
+2019-10-17 16:44:20.427 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/favicon.ico'
+2019-10-17 16:44:20.427 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:44:20.452 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/manifest.json  
+2019-10-17 16:44:20.452 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /manifest.json does not match an existing file
+2019-10-17 16:44:20.452 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/manifest.json'
+2019-10-17 16:44:20.452 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:44:20.455 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIROKIKJDD" completed keep alive response.
+2019-10-17 16:44:20.455 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 70.2698ms 200 application/json; charset=UTF-8
+2019-10-17 16:44:20.456 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIROKIKJDC" completed keep alive response.
+2019-10-17 16:44:20.456 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 28.9084ms 304 
+2019-10-17 16:44:20.456 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIROKIKJDE" completed keep alive response.
+2019-10-17 16:44:20.456 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 3.6449ms 304 
+2019-10-17 16:44:20.463 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIROKIKJDF" started.
+2019-10-17 16:44:20.464 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/sockjs-node/981/nxqxtakg/websocket  
+2019-10-17 16:44:20.487 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /sockjs-node/981/nxqxtakg/websocket does not match a supported file type
+2019-10-17 16:44:20.487 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/sockjs-node/981/nxqxtakg/websocket'
+2019-10-17 16:44:20.487 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:44:20.489 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/logo192.png  
+2019-10-17 16:44:20.489 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /logo192.png does not match an existing file
+2019-10-17 16:44:20.489 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/logo192.png'
+2019-10-17 16:44:20.489 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:44:20.492 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIROKIKJDD" completed keep alive response.
+2019-10-17 16:44:20.492 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 3.7988ms 304 
+2019-10-17 16:44:28.642 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 POST http://127.0.0.1:8090/api/User/Login application/json;charset=UTF-8 52
+2019-10-17 16:44:28.642 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: POST requests are not supported
+2019-10-17 16:44:28.643 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: 1 candidate(s) found for the request path '/api/User/Login'
+2019-10-17 16:44:28.644 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: Endpoint 'web.Controllers.UserController.Login (web)' with route pattern 'api/User/Login' is valid for the request path '/api/User/Login'
+2019-10-17 16:44:28.645 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request matched endpoint 'web.Controllers.UserController.Login (web)'
+2019-10-17 16:44:28.645 +08:00 [Information] Microsoft.AspNetCore.Routing.EndpointMiddleware: Executing endpoint 'web.Controllers.UserController.Login (web)'
+2019-10-17 16:44:28.686 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Route matched with {action = "Login", controller = "User", page = ""}. Executing controller action with signature domain.repository.MyResult`1[System.Object] Login(domain.models.UserModel) on controller web.Controllers.UserController (web).
+2019-10-17 16:44:28.686 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of authorization filters (in the following order): None
+2019-10-17 16:44:28.687 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+2019-10-17 16:44:28.687 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)
+2019-10-17 16:44:28.687 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of exception filters (in the following order): None
+2019-10-17 16:44:28.687 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+2019-10-17 16:44:28.761 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Attempting to bind parameter 'model' of type 'domain.models.UserModel' ...
+2019-10-17 16:44:28.764 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Attempting to bind parameter 'model' of type 'domain.models.UserModel' using the name '' in request data ...
+2019-10-17 16:44:28.765 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Rejected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonPatchInputFormatter' for content type 'application/json;charset=UTF-8'.
+2019-10-17 16:44:28.767 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonInputFormatter' for content type 'application/json;charset=UTF-8'.
+2019-10-17 16:44:28.773 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIROKIKJDD", Request id "0HLQIROKIKJDD:00000005": started reading request body.
+2019-10-17 16:44:28.781 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIROKIKJDD", Request id "0HLQIROKIKJDD:00000005": done reading request body.
+2019-10-17 16:44:28.850 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Done attempting to bind parameter 'model' of type 'domain.models.UserModel'.
+2019-10-17 16:44:28.850 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Done attempting to bind parameter 'model' of type 'domain.models.UserModel'.
+2019-10-17 16:44:28.850 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Attempting to validate the bound parameter 'model' of type 'domain.models.UserModel' ...
+2019-10-17 16:44:28.853 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Done attempting to validate the bound parameter 'model' of type 'domain.models.UserModel'.
+2019-10-17 16:44:28.874 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executing action method web.Controllers.UserController.Login (web) - Validation state: Valid
+2019-10-17 16:45:29.020 +08:00 [Debug] Microsoft.AspNetCore.Hosting.Internal.WebHost: Hosting starting
+2019-10-17 16:45:29.101 +08:00 [Information] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager: User profile is available. Using '/Users/topbrids/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2019-10-17 16:45:29.107 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository: Reading data from file '/Users/topbrids/.aspnet/DataProtection-Keys/key-b3709fd7-4305-419a-830b-40f0df2936c5.xml'.
+2019-10-17 16:45:29.133 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository: Reading data from file '/Users/topbrids/.aspnet/DataProtection-Keys/key-993f6a9a-e549-4764-98ce-83462af1c165.xml'.
+2019-10-17 16:45:29.136 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager: Found key {b3709fd7-4305-419a-830b-40f0df2936c5}.
+2019-10-17 16:45:29.139 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager: Found key {993f6a9a-e549-4764-98ce-83462af1c165}.
+2019-10-17 16:45:29.144 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.KeyManagement.DefaultKeyResolver: Considering key {993f6a9a-e549-4764-98ce-83462af1c165} with expiration date 2020-01-14 14:10:29Z as default key.
+2019-10-17 16:45:29.190 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.TypeForwardingActivator: Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2019-10-17 16:45:29.199 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ManagedAuthenticatedEncryptorFactory: Using managed symmetric algorithm 'System.Security.Cryptography.Aes'.
+2019-10-17 16:45:29.199 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ManagedAuthenticatedEncryptorFactory: Using managed keyed hash algorithm 'System.Security.Cryptography.HMACSHA256'.
+2019-10-17 16:45:29.203 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingProvider: Using key {993f6a9a-e549-4764-98ce-83462af1c165} as the default key.
+2019-10-17 16:45:29.203 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.Internal.DataProtectionStartupFilter: Key ring with default key {993f6a9a-e549-4764-98ce-83462af1c165} was loaded during application startup.
+2019-10-17 16:45:29.251 +08:00 [Debug] Microsoft.AspNetCore.Mvc.MvcJsonOptions: Compatibility switch AllowInputFormatterExceptionMessages in type MvcJsonOptions is using compatibility value True for version Version_2_2
+2019-10-17 16:45:29.279 +08:00 [Debug] Microsoft.AspNetCore.Mvc.MvcOptions: Compatibility switch AllowCombiningAuthorizeFilters in type MvcOptions is using compatibility value True for version Version_2_2
+2019-10-17 16:45:29.279 +08:00 [Debug] Microsoft.AspNetCore.Mvc.MvcOptions: Compatibility switch AllowBindingHeaderValuesToNonStringModelTypes in type MvcOptions is using compatibility value True for version Version_2_2
+2019-10-17 16:45:29.279 +08:00 [Debug] Microsoft.AspNetCore.Mvc.MvcOptions: Compatibility switch AllowValidatingTopLevelNodes in type MvcOptions is using compatibility value True for version Version_2_2
+2019-10-17 16:45:29.280 +08:00 [Debug] Microsoft.AspNetCore.Mvc.MvcOptions: Compatibility switch InputFormatterExceptionPolicy in type MvcOptions is using compatibility value MalformedInputExceptions for version Version_2_2
+2019-10-17 16:45:29.280 +08:00 [Debug] Microsoft.AspNetCore.Mvc.MvcOptions: Compatibility switch SuppressBindingUndefinedValueToEnumType in type MvcOptions is using compatibility value True for version Version_2_2
+2019-10-17 16:45:29.280 +08:00 [Debug] Microsoft.AspNetCore.Mvc.MvcOptions: Compatibility switch EnableEndpointRouting in type MvcOptions is using compatibility value True for version Version_2_2
+2019-10-17 16:45:29.280 +08:00 [Debug] Microsoft.AspNetCore.Mvc.MvcOptions: Compatibility switch MaxValidationDepth in type MvcOptions is using compatibility value 32 for version Version_2_2
+2019-10-17 16:45:29.280 +08:00 [Debug] Microsoft.AspNetCore.Mvc.MvcOptions: Compatibility switch AllowShortCircuitingValidationWhenNoValidatorsArePresent in type MvcOptions is using compatibility value True for version Version_2_2
+2019-10-17 16:45:29.286 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ApiBehaviorOptions: Compatibility switch SuppressMapClientErrors in type ApiBehaviorOptions is using default value False
+2019-10-17 16:45:29.286 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ApiBehaviorOptions: Compatibility switch SuppressUseValidationProblemDetailsForInvalidModelStateResponses in type ApiBehaviorOptions is using default value False
+2019-10-17 16:45:29.286 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ApiBehaviorOptions: Compatibility switch AllowInferringBindingSourceForCollectionTypesAsFromQuery in type ApiBehaviorOptions is using default value False
+2019-10-17 16:45:29.289 +08:00 [Debug] Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions: Compatibility switch AllowAreas in type RazorPagesOptions is using compatibility value True for version Version_2_2
+2019-10-17 16:45:29.289 +08:00 [Debug] Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions: Compatibility switch AllowMappingHeadRequestsToGetHandler in type RazorPagesOptions is using compatibility value True for version Version_2_2
+2019-10-17 16:45:29.289 +08:00 [Debug] Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions: Compatibility switch AllowDefaultHandlingForOptionsRequests in type RazorPagesOptions is using compatibility value True for version Version_2_2
+2019-10-17 16:45:29.300 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions: Compatibility switch AllowRecompilingViewsOnFileChange in type RazorViewEngineOptions is using explicitly configured value True
+2019-10-17 16:45:29.318 +08:00 [Debug] Microsoft.AspNetCore.Mvc.MvcViewOptions: Compatibility switch SuppressTempDataAttributePrefix in type MvcViewOptions is using compatibility value True for version Version_2_2
+2019-10-17 16:45:29.318 +08:00 [Debug] Microsoft.AspNetCore.Mvc.MvcViewOptions: Compatibility switch AllowRenderingMaxLengthAttribute in type MvcViewOptions is using compatibility value True for version Version_2_2
+2019-10-17 16:45:29.393 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ModelBinderFactory: Registered model binder providers, in the following order: Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider, Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexTypeModelBinderProvider
+2019-10-17 16:45:30.286 +08:00 [Information] Microsoft.AspNetCore.SpaServices: Starting create-react-app server on port 61896...
+2019-10-17 16:45:30.376 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer: Failed to locate the development https certificate at '(null)'.
+2019-10-17 16:45:30.392 +08:00 [Debug] Microsoft.AspNetCore.Hosting.Internal.WebHost: Hosting started
+2019-10-17 16:45:30.392 +08:00 [Debug] Microsoft.AspNetCore.Hosting.Internal.WebHost: Loaded hosting startup assembly web
+2019-10-17 16:45:30.541 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR5" started.
+2019-10-17 16:45:30.676 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR6" started.
+2019-10-17 16:45:30.687 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/  
+2019-10-17 16:45:30.691 +08:00 [Debug] Microsoft.AspNetCore.HostFiltering.HostFilteringMiddleware: Wildcard detected, all requests with hosts will be allowed.
+2019-10-17 16:45:30.697 +08:00 [Warning] Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware: Failed to determine the https port for redirect.
+2019-10-17 16:45:30.717 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path / does not match a supported file type
+2019-10-17 16:45:30.752 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/'
+2019-10-17 16:45:30.752 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:45:33.026 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQIRPES0AR5" received FIN.
+2019-10-17 16:45:33.030 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQIRPES0AR5" sending FIN because: "The client closed the connection."
+2019-10-17 16:45:33.034 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR5" disconnecting.
+2019-10-17 16:45:34.397 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 POST http://127.0.0.1:8090/api/User/Login application/json;charset=UTF-8 52
+2019-10-17 16:45:34.397 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: POST requests are not supported
+2019-10-17 16:45:34.404 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: 1 candidate(s) found for the request path '/api/User/Login'
+2019-10-17 16:45:34.405 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: Endpoint 'web.Controllers.UserController.Login (web)' with route pattern 'api/User/Login' is valid for the request path '/api/User/Login'
+2019-10-17 16:45:34.407 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request matched endpoint 'web.Controllers.UserController.Login (web)'
+2019-10-17 16:45:34.408 +08:00 [Information] Microsoft.AspNetCore.Routing.EndpointMiddleware: Executing endpoint 'web.Controllers.UserController.Login (web)'
+2019-10-17 16:45:34.454 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Route matched with {action = "Login", controller = "User", page = ""}. Executing controller action with signature domain.repository.MyResult`1[System.Object] Login(domain.models.UserModel) on controller web.Controllers.UserController (web).
+2019-10-17 16:45:34.454 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of authorization filters (in the following order): None
+2019-10-17 16:45:34.454 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+2019-10-17 16:45:34.454 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)
+2019-10-17 16:45:34.454 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of exception filters (in the following order): None
+2019-10-17 16:45:34.454 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+2019-10-17 16:45:34.529 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Attempting to bind parameter 'model' of type 'domain.models.UserModel' ...
+2019-10-17 16:45:34.532 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Attempting to bind parameter 'model' of type 'domain.models.UserModel' using the name '' in request data ...
+2019-10-17 16:45:34.533 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Rejected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonPatchInputFormatter' for content type 'application/json;charset=UTF-8'.
+2019-10-17 16:45:34.533 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonInputFormatter' for content type 'application/json;charset=UTF-8'.
+2019-10-17 16:45:34.537 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR6", Request id "0HLQIRPES0AR6:00000001": started reading request body.
+2019-10-17 16:45:34.548 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR6", Request id "0HLQIRPES0AR6:00000001": done reading request body.
+2019-10-17 16:45:34.618 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Done attempting to bind parameter 'model' of type 'domain.models.UserModel'.
+2019-10-17 16:45:34.618 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Done attempting to bind parameter 'model' of type 'domain.models.UserModel'.
+2019-10-17 16:45:34.618 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Attempting to validate the bound parameter 'model' of type 'domain.models.UserModel' ...
+2019-10-17 16:45:34.620 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Done attempting to validate the bound parameter 'model' of type 'domain.models.UserModel'.
+2019-10-17 16:45:34.637 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executing action method web.Controllers.UserController.Login (web) - Validation state: Valid
+2019-10-17 16:45:38.933 +08:00 [Information] Microsoft.AspNetCore.SpaServices: > rapp@0.1.0 start /Users/topbrids/netcore/asp.net-core-react/src/web/app
+> react-app-rewired start
+
+Starting the development server...
+
+2019-10-17 16:45:42.081 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 11393.9799ms 0 
+2019-10-17 16:45:42.084 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR5" stopped.
+2019-10-17 16:45:47.165 +08:00 [Information] Microsoft.AspNetCore.SpaServices: 
+Compiled with warnings.
+
+2019-10-17 16:45:47.165 +08:00 [Information] Microsoft.AspNetCore.SpaServices: 
+./src/views/admin/AdminList.js
+
+2019-10-17 16:45:55.026 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executed action method web.Controllers.UserController.Login (web), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 20386.3111ms.
+2019-10-17 16:45:55.033 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: List of registered output formatters, in the following order: Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter, Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter, Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter, Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter
+2019-10-17 16:45:55.035 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: No information found on request to perform content negotiation.
+2019-10-17 16:45:55.035 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2019-10-17 16:45:55.035 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: Attempting to select the first formatter in the output formatters list which can write the result.
+2019-10-17 16:45:55.035 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter' and content type 'application/json' to write the response.
+2019-10-17 16:45:55.036 +08:00 [Information] Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor: Executing ObjectResult, writing value of type 'domain.repository.MyResult'.
+2019-10-17 16:45:55.060 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executed action web.Controllers.UserController.Login (web) in 20603.3552ms
+2019-10-17 16:45:55.060 +08:00 [Information] Microsoft.AspNetCore.Routing.EndpointMiddleware: Executed endpoint 'web.Controllers.UserController.Login (web)'
+2019-10-17 16:45:55.061 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR6" completed keep alive response.
+2019-10-17 16:45:55.064 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 20666.9729ms 200 application/json; charset=utf-8
+2019-10-17 16:46:04.003 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 POST http://127.0.0.1:8090/api/User/Login application/json;charset=UTF-8 54
+2019-10-17 16:46:04.004 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: POST requests are not supported
+2019-10-17 16:46:04.006 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: 1 candidate(s) found for the request path '/api/User/Login'
+2019-10-17 16:46:04.006 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: Endpoint 'web.Controllers.UserController.Login (web)' with route pattern 'api/User/Login' is valid for the request path '/api/User/Login'
+2019-10-17 16:46:04.006 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request matched endpoint 'web.Controllers.UserController.Login (web)'
+2019-10-17 16:46:04.006 +08:00 [Information] Microsoft.AspNetCore.Routing.EndpointMiddleware: Executing endpoint 'web.Controllers.UserController.Login (web)'
+2019-10-17 16:46:04.006 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Route matched with {action = "Login", controller = "User", page = ""}. Executing controller action with signature domain.repository.MyResult`1[System.Object] Login(domain.models.UserModel) on controller web.Controllers.UserController (web).
+2019-10-17 16:46:04.006 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of authorization filters (in the following order): None
+2019-10-17 16:46:04.006 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+2019-10-17 16:46:04.006 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)
+2019-10-17 16:46:04.006 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of exception filters (in the following order): None
+2019-10-17 16:46:04.006 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+2019-10-17 16:46:04.007 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Attempting to bind parameter 'model' of type 'domain.models.UserModel' ...
+2019-10-17 16:46:04.007 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Attempting to bind parameter 'model' of type 'domain.models.UserModel' using the name '' in request data ...
+2019-10-17 16:46:04.007 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Rejected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonPatchInputFormatter' for content type 'application/json;charset=UTF-8'.
+2019-10-17 16:46:04.007 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonInputFormatter' for content type 'application/json;charset=UTF-8'.
+2019-10-17 16:46:04.007 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR6", Request id "0HLQIRPES0AR6:00000002": started reading request body.
+2019-10-17 16:46:04.007 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR6", Request id "0HLQIRPES0AR6:00000002": done reading request body.
+2019-10-17 16:46:04.008 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Done attempting to bind parameter 'model' of type 'domain.models.UserModel'.
+2019-10-17 16:46:04.008 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Done attempting to bind parameter 'model' of type 'domain.models.UserModel'.
+2019-10-17 16:46:04.008 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Attempting to validate the bound parameter 'model' of type 'domain.models.UserModel' ...
+2019-10-17 16:46:04.008 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Done attempting to validate the bound parameter 'model' of type 'domain.models.UserModel'.
+2019-10-17 16:46:04.009 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executing action method web.Controllers.UserController.Login (web) - Validation state: Valid
+2019-10-17 16:46:25.150 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR7" started.
+2019-10-17 16:46:26.171 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/static/js/bundle.js.map  
+2019-10-17 16:46:26.173 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR8" started.
+2019-10-17 16:46:26.176 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /static/js/bundle.js.map does not match an existing file
+2019-10-17 16:46:26.176 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/static/js/bundle.js.map'
+2019-10-17 16:46:26.176 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:46:26.179 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR9" started.
+2019-10-17 16:46:26.183 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/static/js/0.chunk.js.map  
+2019-10-17 16:46:26.183 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /static/js/0.chunk.js.map does not match an existing file
+2019-10-17 16:46:26.183 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/static/js/0.chunk.js.map'
+2019-10-17 16:46:26.183 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:46:26.201 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/static/js/main.chunk.js.map  
+2019-10-17 16:46:26.201 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /static/js/main.chunk.js.map does not match an existing file
+2019-10-17 16:46:26.201 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/static/js/main.chunk.js.map'
+2019-10-17 16:46:26.201 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:46:44.441 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executed action method web.Controllers.UserController.Login (web), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 40431.7094ms.
+2019-10-17 16:46:44.441 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: List of registered output formatters, in the following order: Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter, Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter, Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter, Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter
+2019-10-17 16:46:44.441 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: No information found on request to perform content negotiation.
+2019-10-17 16:46:44.441 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2019-10-17 16:46:44.441 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: Attempting to select the first formatter in the output formatters list which can write the result.
+2019-10-17 16:46:44.441 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter' and content type 'application/json' to write the response.
+2019-10-17 16:46:44.441 +08:00 [Information] Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor: Executing ObjectResult, writing value of type 'domain.repository.MyResult'.
+2019-10-17 16:46:44.442 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executed action web.Controllers.UserController.Login (web) in 40435.0991ms
+2019-10-17 16:46:44.442 +08:00 [Information] Microsoft.AspNetCore.Routing.EndpointMiddleware: Executed endpoint 'web.Controllers.UserController.Login (web)'
+2019-10-17 16:46:44.442 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR6" completed keep alive response.
+2019-10-17 16:46:44.442 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 40438.1998ms 200 application/json; charset=utf-8
+2019-10-17 16:46:44.466 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR8" completed keep alive response.
+2019-10-17 16:46:44.466 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 18283.2972ms 304 
+2019-10-17 16:46:44.467 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR9" completed keep alive response.
+2019-10-17 16:46:44.467 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 18265.2505ms 304 
+2019-10-17 16:46:44.472 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR7" completed keep alive response.
+2019-10-17 16:46:44.472 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 18324.5091ms 200 application/json; charset=UTF-8
+2019-10-17 16:46:50.023 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 POST http://127.0.0.1:8090/api/User/Login application/json;charset=UTF-8 54
+2019-10-17 16:46:50.023 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: POST requests are not supported
+2019-10-17 16:46:50.023 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: 1 candidate(s) found for the request path '/api/User/Login'
+2019-10-17 16:46:50.023 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: Endpoint 'web.Controllers.UserController.Login (web)' with route pattern 'api/User/Login' is valid for the request path '/api/User/Login'
+2019-10-17 16:46:50.023 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request matched endpoint 'web.Controllers.UserController.Login (web)'
+2019-10-17 16:46:50.023 +08:00 [Information] Microsoft.AspNetCore.Routing.EndpointMiddleware: Executing endpoint 'web.Controllers.UserController.Login (web)'
+2019-10-17 16:46:50.023 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Route matched with {action = "Login", controller = "User", page = ""}. Executing controller action with signature domain.repository.MyResult`1[System.Object] Login(domain.models.UserModel) on controller web.Controllers.UserController (web).
+2019-10-17 16:46:50.023 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of authorization filters (in the following order): None
+2019-10-17 16:46:50.023 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+2019-10-17 16:46:50.023 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)
+2019-10-17 16:46:50.023 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of exception filters (in the following order): None
+2019-10-17 16:46:50.023 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+2019-10-17 16:46:50.023 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Attempting to bind parameter 'model' of type 'domain.models.UserModel' ...
+2019-10-17 16:46:50.023 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Attempting to bind parameter 'model' of type 'domain.models.UserModel' using the name '' in request data ...
+2019-10-17 16:46:50.024 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Rejected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonPatchInputFormatter' for content type 'application/json;charset=UTF-8'.
+2019-10-17 16:46:50.024 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonInputFormatter' for content type 'application/json;charset=UTF-8'.
+2019-10-17 16:46:50.024 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR7", Request id "0HLQIRPES0AR7:00000002": started reading request body.
+2019-10-17 16:46:50.024 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR7", Request id "0HLQIRPES0AR7:00000002": done reading request body.
+2019-10-17 16:46:50.024 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Done attempting to bind parameter 'model' of type 'domain.models.UserModel'.
+2019-10-17 16:46:50.024 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Done attempting to bind parameter 'model' of type 'domain.models.UserModel'.
+2019-10-17 16:46:50.024 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Attempting to validate the bound parameter 'model' of type 'domain.models.UserModel' ...
+2019-10-17 16:46:50.024 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Done attempting to validate the bound parameter 'model' of type 'domain.models.UserModel'.
+2019-10-17 16:46:50.025 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executing action method web.Controllers.UserController.Login (web) - Validation state: Valid
+2019-10-17 16:47:41.063 +08:00 [Debug] Microsoft.AspNetCore.Mvc.MvcJsonOptions: Compatibility switch AllowInputFormatterExceptionMessages in type MvcJsonOptions is using compatibility value True for version Version_2_2
+2019-10-17 16:47:41.152 +08:00 [Information] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager: User profile is available. Using '/Users/topbrids/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2019-10-17 16:47:41.155 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository: Reading data from file '/Users/topbrids/.aspnet/DataProtection-Keys/key-b3709fd7-4305-419a-830b-40f0df2936c5.xml'.
+2019-10-17 16:47:41.156 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository: Reading data from file '/Users/topbrids/.aspnet/DataProtection-Keys/key-993f6a9a-e549-4764-98ce-83462af1c165.xml'.
+2019-10-17 16:47:41.157 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager: Found key {b3709fd7-4305-419a-830b-40f0df2936c5}.
+2019-10-17 16:47:41.157 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager: Found key {993f6a9a-e549-4764-98ce-83462af1c165}.
+2019-10-17 16:47:41.158 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.KeyManagement.DefaultKeyResolver: Considering key {993f6a9a-e549-4764-98ce-83462af1c165} with expiration date 2020-01-14 14:10:29Z as default key.
+2019-10-17 16:47:41.158 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.TypeForwardingActivator: Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2019-10-17 16:47:41.158 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ManagedAuthenticatedEncryptorFactory: Using managed symmetric algorithm 'System.Security.Cryptography.Aes'.
+2019-10-17 16:47:41.158 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ManagedAuthenticatedEncryptorFactory: Using managed keyed hash algorithm 'System.Security.Cryptography.HMACSHA256'.
+2019-10-17 16:47:41.158 +08:00 [Debug] Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingProvider: Using key {993f6a9a-e549-4764-98ce-83462af1c165} as the default key.
+2019-10-17 16:47:43.723 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executed action method web.Controllers.UserController.Login (web), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 53698.3508ms.
+2019-10-17 16:47:43.723 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: List of registered output formatters, in the following order: Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter, Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter, Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter, Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter
+2019-10-17 16:47:43.723 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: No information found on request to perform content negotiation.
+2019-10-17 16:47:43.723 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2019-10-17 16:47:43.723 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: Attempting to select the first formatter in the output formatters list which can write the result.
+2019-10-17 16:47:43.723 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter' and content type 'application/json' to write the response.
+2019-10-17 16:47:43.723 +08:00 [Information] Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor: Executing ObjectResult, writing value of type 'domain.repository.MyResult'.
+2019-10-17 16:47:43.741 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executed action web.Controllers.UserController.Login (web) in 53717.7139ms
+2019-10-17 16:47:43.741 +08:00 [Information] Microsoft.AspNetCore.Routing.EndpointMiddleware: Executed endpoint 'web.Controllers.UserController.Login (web)'
+2019-10-17 16:47:43.741 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR7" completed keep alive response.
+2019-10-17 16:47:43.741 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 53718.2948ms 200 application/json; charset=utf-8
+2019-10-17 16:54:08.148 +08:00 [Information] Microsoft.AspNetCore.SpaServices:   Line 2:   'Input' is defined but never used                                                                                                                                                                                                                                                                                                                                        no-unused-vars
+  Line 2:   'Button' is defined but never used                                                                                                                                                                                                                                                                                                                                       no-unused-vars
+  Line 2:   'Select' is defined but never used                                                                                                                                                                                                                                                                                                                                       no-unused-vars
+  Line 77:  The href attribute is required for an anchor to be keyboard accessible. Provide a valid, navigable address as the href value. If you cannot provide an href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  Line 79:  The href attribute is required for an anchor to be keyboard accessible. Provide a valid, navigable address as the href value. If you cannot provide an href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  Line 103:  'styles' is assigned a value but never used                                                                                                                                                                                                                                                                                                                              no-unused-vars
+
+./src/views/MainLayout.js
+  Line 2:  'Router' is defined but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+
+2019-10-17 16:54:12.910 +08:00 [Information] Microsoft.AspNetCore.SpaServices: Compiled with warnings.
+
+2019-10-17 16:54:12.925 +08:00 [Information] Microsoft.AspNetCore.SpaServices: 
+./src/views/admin/AdminList.js
+
+2019-10-17 16:54:13.423 +08:00 [Information] Microsoft.AspNetCore.SpaServices:   Line 2:   'Input' is defined but never used                                                                                                                                                                                                                                                                                                                                        no-unused-vars
+  Line 2:   'Button' is defined but never used                                                                                                                                                                                                                                                                                                                                       no-unused-vars
+  Line 2:   'Select' is defined but never used                                                                                                                                                                                                                                                                                                                                       no-unused-vars
+  Line 77:  The href attribute is required for an anchor to be keyboard accessible. Provide a valid, navigable address as the href value. If you cannot provide an href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  Line 79:  The href attribute is required for an anchor to be keyboard accessible. Provide a valid, navigable address as the href value. If you cannot provide an href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  Line 103:  'styles' is assigned a value but never used                                                                                                                                                                                                                                                                                                                              no-unused-vars
+
+./src/views/MainLayout.js
+  Line 2:  'Router' is defined but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+
+2019-10-17 16:54:16.323 +08:00 [Information] Microsoft.AspNetCore.SpaServices: Compiled with warnings.
+
+2019-10-17 16:54:16.343 +08:00 [Information] Microsoft.AspNetCore.SpaServices: 
+./src/views/admin/AdminList.js
+
+2019-10-17 16:54:48.544 +08:00 [Information] Microsoft.AspNetCore.SpaServices:   Line 2:   'Input' is defined but never used                                                                                                                                                                                                                                                                                                                                        no-unused-vars
+  Line 2:   'Button' is defined but never used                                                                                                                                                                                                                                                                                                                                       no-unused-vars
+  Line 2:   'Select' is defined but never used                                                                                                                                                                                                                                                                                                                                       no-unused-vars
+  Line 77:  The href attribute is required for an anchor to be keyboard accessible. Provide a valid, navigable address as the href value. If you cannot provide an href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  Line 79:  The href attribute is required for an anchor to be keyboard accessible. Provide a valid, navigable address as the href value. If you cannot provide an href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  Line 103:  'styles' is assigned a value but never used                                                                                                                                                                                                                                                                                                                              no-unused-vars
+
+./src/views/MainLayout.js
+  Line 2:  'Router' is defined but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+
+2019-10-17 16:54:50.797 +08:00 [Information] Microsoft.AspNetCore.SpaServices: Compiled with warnings.
+
+2019-10-17 16:54:50.839 +08:00 [Information] Microsoft.AspNetCore.SpaServices: 
+./src/views/admin/AdminList.js
+
+2019-10-17 16:55:13.771 +08:00 [Information] Microsoft.AspNetCore.SpaServices:   Line 2:   'Input' is defined but never used                                                                                                                                                                                                                                                                                                                                        no-unused-vars
+  Line 2:   'Button' is defined but never used                                                                                                                                                                                                                                                                                                                                       no-unused-vars
+  Line 2:   'Select' is defined but never used                                                                                                                                                                                                                                                                                                                                       no-unused-vars
+  Line 77:  The href attribute is required for an anchor to be keyboard accessible. Provide a valid, navigable address as the href value. If you cannot provide an href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  Line 79:  The href attribute is required for an anchor to be keyboard accessible. Provide a valid, navigable address as the href value. If you cannot provide an href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  Line 103:  'styles' is assigned a value but never used                                                                                                                                                                                                                                                                                                                              no-unused-vars
+
+./src/views/MainLayout.js
+  Line 2:  'Router' is defined but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+
+2019-10-17 16:55:16.163 +08:00 [Information] Microsoft.AspNetCore.SpaServices: Compiled with warnings.
+
+2019-10-17 16:55:16.184 +08:00 [Information] Microsoft.AspNetCore.SpaServices: 
+./src/views/admin/AdminList.js
+
+2019-10-17 16:55:24.527 +08:00 [Information] Microsoft.AspNetCore.SpaServices:   Line 2:   'Input' is defined but never used                                                                                                                                                                                                                                                                                                                                        no-unused-vars
+  Line 2:   'Button' is defined but never used                                                                                                                                                                                                                                                                                                                                       no-unused-vars
+  Line 2:   'Select' is defined but never used                                                                                                                                                                                                                                                                                                                                       no-unused-vars
+  Line 77:  The href attribute is required for an anchor to be keyboard accessible. Provide a valid, navigable address as the href value. If you cannot provide an href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  Line 79:  The href attribute is required for an anchor to be keyboard accessible. Provide a valid, navigable address as the href value. If you cannot provide an href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  Line 103:  'styles' is assigned a value but never used                                                                                                                                                                                                                                                                                                                              no-unused-vars
+
+./src/views/MainLayout.js
+  Line 2:  'Router' is defined but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+
+2019-10-17 16:55:26.133 +08:00 [Information] Microsoft.AspNetCore.SpaServices: Compiled with warnings.
+
+2019-10-17 16:55:26.166 +08:00 [Information] Microsoft.AspNetCore.SpaServices: 
+./src/views/admin/AdminList.js
+
+2019-10-17 16:55:26.336 +08:00 [Information] Microsoft.AspNetCore.SpaServices:   Line 2:   'Input' is defined but never used                                                                                                                                                                                                                                                                                                                                        no-unused-vars
+  Line 2:   'Button' is defined but never used                                                                                                                                                                                                                                                                                                                                       no-unused-vars
+  Line 2:   'Select' is defined but never used                                                                                                                                                                                                                                                                                                                                       no-unused-vars
+  Line 77:  The href attribute is required for an anchor to be keyboard accessible. Provide a valid, navigable address as the href value. If you cannot provide an href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  Line 79:  The href attribute is required for an anchor to be keyboard accessible. Provide a valid, navigable address as the href value. If you cannot provide an href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  Line 103:  'styles' is assigned a value but never used                                                                                                                                                                                                                                                                                                                              no-unused-vars
+
+./src/views/MainLayout.js
+  Line 2:  'Router' is defined but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+
+2019-10-17 16:55:27.582 +08:00 [Information] Microsoft.AspNetCore.SpaServices: Compiled with warnings.
+
+2019-10-17 16:55:27.602 +08:00 [Information] Microsoft.AspNetCore.SpaServices: 
+./src/views/admin/AdminList.js
+
+2019-10-17 16:55:36.081 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQIRPES0AR8" received FIN.
+2019-10-17 16:55:36.081 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQIRPES0AR6" received FIN.
+2019-10-17 16:55:36.081 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQIRPES0AR9" received FIN.
+2019-10-17 16:55:36.082 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQIRPES0AR7" received FIN.
+2019-10-17 16:55:36.110 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQIRPES0AR8" sending FIN because: "The client closed the connection."
+2019-10-17 16:55:36.110 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARA" started.
+2019-10-17 16:55:36.110 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR8" disconnecting.
+2019-10-17 16:55:36.161 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQIRPES0AR6" sending FIN because: "The client closed the connection."
+2019-10-17 16:55:36.161 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQIRPES0AR9" sending FIN because: "The client closed the connection."
+2019-10-17 16:55:36.162 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR9" disconnecting.
+2019-10-17 16:55:36.162 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR7" disconnecting.
+2019-10-17 16:55:36.187 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 POST http://127.0.0.1:8090/api/User/Login application/json;charset=UTF-8 274
+2019-10-17 16:55:36.212 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR6" disconnecting.
+2019-10-17 16:55:36.212 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQIRPES0AR7" sending FIN because: "The Socket transport's send loop completed gracefully."
+2019-10-17 16:55:36.212 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: POST requests are not supported
+2019-10-17 16:55:36.212 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: 1 candidate(s) found for the request path '/api/User/Login'
+2019-10-17 16:55:36.212 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: Endpoint 'web.Controllers.UserController.Login (web)' with route pattern 'api/User/Login' is valid for the request path '/api/User/Login'
+2019-10-17 16:55:36.213 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request matched endpoint 'web.Controllers.UserController.Login (web)'
+2019-10-17 16:55:36.213 +08:00 [Information] Microsoft.AspNetCore.Routing.EndpointMiddleware: Executing endpoint 'web.Controllers.UserController.Login (web)'
+2019-10-17 16:55:36.213 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR8" stopped.
+2019-10-17 16:55:36.213 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR6" stopped.
+2019-10-17 16:55:36.213 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR7" stopped.
+2019-10-17 16:55:36.213 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0AR9" stopped.
+2019-10-17 16:55:36.214 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Route matched with {action = "Login", controller = "User", page = ""}. Executing controller action with signature domain.repository.MyResult`1[System.Object] Login(domain.models.UserModel) on controller web.Controllers.UserController (web).
+2019-10-17 16:55:36.214 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of authorization filters (in the following order): None
+2019-10-17 16:55:36.214 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+2019-10-17 16:55:36.214 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)
+2019-10-17 16:55:36.214 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of exception filters (in the following order): None
+2019-10-17 16:55:36.214 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+2019-10-17 16:55:36.215 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Attempting to bind parameter 'model' of type 'domain.models.UserModel' ...
+2019-10-17 16:55:36.215 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Attempting to bind parameter 'model' of type 'domain.models.UserModel' using the name '' in request data ...
+2019-10-17 16:55:36.215 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Rejected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonPatchInputFormatter' for content type 'application/json;charset=UTF-8'.
+2019-10-17 16:55:36.215 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonInputFormatter' for content type 'application/json;charset=UTF-8'.
+2019-10-17 16:55:36.217 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARA", Request id "0HLQIRPES0ARA:00000001": started reading request body.
+2019-10-17 16:55:36.217 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARA", Request id "0HLQIRPES0ARA:00000001": done reading request body.
+2019-10-17 16:55:36.218 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Done attempting to bind parameter 'model' of type 'domain.models.UserModel'.
+2019-10-17 16:55:36.218 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Done attempting to bind parameter 'model' of type 'domain.models.UserModel'.
+2019-10-17 16:55:36.218 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Attempting to validate the bound parameter 'model' of type 'domain.models.UserModel' ...
+2019-10-17 16:55:36.218 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Done attempting to validate the bound parameter 'model' of type 'domain.models.UserModel'.
+2019-10-17 16:55:36.229 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executing action method web.Controllers.UserController.Login (web) - Validation state: Valid
+2019-10-17 16:55:40.416 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executed action method web.Controllers.UserController.Login (web), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 4186.8112ms.
+2019-10-17 16:55:40.416 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: List of registered output formatters, in the following order: Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter, Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter, Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter, Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter
+2019-10-17 16:55:40.416 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: No information found on request to perform content negotiation.
+2019-10-17 16:55:40.416 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2019-10-17 16:55:40.416 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: Attempting to select the first formatter in the output formatters list which can write the result.
+2019-10-17 16:55:40.416 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter' and content type 'application/json' to write the response.
+2019-10-17 16:55:40.416 +08:00 [Information] Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor: Executing ObjectResult, writing value of type 'domain.repository.MyResult'.
+2019-10-17 16:55:40.417 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executed action web.Controllers.UserController.Login (web) in 4202.9026ms
+2019-10-17 16:55:40.417 +08:00 [Information] Microsoft.AspNetCore.Routing.EndpointMiddleware: Executed endpoint 'web.Controllers.UserController.Login (web)'
+2019-10-17 16:55:40.417 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARA" completed keep alive response.
+2019-10-17 16:55:40.417 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 4250.8952ms 200 application/json; charset=utf-8
+2019-10-17 16:55:45.554 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 POST http://127.0.0.1:8090/api/User/Login application/json;charset=UTF-8 276
+2019-10-17 16:55:45.554 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: POST requests are not supported
+2019-10-17 16:55:45.554 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: 1 candidate(s) found for the request path '/api/User/Login'
+2019-10-17 16:55:45.554 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: Endpoint 'web.Controllers.UserController.Login (web)' with route pattern 'api/User/Login' is valid for the request path '/api/User/Login'
+2019-10-17 16:55:45.554 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request matched endpoint 'web.Controllers.UserController.Login (web)'
+2019-10-17 16:55:45.554 +08:00 [Information] Microsoft.AspNetCore.Routing.EndpointMiddleware: Executing endpoint 'web.Controllers.UserController.Login (web)'
+2019-10-17 16:55:45.554 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Route matched with {action = "Login", controller = "User", page = ""}. Executing controller action with signature domain.repository.MyResult`1[System.Object] Login(domain.models.UserModel) on controller web.Controllers.UserController (web).
+2019-10-17 16:55:45.554 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of authorization filters (in the following order): None
+2019-10-17 16:55:45.554 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+2019-10-17 16:55:45.554 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)
+2019-10-17 16:55:45.554 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of exception filters (in the following order): None
+2019-10-17 16:55:45.554 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+2019-10-17 16:55:45.554 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Attempting to bind parameter 'model' of type 'domain.models.UserModel' ...
+2019-10-17 16:55:45.554 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Attempting to bind parameter 'model' of type 'domain.models.UserModel' using the name '' in request data ...
+2019-10-17 16:55:45.554 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Rejected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonPatchInputFormatter' for content type 'application/json;charset=UTF-8'.
+2019-10-17 16:55:45.554 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonInputFormatter' for content type 'application/json;charset=UTF-8'.
+2019-10-17 16:55:45.554 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARA", Request id "0HLQIRPES0ARA:00000002": started reading request body.
+2019-10-17 16:55:45.555 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARA", Request id "0HLQIRPES0ARA:00000002": done reading request body.
+2019-10-17 16:55:45.556 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Done attempting to bind parameter 'model' of type 'domain.models.UserModel'.
+2019-10-17 16:55:45.556 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Done attempting to bind parameter 'model' of type 'domain.models.UserModel'.
+2019-10-17 16:55:45.556 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Attempting to validate the bound parameter 'model' of type 'domain.models.UserModel' ...
+2019-10-17 16:55:45.556 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Done attempting to validate the bound parameter 'model' of type 'domain.models.UserModel'.
+2019-10-17 16:55:45.556 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executing action method web.Controllers.UserController.Login (web) - Validation state: Valid
+2019-10-17 16:55:45.679 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executed action method web.Controllers.UserController.Login (web), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 122.6479ms.
+2019-10-17 16:55:45.679 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: List of registered output formatters, in the following order: Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter, Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter, Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter, Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter
+2019-10-17 16:55:45.679 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: No information found on request to perform content negotiation.
+2019-10-17 16:55:45.679 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2019-10-17 16:55:45.679 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: Attempting to select the first formatter in the output formatters list which can write the result.
+2019-10-17 16:55:45.679 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter' and content type 'application/json' to write the response.
+2019-10-17 16:55:45.679 +08:00 [Information] Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor: Executing ObjectResult, writing value of type 'domain.repository.MyResult'.
+2019-10-17 16:55:45.680 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executed action web.Controllers.UserController.Login (web) in 125.5614ms
+2019-10-17 16:55:45.680 +08:00 [Information] Microsoft.AspNetCore.Routing.EndpointMiddleware: Executed endpoint 'web.Controllers.UserController.Login (web)'
+2019-10-17 16:55:45.680 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARA" completed keep alive response.
+2019-10-17 16:55:45.680 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 125.8721ms 200 application/json; charset=utf-8
+2019-10-17 16:55:56.410 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARB" started.
+2019-10-17 16:55:56.413 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/  
+2019-10-17 16:55:56.413 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path / does not match a supported file type
+2019-10-17 16:55:56.437 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/'
+2019-10-17 16:55:56.437 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:55:56.592 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARA" completed keep alive response.
+2019-10-17 16:55:56.592 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 179.4285ms 200 text/html; charset=UTF-8
+2019-10-17 16:55:56.641 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARC" started.
+2019-10-17 16:55:56.685 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/static/js/bundle.js  
+2019-10-17 16:55:56.685 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /static/js/bundle.js does not match an existing file
+2019-10-17 16:55:56.685 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/static/js/bundle.js'
+2019-10-17 16:55:56.685 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:55:56.707 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/static/js/0.chunk.js  
+2019-10-17 16:55:56.707 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /static/js/0.chunk.js does not match an existing file
+2019-10-17 16:55:56.707 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/static/js/0.chunk.js'
+2019-10-17 16:55:56.707 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:55:56.716 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARA" completed keep alive response.
+2019-10-17 16:55:56.716 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 31.0295ms 200 application/javascript; charset=UTF-8
+2019-10-17 16:55:56.716 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/static/js/main.chunk.js  
+2019-10-17 16:55:56.716 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /static/js/main.chunk.js does not match an existing file
+2019-10-17 16:55:56.716 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/static/js/main.chunk.js'
+2019-10-17 16:55:56.716 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:55:56.750 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARC" completed keep alive response.
+2019-10-17 16:55:56.750 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 33.921ms 200 application/javascript; charset=UTF-8
+2019-10-17 16:55:56.752 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARB" completed keep alive response.
+2019-10-17 16:55:56.752 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 44.9092ms 304 
+2019-10-17 16:55:56.873 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/static/js/bundle.js.map  
+2019-10-17 16:55:56.873 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /static/js/bundle.js.map does not match an existing file
+2019-10-17 16:55:56.873 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/static/js/bundle.js.map'
+2019-10-17 16:55:56.873 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:55:56.917 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARB" completed keep alive response.
+2019-10-17 16:55:56.917 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 44.5461ms 200 application/json; charset=UTF-8
+2019-10-17 16:55:57.426 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/static/js/0.chunk.js.map  
+2019-10-17 16:55:57.426 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /static/js/0.chunk.js.map does not match an existing file
+2019-10-17 16:55:57.426 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/static/js/0.chunk.js.map'
+2019-10-17 16:55:57.426 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:55:57.435 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/static/js/main.chunk.js.map  
+2019-10-17 16:55:57.435 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /static/js/main.chunk.js.map does not match an existing file
+2019-10-17 16:55:57.435 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/static/js/main.chunk.js.map'
+2019-10-17 16:55:57.435 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:55:57.455 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARB" completed keep alive response.
+2019-10-17 16:55:57.480 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 54.0228ms 304 
+2019-10-17 16:55:57.480 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/static/media/loginBackground.261b2c42.png  
+2019-10-17 16:55:57.480 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /static/media/loginBackground.261b2c42.png does not match an existing file
+2019-10-17 16:55:57.480 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/static/media/loginBackground.261b2c42.png'
+2019-10-17 16:55:57.480 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:55:57.489 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARC" completed keep alive response.
+2019-10-17 16:55:57.489 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 54.3603ms 200 application/json; charset=UTF-8
+2019-10-17 16:55:57.515 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARA" completed keep alive response.
+2019-10-17 16:55:57.515 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 35.2754ms 304 
+2019-10-17 16:55:58.089 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/sockjs-node/info?t=1571302558087  
+2019-10-17 16:55:58.089 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /sockjs-node/info does not match a supported file type
+2019-10-17 16:55:58.089 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/sockjs-node/info'
+2019-10-17 16:55:58.089 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:55:58.108 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARD" started.
+2019-10-17 16:55:58.223 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARA" completed keep alive response.
+2019-10-17 16:55:58.223 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 134.0729ms 200 application/json; charset=UTF-8
+2019-10-17 16:55:58.224 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/manifest.json  
+2019-10-17 16:55:58.224 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /manifest.json does not match an existing file
+2019-10-17 16:55:58.224 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/manifest.json'
+2019-10-17 16:55:58.224 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:55:58.264 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/favicon.ico  
+2019-10-17 16:55:58.264 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /favicon.ico does not match an existing file
+2019-10-17 16:55:58.264 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/favicon.ico'
+2019-10-17 16:55:58.264 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:55:58.327 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARE" started.
+2019-10-17 16:55:58.347 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARD" completed keep alive response.
+2019-10-17 16:55:58.347 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 123.6281ms 304 
+2019-10-17 16:55:58.357 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/logo192.png  
+2019-10-17 16:55:58.357 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /logo192.png does not match an existing file
+2019-10-17 16:55:58.357 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/logo192.png'
+2019-10-17 16:55:58.357 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:55:58.463 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARA" completed keep alive response.
+2019-10-17 16:55:58.463 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 106.5693ms 304 
+2019-10-17 16:55:58.486 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/sockjs-node/491/gdggs0rf/websocket  
+2019-10-17 16:55:58.486 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /sockjs-node/491/gdggs0rf/websocket does not match a supported file type
+2019-10-17 16:55:58.486 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/sockjs-node/491/gdggs0rf/websocket'
+2019-10-17 16:55:58.486 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:55:58.524 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARC" completed keep alive response.
+2019-10-17 16:55:58.549 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 285.1708ms 200 image/x-icon
+2019-10-17 16:56:19.513 +08:00 [Information] Microsoft.AspNetCore.SpaServices:   Line 2:   'Input' is defined but never used                                                                                                                                                                                                                                                                                                                                        no-unused-vars
+  Line 2:   'Button' is defined but never used                                                                                                                                                                                                                                                                                                                                       no-unused-vars
+  Line 2:   'Select' is defined but never used                                                                                                                                                                                                                                                                                                                                       no-unused-vars
+  Line 77:  The href attribute is required for an anchor to be keyboard accessible. Provide a valid, navigable address as the href value. If you cannot provide an href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  Line 79:  The href attribute is required for an anchor to be keyboard accessible. Provide a valid, navigable address as the href value. If you cannot provide an href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  Line 103:  'styles' is assigned a value but never used                                                                                                                                                                                                                                                                                                                              no-unused-vars
+
+./src/views/MainLayout.js
+  Line 2:  'Router' is defined but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+
+2019-10-17 16:56:21.385 +08:00 [Information] Microsoft.AspNetCore.SpaServices: Compiled with warnings.
+
+2019-10-17 16:56:21.390 +08:00 [Information] Microsoft.AspNetCore.SpaServices: 
+./src/views/admin/AdminList.js
+
+2019-10-17 16:56:21.397 +08:00 [Information] Microsoft.AspNetCore.SpaServices:   Line 2:   'Input' is defined but never used                                                                                                                                                                                                                                                                                                                                        no-unused-vars
+  Line 2:   'Button' is defined but never used                                                                                                                                                                                                                                                                                                                                       no-unused-vars
+  Line 2:   'Select' is defined but never used                                                                                                                                                                                                                                                                                                                                       no-unused-vars
+  Line 77:  The href attribute is required for an anchor to be keyboard accessible. Provide a valid, navigable address as the href value. If you cannot provide an href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  Line 79:  The href attribute is required for an anchor to be keyboard accessible. Provide a valid, navigable address as the href value. If you cannot provide an href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  Line 103:  'styles' is assigned a value but never used                                                                                                                                                                                                                                                                                                                              no-unused-vars
+
+./src/views/MainLayout.js
+  Line 2:  'Router' is defined but never used  no-unused-vars
+
+
+2019-10-17 16:56:21.553 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/9876c38df36e48257d1b.hot-update.json  
+2019-10-17 16:56:21.553 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /9876c38df36e48257d1b.hot-update.json does not match an existing file
+2019-10-17 16:56:21.553 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/9876c38df36e48257d1b.hot-update.json'
+2019-10-17 16:56:21.553 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:56:21.627 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARC" completed keep alive response.
+2019-10-17 16:56:21.627 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 74.8149ms 200 application/json; charset=UTF-8
+2019-10-17 16:56:21.634 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/main.9876c38df36e48257d1b.hot-update.js  
+2019-10-17 16:56:21.634 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /main.9876c38df36e48257d1b.hot-update.js does not match an existing file
+2019-10-17 16:56:21.634 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/main.9876c38df36e48257d1b.hot-update.js'
+2019-10-17 16:56:21.634 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:56:21.708 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARC" completed keep alive response.
+2019-10-17 16:56:21.708 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 74.123ms 200 application/javascript; charset=UTF-8
+2019-10-17 16:56:21.729 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/  
+2019-10-17 16:56:21.730 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path / does not match a supported file type
+2019-10-17 16:56:21.730 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/'
+2019-10-17 16:56:21.730 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:56:21.755 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/main.9876c38df36e48257d1b.hot-update.js.map  
+2019-10-17 16:56:21.755 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /main.9876c38df36e48257d1b.hot-update.js.map does not match an existing file
+2019-10-17 16:56:21.755 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/main.9876c38df36e48257d1b.hot-update.js.map'
+2019-10-17 16:56:21.755 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:56:21.788 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARC" completed keep alive response.
+2019-10-17 16:56:21.789 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 59.1224ms 200 text/html; charset=UTF-8
+2019-10-17 16:56:21.798 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARA" completed keep alive response.
+2019-10-17 16:56:21.798 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 42.8308ms 200 application/json; charset=UTF-8
+2019-10-17 16:56:21.804 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQIRPES0ARE" received FIN.
+2019-10-17 16:56:21.805 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQIRPES0ARE" sending FIN because: "The client closed the connection."
+2019-10-17 16:56:21.805 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARE" disconnecting.
+2019-10-17 16:56:21.815 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/static/js/bundle.js  
+2019-10-17 16:56:21.816 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /static/js/bundle.js does not match an existing file
+2019-10-17 16:56:21.816 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/static/js/bundle.js'
+2019-10-17 16:56:21.816 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:56:21.826 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/static/js/1.chunk.js  
+2019-10-17 16:56:21.826 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /static/js/1.chunk.js does not match an existing file
+2019-10-17 16:56:21.826 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/static/js/1.chunk.js'
+2019-10-17 16:56:21.826 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:56:21.826 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 23340.0646ms 101 
+2019-10-17 16:56:21.826 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARE" stopped.
+2019-10-17 16:56:21.845 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/static/js/main.chunk.js  
+2019-10-17 16:56:21.845 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /static/js/main.chunk.js does not match an existing file
+2019-10-17 16:56:21.845 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/static/js/main.chunk.js'
+2019-10-17 16:56:21.845 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:56:21.867 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARF" started.
+2019-10-17 16:56:21.906 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/main.9876c38df36e48257d1b.hot-update.js  
+2019-10-17 16:56:21.906 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /main.9876c38df36e48257d1b.hot-update.js does not match an existing file
+2019-10-17 16:56:21.906 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/main.9876c38df36e48257d1b.hot-update.js'
+2019-10-17 16:56:21.906 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:56:21.955 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARC" completed keep alive response.
+2019-10-17 16:56:21.955 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 129.56ms 304 
+2019-10-17 16:56:21.960 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARA" completed keep alive response.
+2019-10-17 16:56:21.960 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 144.5821ms 200 application/javascript; charset=UTF-8
+2019-10-17 16:56:21.961 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARF" completed keep alive response.
+2019-10-17 16:56:21.961 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 55.4859ms 304 
+2019-10-17 16:56:21.971 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARB" completed keep alive response.
+2019-10-17 16:56:21.971 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 126.0265ms 200 application/javascript; charset=UTF-8
+2019-10-17 16:56:22.085 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/static/js/bundle.js.map  
+2019-10-17 16:56:22.085 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /static/js/bundle.js.map does not match an existing file
+2019-10-17 16:56:22.085 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/static/js/bundle.js.map'
+2019-10-17 16:56:22.085 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:56:22.106 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARB" completed keep alive response.
+2019-10-17 16:56:22.106 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 21.1061ms 200 application/json; charset=UTF-8
+2019-10-17 16:56:22.653 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/static/js/1.chunk.js.map  
+2019-10-17 16:56:22.653 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/static/js/main.chunk.js.map  
+2019-10-17 16:56:22.653 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /static/js/main.chunk.js.map does not match an existing file
+2019-10-17 16:56:22.653 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /static/js/1.chunk.js.map does not match an existing file
+2019-10-17 16:56:22.653 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/static/js/main.chunk.js.map'
+2019-10-17 16:56:22.653 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/static/js/1.chunk.js.map'
+2019-10-17 16:56:22.653 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:56:22.653 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:56:22.696 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/static/media/loginBackground.261b2c42.png  
+2019-10-17 16:56:22.696 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /static/media/loginBackground.261b2c42.png does not match an existing file
+2019-10-17 16:56:22.696 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/static/media/loginBackground.261b2c42.png'
+2019-10-17 16:56:22.696 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:56:22.707 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARA" completed keep alive response.
+2019-10-17 16:56:22.707 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 53.9025ms 200 application/json; charset=UTF-8
+2019-10-17 16:56:22.725 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARB" completed keep alive response.
+2019-10-17 16:56:22.725 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 72.2304ms 304 
+2019-10-17 16:56:22.778 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARF" completed keep alive response.
+2019-10-17 16:56:22.778 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 82.8017ms 304 
+2019-10-17 16:56:23.198 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/sockjs-node/info?t=1571302583194  
+2019-10-17 16:56:23.199 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /sockjs-node/info does not match a supported file type
+2019-10-17 16:56:23.199 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/sockjs-node/info'
+2019-10-17 16:56:23.199 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:56:23.328 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARF" completed keep alive response.
+2019-10-17 16:56:23.328 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 129.329ms 200 application/json; charset=UTF-8
+2019-10-17 16:56:23.489 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARG" started.
+2019-10-17 16:56:23.531 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/sockjs-node/072/u4hjiltv/websocket  
+2019-10-17 16:56:23.531 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /sockjs-node/072/u4hjiltv/websocket does not match a supported file type
+2019-10-17 16:56:23.531 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/sockjs-node/072/u4hjiltv/websocket'
+2019-10-17 16:56:23.531 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:56:23.842 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/main.9876c38df36e48257d1b.hot-update.js.map  
+2019-10-17 16:56:23.842 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /main.9876c38df36e48257d1b.hot-update.js.map does not match an existing file
+2019-10-17 16:56:23.842 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/main.9876c38df36e48257d1b.hot-update.js.map'
+2019-10-17 16:56:23.842 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:56:23.958 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARF" completed keep alive response.
+2019-10-17 16:56:23.958 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 116.5305ms 304 
+2019-10-17 16:56:24.051 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/manifest.json  
+2019-10-17 16:56:24.051 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /manifest.json does not match an existing file
+2019-10-17 16:56:24.051 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/manifest.json'
+2019-10-17 16:56:24.051 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:56:24.064 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARD" completed keep alive response.
+2019-10-17 16:56:24.065 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 13.3131ms 304 
+2019-10-17 16:56:24.117 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://127.0.0.1:8090/logo192.png  
+2019-10-17 16:56:24.117 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The request path /logo192.png does not match an existing file
+2019-10-17 16:56:24.117 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: No candidates found for the request path '/logo192.png'
+2019-10-17 16:56:24.117 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request did not match any endpoints
+2019-10-17 16:56:24.130 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARF" completed keep alive response.
+2019-10-17 16:56:24.130 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 12.782ms 304 
+2019-10-17 16:56:37.128 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 POST http://127.0.0.1:8090/api/User/Login application/json;charset=UTF-8 67
+2019-10-17 16:56:37.128 +08:00 [Debug] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: POST requests are not supported
+2019-10-17 16:56:37.129 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: 1 candidate(s) found for the request path '/api/User/Login'
+2019-10-17 16:56:37.129 +08:00 [Debug] Microsoft.AspNetCore.Routing.Matching.DfaMatcher: Endpoint 'web.Controllers.UserController.Login (web)' with route pattern 'api/User/Login' is valid for the request path '/api/User/Login'
+2019-10-17 16:56:37.129 +08:00 [Debug] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware: Request matched endpoint 'web.Controllers.UserController.Login (web)'
+2019-10-17 16:56:37.129 +08:00 [Information] Microsoft.AspNetCore.Routing.EndpointMiddleware: Executing endpoint 'web.Controllers.UserController.Login (web)'
+2019-10-17 16:56:37.129 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Route matched with {action = "Login", controller = "User", page = ""}. Executing controller action with signature domain.repository.MyResult`1[System.Object] Login(domain.models.UserModel) on controller web.Controllers.UserController (web).
+2019-10-17 16:56:37.129 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of authorization filters (in the following order): None
+2019-10-17 16:56:37.129 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+2019-10-17 16:56:37.129 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)
+2019-10-17 16:56:37.129 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of exception filters (in the following order): None
+2019-10-17 16:56:37.129 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+2019-10-17 16:56:37.129 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Attempting to bind parameter 'model' of type 'domain.models.UserModel' ...
+2019-10-17 16:56:37.129 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Attempting to bind parameter 'model' of type 'domain.models.UserModel' using the name '' in request data ...
+2019-10-17 16:56:37.129 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Rejected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonPatchInputFormatter' for content type 'application/json;charset=UTF-8'.
+2019-10-17 16:56:37.129 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonInputFormatter' for content type 'application/json;charset=UTF-8'.
+2019-10-17 16:56:37.129 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARF", Request id "0HLQIRPES0ARF:00000006": started reading request body.
+2019-10-17 16:56:37.129 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARF", Request id "0HLQIRPES0ARF:00000006": done reading request body.
+2019-10-17 16:56:37.129 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder: Done attempting to bind parameter 'model' of type 'domain.models.UserModel'.
+2019-10-17 16:56:37.129 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Done attempting to bind parameter 'model' of type 'domain.models.UserModel'.
+2019-10-17 16:56:37.129 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Attempting to validate the bound parameter 'model' of type 'domain.models.UserModel' ...
+2019-10-17 16:56:37.129 +08:00 [Debug] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder: Done attempting to validate the bound parameter 'model' of type 'domain.models.UserModel'.
+2019-10-17 16:56:37.130 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executing action method web.Controllers.UserController.Login (web) - Validation state: Valid
+2019-10-17 16:56:37.251 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executed action method web.Controllers.UserController.Login (web), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 121.7023ms.
+2019-10-17 16:56:37.251 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: List of registered output formatters, in the following order: Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter, Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter, Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter, Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter
+2019-10-17 16:56:37.251 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: No information found on request to perform content negotiation.
+2019-10-17 16:56:37.251 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2019-10-17 16:56:37.251 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: Attempting to select the first formatter in the output formatters list which can write the result.
+2019-10-17 16:56:37.251 +08:00 [Debug] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector: Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter' and content type 'application/json' to write the response.
+2019-10-17 16:56:37.251 +08:00 [Information] Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor: Executing ObjectResult, writing value of type 'domain.repository.MyResult'.
+2019-10-17 16:56:37.252 +08:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executed action web.Controllers.UserController.Login (web) in 122.9571ms
+2019-10-17 16:56:37.252 +08:00 [Information] Microsoft.AspNetCore.Routing.EndpointMiddleware: Executed endpoint 'web.Controllers.UserController.Login (web)'
+2019-10-17 16:56:37.252 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARF" completed keep alive response.
+2019-10-17 16:56:37.252 +08:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 123.4424ms 200 application/json; charset=utf-8
+2019-10-17 17:01:22.028 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQIRPES0ARC" received FIN.
+2019-10-17 17:01:22.029 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQIRPES0ARC" sending FIN because: "The client closed the connection."
+2019-10-17 17:01:22.029 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARC" disconnecting.
+2019-10-17 17:01:22.030 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARC" stopped.
+2019-10-17 17:01:30.609 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQIRPES0ARA" received FIN.
+2019-10-17 17:01:30.609 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQIRPES0ARB" received FIN.
+2019-10-17 17:01:30.609 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQIRPES0ARD" received FIN.
+2019-10-17 17:01:30.609 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQIRPES0ARA" sending FIN because: "The client closed the connection."
+2019-10-17 17:01:30.609 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQIRPES0ARB" sending FIN because: "The client closed the connection."
+2019-10-17 17:01:30.609 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARB" disconnecting.
+2019-10-17 17:01:30.609 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARA" disconnecting.
+2019-10-17 17:01:30.609 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQIRPES0ARD" sending FIN because: "The client closed the connection."
+2019-10-17 17:01:30.609 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARD" disconnecting.
+2019-10-17 17:01:30.609 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARA" stopped.
+2019-10-17 17:01:30.609 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARD" stopped.
+2019-10-17 17:01:30.609 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARB" stopped.
+2019-10-17 17:01:42.579 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQIRPES0ARF" received FIN.
+2019-10-17 17:01:42.579 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets: Connection id "0HLQIRPES0ARF" sending FIN because: "The client closed the connection."
+2019-10-17 17:01:42.580 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARF" disconnecting.
+2019-10-17 17:01:42.580 +08:00 [Debug] Microsoft.AspNetCore.Server.Kestrel: Connection id "0HLQIRPES0ARF" stopped.

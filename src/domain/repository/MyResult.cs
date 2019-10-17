@@ -8,6 +8,10 @@ using Newtonsoft.Json;
 
 namespace domain.repository
 {
+    public class MyResult : MyResult<object>
+    {
+        
+    }
     /// <summary>
     /// customer return result
     /// </summary>

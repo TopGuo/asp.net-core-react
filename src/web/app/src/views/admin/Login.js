@@ -24,8 +24,9 @@ export default class Login extends Component {
         Post('api/User/Login', { username: this.state.username, password: this.state.password }).then(res => {
             let { data } = res;
             if (data.code === 200) {
-                Gapp.userInfo.userName = data.data.userName;
-                Gapp.userInfo.token = data.data.token;
+                Gapp.userInfo.userData = data.data.userData;
+                console.log('gapp.userInfo.userData',Gapp.userInfo.userData)
+                
                 Gapp.userInfo.isLogin = true;
                 localStorage.setItem("token", data.data.token);
                 this.props.history.replace("/main");

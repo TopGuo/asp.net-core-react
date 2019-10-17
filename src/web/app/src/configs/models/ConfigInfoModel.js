@@ -1,11 +1,7 @@
 class ConfigInfoModel {
     userInfo = {
-        id: -1,
         isLogin: false,
-        userName: '鸟窝',
-        passWord: '',
-        token: '',
-        loginTime: Date.now().toLocaleString()
+        userData:''
     }
     color = {
         C0: '#dedede',

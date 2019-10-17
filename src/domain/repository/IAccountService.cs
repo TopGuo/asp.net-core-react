@@ -20,5 +20,12 @@ namespace domain.repository
 
         //分页获取管理员列表
         MyResult<List<AdminUsers>> GetAdminUsers(int pageIndex, int pageSize);
+        /// <summary>
+        /// 用户以及权限信息
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        MyResult<object> GetUserAuth(string name, string password);
     }
 }
