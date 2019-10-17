@@ -25,9 +25,10 @@ export default class Login extends Component {
             let { data } = res;
             if (data.code === 200) {
                 Gapp.userInfo.userData = data.data.userData;
-                console.log('gapp.userInfo.userData',Gapp.userInfo.userData)
-                
+                console.log('gapp.userInfo.userData', Gapp.userInfo.userData)
+
                 Gapp.userInfo.isLogin = true;
+                Gapp.userInfo.token = data.data.token;
                 localStorage.setItem("token", data.data.token);
                 this.props.history.replace("/main");
             } else {

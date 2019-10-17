@@ -1,7 +1,8 @@
 class ConfigInfoModel {
     userInfo = {
         isLogin: false,
-        userData:''
+        userData:'',
+        token:''
     }
     color = {
         C0: '#dedede',
