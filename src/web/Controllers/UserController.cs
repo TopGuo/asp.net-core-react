@@ -1,5 +1,8 @@
+using System.Collections.Generic;
+using domain.entitys;
 using domain.enums;
 using domain.models;
+using domain.repository;
 using infrastructure.extensions;
 using infrastructure.utils;
 using Microsoft.AspNetCore.Authorization;
@@ -11,10 +14,25 @@ namespace web.Controllers
     [Route("api/[controller]/[action]")]
     public class UserController : ApiBaseController
     {
+        public IAccountService AccountService { get; set; }
+        public UserController(IAccountService accountService)
+        {
+            AccountService = accountService;
+        }
+        [HttpGet]
+        [AllowAnonymous]
+        public MyResult<object> WxLogin()
+        {
+            
+            MyResult<object> result = new MyResult<object>();
+            
+            return result;
+        }
         [HttpPost]
         [AllowAnonymous]
         public MyResult<object> Login([FromBody]UserModel model)
         {
+            
             MyResult<object> result = new MyResult<object>();
             if (!model.UserName.Equals("1") || !model.PassWord.Equals("1"))
             {
@@ -35,16 +53,10 @@ namespace web.Controllers
         }
 
         [HttpPost]
-        public MyResult<object> Login2([FromBody]UserModel model)
+        public MyResult<List<AdminUsers>> GetAdminUsers([FromBody]BaseModel model)
         {
-            MyResult<object> result = new MyResult<object>();
-
-            return result;
+            return AccountService.GetAdminUsers(model.PageIndex, model.PageSize);
         }
     }
-    public class UserModel
-    {
-        public string UserName { get; set; }
-        public string PassWord { get; set; }
-    }
+
 }

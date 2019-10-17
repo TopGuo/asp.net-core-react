@@ -1,4 +1,6 @@
 using domain.entitys;
+using Microsoft.Extensions.Configuration;
+using MySql.Data.MySqlClient;
 
 namespace application.services.bases
 {

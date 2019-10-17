@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace infrastructure.extensions
+namespace domain.repository
 {
     /// <summary>
     /// customer return result
@@ -62,6 +62,10 @@ namespace infrastructure.extensions
                 _message = value;
             }
         }
+        [Description("record's count")]
+        public int? PageCount { get; set; }
+        [Description("record count")]
+        public int? RecordCount { get; set; }
         public void SetDefaultMessage(string message)
         {
             _msg = message;

@@ -126,7 +126,7 @@ export default class MainLayout extends Component {
                 </Breadcrumb>
                 <div style={{ display: 'flex', flex: 1, flexDirection: 'column' }}>
                     <Switch>
-                        <Route path='/' exact component={Home}></Route>
+                        <Route path={`${this.props.match.path}/`} exact component={Home}></Route>
                         <Route path={`${this.props.match.path}/admin`} component={AdminList} ></Route>
                     </Switch>
                 </div>

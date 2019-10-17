@@ -35,6 +35,7 @@ namespace web
             // });
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<MyDapper>();
             //
             services.RegisterService();
         }
