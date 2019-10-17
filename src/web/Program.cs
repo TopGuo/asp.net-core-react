@@ -25,7 +25,7 @@ namespace web
                     .AddFilter("System", LogLevel.Error)
                     .AddFile();
                 })
-                // .UseUrls("http://127.0.0.1:8090")
+                .UseUrls("http://127.0.0.1:8090")
                 .UseStartup<Startup>();
     }
 }

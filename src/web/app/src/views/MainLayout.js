@@ -15,6 +15,13 @@ export default class MainLayout extends Component {
         }
     }
 
+    componentWillMount() {
+        console.log('props_main_loyout', this.props)
+        if (this.props.match.path === '/') {
+            this.props.match.path = '/main'
+        }
+    }
+
     /**
      * renderSider
      */
@@ -78,6 +85,7 @@ export default class MainLayout extends Component {
      * onClickMenu
      */
     onClickMenu = (v) => {
+        console.log('v_click_menu', `${this.props.match.path}===>${JSON.stringify(v)}`)
         let { key, title } = v;
         let breadcrumb1 = [title];
         let breadcrumbItem = Menu_List[key.substring(0, 1) - 1];
