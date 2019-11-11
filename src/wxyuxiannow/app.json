@@ -1,0 +1,59 @@
+{
+  "pages": [
+    "pages/nearShop/index",
+    "pages/mine/index",
+    "pages/message/index",
+    "pages/scenic/index",
+    "pages/nearShop/shopDetail/index",
+    "pages/nearShop/notice",
+    "pages/scenic/trip/trip",
+    "pages/message/pubMessage/pubmessage",
+    "pages/mine/company/hezuo",
+    "pages/mine/callFriends/index",
+    "pages/mine/myTeam/index"
+  ],
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/nearShop/index",
+        "text": "附近商家",
+        "iconPath": "images/unshop.png",
+        "selectedIconPath": "images/shop.png"
+      },
+      {
+        "pagePath": "pages/message/index",
+        "text": "信息市场",
+        "iconPath": "images/unchange.png",
+        "selectedIconPath": "images/change.png"
+      },
+      {
+        "pagePath": "pages/scenic/index",
+        "text": "景点旅游",
+        "iconPath": "images/unadress_img.png",
+        "selectedIconPath": "images/adress_img.png"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "text": "个人中心",
+        "iconPath": "images/unmine.png",
+        "selectedIconPath": "images/mine.png"
+      }
+    ],
+    "color": "#bfbfbf",
+    "selectedColor": "#1AAD19",
+    "borderStyle": "white"
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f2f2f2",
+    "navigationBarTitleText": "蔚县Now",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": false
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "授权蔚县Now获取您的地理位置信息"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -84,7 +84,7 @@ scripts里集成了几个命令 用来启动 react 这个项目 或者build这�
 ![WX20190906-132807](/assets/WX20190906-132807.png)
 9. 发布项目
 在sln同一个层次创建release文件夹用来存放发布文件
-`dotnet publish -c release -o ../../release/`
+`dotnet publish -c release --runtime linux-x64 -o ../../release/`
 将项目发布出去
 ![WX20190906-133251](/assets/WX20190906-133251.png)
 10. 执行发布文件

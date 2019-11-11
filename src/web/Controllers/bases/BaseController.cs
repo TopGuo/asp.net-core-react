@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using domain.configs;
 using domain.enums;
 using domain.models;
 using domain.repository;
@@ -173,7 +174,7 @@ namespace web.Controllers.bases
             if (context.Exception != null)
             {
                 context.ExceptionHandled = true;
-                LogUtil<UserController>.Error(context.Exception, context.Exception.Message);
+                LogUtil<ApiBaseController>.Error(context.Exception, context.Exception.Message);
                 if (context.HttpContext.IsAjaxRequest())
                 {
 #if DEBUG

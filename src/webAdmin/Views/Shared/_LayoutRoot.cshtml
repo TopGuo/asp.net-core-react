@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;">
+<head>
+    <meta charset="gb2312" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@domain.configs.Constants.Company</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="~/css/public.min.css" />
+    <script type="text/javascript">
+        window.webPath = "@infrastructure.utils.PathUtil.WebPhysicalPath";
+    </script>
+    @RenderSection("Rootstyles", required: false)
+</head>
+<body style="height:100%" ng-app="angularApp" ng-controller="angularCtrl">
+    @RenderBody()
+    <footer>
+        <div class="container" style="width:100%;">
+            <p style="text-align:center;">&copy; @DateTime.Now.Year - @domain.configs.Constants.Company</p>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/angular/angular.min.js"></script>
+    <script src="~/lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="~/lib/lodash/dist/lodash.min.js"></script>
+    <script src="~/lib/moment/min/moment.min.js"></script>
+    <script src="~/lib/moment/min/moment-with-locales.min.js"></script>
+    <script src="~/lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/lib/angular-ueditor/dist/angular-ueditor.min.js"></script>
+    <script src="~/lib/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="~/lib/ng-csv/build/ng-csv.min.js"></script>
+    <script src="~/js/public.min.js" asp-append-version="false"></script>
+    @RenderSection("RootScripts", required: false)
+</body>
+</html>

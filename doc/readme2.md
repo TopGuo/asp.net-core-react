@@ -100,6 +100,7 @@ CREATE TABLE `admin_users` (
 ```
 建库 创建这几个表 然后采用dbfrist 的方式 生成实体entity 参考如下链接
 [https://docs.microsoft.com/zh-cn/ef/core/miscellaneous/cli/dotnet#dotnet-ef-dbcontext-scaffold](https://docs.microsoft.com/zh-cn/ef/core/miscellaneous/cli/dotnet#dotnet-ef-dbcontext-scaffold)
+
 为数据库的DbContext和实体类型生成代码。 为了使此命令生成实体类型, 数据库表必须具有主键
 `EF Core 提供两种主要方法来保持 EF Core 模型和数据库架构同步。至于我们应该选用哪个方法，请确定你是希望以 EF Core 模型为准还是以数据库为准。`两种方式各有优点 不一定 code frist 就牛逼！例如我就喜欢设计好数据库 然后生成实体 这种方式属于db frist！
 

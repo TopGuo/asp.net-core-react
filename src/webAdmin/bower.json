@@ -1,0 +1,30 @@
+{
+  "name": "webadmin",
+  "homepage": "https://github.com/TopGuo/asp.net-core-react",
+  "authors": [
+    "top <topbrids@gmail.com>"
+  ],
+  "private": true,
+  "description": "asp.net core for xingchengwuxian webadmin",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "wwwroot/lib/dist",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "3.3.7",
+    "jquery": "2.2.0",
+    "angular": "v1.6.4",
+    "angular-sanitize":"v1.6.4",
+    "angular-bootstrap":"v1.3.3",
+    "ng-csv":"0.3.6",
+    "lodash": "4.16.2",
+    "eonasdan-bootstrap-datetimepicker": "v4.17.45",
+    "angular-ueditor": "*"
+  }
+}

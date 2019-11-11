@@ -1,0 +1,153 @@
+.shop-pic{width:100%;height:300rpx;overflow: hidden;}
+.shop-pic .img{width:100%}
+.shop-c{
+    display: flex;
+    flex-direction: column;
+    margin-left: 28rpx;
+}
+.shop-name{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    color: red;
+    margin-top: 20rpx;
+}
+.location{
+    font-size: 12px;
+    margin-top: 20rpx;
+    color: #656565;
+}
+.time{
+    font-size: 12px;
+    color: #656565;
+    margin-top: 20rpx;
+}
+.time .t2{
+    color: red;
+    margin-left: 20rpx;
+}
+.share{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20rpx;
+}
+.share .left1{
+    flex: 1;
+    margin-left: 30rpx;
+    position: relative;
+}
+
+.share .left2{
+    flex: 2;
+    margin-left: 30rpx;
+}
+.left1 view{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 30;
+    top: 0;
+}
+.left1 view image{
+    width: 50rpx;
+    height: 50rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    /* margin: 10px 10px 0 5px; */
+}
+.left1 view button{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    opacity: 0;
+}
+.left2 image{
+    width: 50rpx;
+    height: 50rpx;
+}
+.share .right{
+    flex: 1;
+}
+.right .phone{
+    /* border: 1px solid #656565; */
+    border-radius: 10px;
+    display: inline;
+    padding: 2px 4px;
+    line-height: 20px;
+    font-size: 12px;
+    text-align: center;
+    color: white;
+    background-color: red;
+}
+
+.right image{
+    width: 20rpx;
+    height: 20rpx;
+    margin-left: 8px;
+    margin-top: 10px;
+}
+.shop-content{
+    margin-left: 28rpx;
+    color: #656565;
+    font-size: 12px;
+}
+
+view.text{display:flex;align-items:center;position:relative;padding:10px 10px 10px 12px;font-size:15px;color:#656565}
+.line_flag{width:3px;height:18px;display:inline-block;background-color:#09bb07}
+view.text text{margin-left:10px;line-height:18px}
+
+.imgList{width:100%;display:flex;height:100rpx;flex-wrap: wrap;}
+.imgList .imgList-li{justify-content:center;align-items:center;margin-left: 1px;margin: 10px;}
+.imgList .imgList-li .img{width:200rpx;height:200rpx;border:1px solid red;}
+.imgList-li view{
+    width:200rpx;
+    height:200rpx;
+    flex-wrap: wrap;
+}
+.imgList-li view text{
+    font-size: 12px;
+    margin-left: 28px;
+    color: #656565;
+}
+
+
+.goods-info-fx {
+    position: absolute;
+    width: 50px;
+    height: 60px;
+    right: 0;
+    top: 0;
+  }
+  
+  .goods-info-fx button {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    opacity: 0;
+  }
+  
+  .goods-info-fx wxc-icon {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    margin: 10px 10px 0 5px;
+  }
+  
+  .goods-info-fx text {
+    position: absolute;
+    bottom: 3px;
+    left: 0;
+    z-index: 1;
+    font-size: 20rpx;
+    text-align: center;
+  }

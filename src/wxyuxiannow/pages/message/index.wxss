@@ -1,0 +1,88 @@
+.add_icon{position:fixed;width:55px;height:55px;bottom:30px;right:30px;background-color:#1aad19;border-radius:30px;display:flex;justify-content:center;align-items:center;color:#fff;font-size:14px}
+.swiper-container{width:750rpx;position:relative}
+.swiper_box{width:750rpx;height:250rpx}
+swiper-item image{width:750rpx;height:250rpx}
+.swiper-container .dots{position:absolute;left:0;right:0;bottom:20rpx;display:flex;justify-content:center}
+.swiper-container .dots .dot{margin:0 8rpx;width:14rpx;height:14rpx;background:#fff;border-radius:50%;transition:all .6s;opacity:.5}
+.swiper-container .dots .dot.active{width:14rpx;opacity:1}
+.category-box{background-color:#fff;clear:both}
+.category-list{width:150rpx;margin-top:20rpx;text-align:center;display:inline-block;overflow:hidden}
+.category-column{width:100%;margin-top:20rpx;overflow:hidden}
+.category-imgbox{width:60rpx;height:60rpx}
+.category-title{font-size:24rpx;text-align:center;margin-top:10rpx}
+.type-item-on{color:#1aad19;border-bottom:1rpx solid #1aad19}
+.no-more-goods{text-align:center;font-size:24rpx;padding-bottom:48rpx;color:#999}
+
+.content-item{width:100%;justify-content:flex-start;align-items:flex-start;flex-direction:row;padding:10rpx;margin-bottom:5rpx;display:flex;flex:1}
+.content-item .left{flex:1}
+.content-item .left image{width:100rpx;height:100rpx;border-radius:25px}
+.content-item .right{flex:5}
+.content-item .right .all{flex: 1;display: flex;flex-direction: column;width: 100%;}
+
+.all .top{
+    flex-direction: row;
+    flex: 1;
+    margin-bottom: 5rpx;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.top .type {
+    border: 1px solid #999;
+    border-radius: 2px;
+    color: white;
+    background-color: red;
+    display: inline-block;
+    padding: 2px 4px;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+}
+.top .title{
+    font-size: 14px;
+    color: #999;
+    margin-left: 20rpx;
+}
+.all .center{
+    flex: 3;
+    margin-bottom: 5rpx;
+    margin-right: 50rpx;
+}
+.center .content{
+    flex-direction: column;
+    flex: 1;
+}
+.center .content text{
+    font-size: 12px;
+    color: black;
+}
+.all .bottom{
+    flex-direction: row;
+    flex: 1;
+}
+.bottom .time{
+    font-size: 12px;
+    color: #999;
+}
+.bottom .lookCount{
+    font-size: 12px;
+    color: red;
+    margin-left: 10rpx;
+}
+.center .content view .cc{
+    width: 100px;
+    height: 100px;
+    margin: 2px;
+}
+.cc image{
+    width: 100px;
+    height: 100px;
+}
+.center .content view{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.center .content .imgList{flex:1;flex-direction: row;}
+.imgList view image{width:100rpx;height:100rpx;}

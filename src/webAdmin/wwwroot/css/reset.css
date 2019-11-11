@@ -1,0 +1,98 @@
+@media only screen and (min-device-width:320px){
+    html{
+        font-size:62.5% !important;
+    }
+}
+
+@media only screen and (min-device-width:360px){
+    html{
+        font-size:75% !important;
+    }
+}
+
+@media only screen and  (min-device-width:375px){
+    html{
+        font-size:75% !important;
+    }
+}
+
+@media only screen and  (min-device-width:414px){
+    html{
+        font-size:80% !important;
+    }
+}
+
+html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, q, th, td, caption, article, aside, figure, figcaption, footer, header, hgroup, nav, section, audio, video,img,a {
+    margin: 0;
+    padding: 0;
+    
+}
+ol, ul {
+    list-style: none
+}
+
+em, strong, th {
+    font-style: normal;
+    font-weight: 500
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden
+}
+.clearfix {
+    *zoom: 1
+}
+
+html, body {
+    color: #000;
+    font-family:'Heiti TC', PingFang-SC-Regular,sans-serif, '微软雅黑';
+    text-align: left;
+    height: 100%;
+    background: #f4f5f9;
+}
+
+
+img{width: 100%;}
+
+*{
+	box-sizing:border-box;
+    -webkit-tap-highlight-color:rgba(255, 255, 255, 0);
+}
+.box{
+    display:-webkit-box;
+    display:-moz-box;
+    display:-ms-flexbox;
+    display:-o-box;
+    display:box;
+}
+
+.box-flex{
+    -webkit-box-flex:1;
+    -moz-box-flex:1;
+    -ms-flex:1;
+    -o-box-flex:1;
+    box-flex:1;
+}
+
+.fr{ float:right;}
+.fl{ float:left;}
+input[type="button"]{-webkit-appearance: none;appearance: none;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

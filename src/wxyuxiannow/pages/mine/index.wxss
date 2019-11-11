@@ -1,0 +1,11 @@
+@import '../../style/weui/weui.wxss';
+.container{min-height:100%;overflow:hidden;overflow-y:hidden}
+.userinfo{display:flex;flex-direction:column;align-items:center;width:750rpx}
+.userinfo-avatar{width:160rpx;height:160rpx}
+.userinfo-nickname{margin-top:20rpx;margin-bottom:20rpx;font-size:14px}
+.my-item{width:100%;background:url(https://cdn.it120.cc/images/weappshop/arrow-right.png) no-repeat 750rpx center;background-size:16rpx auto,750rpx auto;border-bottom:1px solid #eee;height:80rpx;line-height:80rpx;padding-left:100rpx;font-size:14px}
+.bind-phone-number{margin:20rpx;width:100%}
+.version{width:100%;height:40rpx;line-height:40rpx;font-size:24rpx;text-align:center;padding:40rpx}
+.phone-number{
+    width:100%;height:20rpx;line-height:20rpx;font-size:24rpx;text-align:center;padding:40rpx
+}

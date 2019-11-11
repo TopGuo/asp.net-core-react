@@ -1,0 +1,14 @@
+@import '../../../style/weui/weui.wxss';
+.notice {
+    width: 720rpx;
+    padding: 15rpx;
+    font-size: 14px;
+  }
+  .title {
+    color:chocolate;
+    margin-bottom: 30rpx;
+    text-align: center;
+  }
+  .text {
+    line-height: 30px;
+  }

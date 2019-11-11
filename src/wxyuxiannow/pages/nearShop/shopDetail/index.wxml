@@ -1,0 +1,49 @@
+<view>
+    <view class="shop-pic">
+        <image class="img" src="{{shopInfo.pic}}" mode="scaleToFill" />
+    </view>
+    <view class="shop-c">
+        <text class="shop-name">{{shopInfo.name}}</text>
+        <text class="location">{{shopInfo.location}}</text>
+        <view class="time">
+            <text class="t1">营业时间</text>
+            <text class="t2">{{shopInfo.openTime}}-{{shopInfo.closeTime}}</text>
+        </view>
+        <view class="share">
+            <view class="left1">
+                <view>
+                    <image src="../../../images/share.png" />
+                    <button type="primary" open-type="share"></button>
+                </view>
+            </view>
+            <view bindtap="openShopMap" class="left2">
+                <image src="../../../images/location.png" />
+            </view>
+            <view class="right">
+                <view class="phone" bindtap="callShopPhone">
+                    <text>联系商家</text>
+                    <!-- <image src="../../../images/phone.png" /> -->
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="text">
+        <view class="line_flag"></view>
+        <text>店铺简介</text>
+    </view>
+    <view class="shop-content">
+        <text>{{shopInfo.content}}</text>
+    </view>
+    <view class="text">
+        <view class="line_flag"></view>
+        <text>店铺活动</text>
+    </view>
+    <view class='imgList'>
+        <view class='imgList-li' wx:for='{{shopDetail}}' wx:key="index">
+            <image class='img' src='{{item.pic}}' data-index='{{index}}' bindtap='previewImg'></image>
+            <view>
+                <text>{{item.content}}</text>
+            </view>
+        </view>
+    </view>
+</view>

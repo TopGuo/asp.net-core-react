@@ -1,0 +1,14 @@
+[
+    {
+        "outputFileName": "wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
+        "inputFiles": [
+            "wwwroot/lib/bootstrap/dist/js/bootstrap.js"
+        ]
+    },
+    {
+        "outputFileName": "wwwroot/js/b.min.js",
+        "inputFiles": [
+            "wwwroot/js/b.js"
+        ]
+    }
+]

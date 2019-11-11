@@ -1,0 +1,60 @@
+<!-- pages/message/index.wxml -->
+<view>
+  <view class="swiper-container">
+    <swiper class="swiper_box" indicator-dots="true" autoplay="true" interval="4000" bindchange="swiperchange">
+      <block wx:for="{{banners}}" wx:key="index">
+        <swiper-item>
+          <image src="{{item.pic}}" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <scroll-view scroll-x>
+    <view class="category-box" style='width:{{category_box_width}}rpx;'>
+      <view class="category-list" wx:for="{{categories}}" wx:key="index">
+        <view class="category-column {{activeCategoryId == item.id ? 'type-item-on' : ''}}" bindtap="tabClick" id="{{item.id}}">
+          <image class="category-imgbox" src="{{item.icon}}"></image>
+          <view class="category-title">{{item.name}}</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="weui-loadmore weui-loadmore_line">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">信息列表</view>
+  </view>
+  <block wx:for="{{info}}" wx:key="index">
+    <view class="content-item">
+      <view class="left">
+        <image src="../../images/banner/b1.png" />
+      </view>
+      <view class="right">
+        <view class="all">
+          <view class="top">
+            <view>
+              <text class="type">{{item.type==1?'求职':'招聘'}}</text>
+              <text class="title">{{item.title}}</text>
+            </view>
+          </view>
+          <view class="center">
+            <view class="content">
+              <text>{{item.content}}</text>
+              <view>
+                <view wx:for="{{item.pic}}" wx:key="index" wx:for-item="picData">
+                  <view class="cc">
+                      <image src="{{picData}}" mode="scaleToFill" data-index="{{index}}" data-picData="{{item.pic}}" bindtap="previewImg" />
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="bottom">
+            <text class="time">{{item.time}}</text>
+            <text class="lookCount">{{item.lookCount}}浏览</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-goods">-我也是有底线的-</view>
+  <view class="add_icon" bindtap="pubDetail">发布</view>
+</view>

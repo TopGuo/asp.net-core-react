@@ -1,0 +1,37 @@
+/**app.wxss**/
+@import 'style/iconfont.wxss';
+@import 'style/layout.wxss';
+@import 'style/weui/weui.wxss';
+.container {
+  background-color: white;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+/*甜甜圈loading start*/
+@keyframes donut-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.donut {
+  display: inline-block;
+  border: 4rpx solid rgba(0, 0, 0, 0.1);
+  border-left-color: #1AAD19;
+  border-radius: 50%;
+  width: 60rpx;
+  height: 60rpx;
+  animation: donut-spin 0.5s linear infinite;
+}
+
+/*甜甜圈loading end*/
+.space {
+  height:20rpx;
+  background-color: #F2f2f2;
+}

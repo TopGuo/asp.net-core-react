@@ -1,0 +1,11 @@
+.leftmenu{width:100%}
+.leftmenu dd{line-height:47px;font-weight:700;font-size:14px;border-right:solid 1px #b7d5df}
+.leftmenu dd span{margin:1px 8px 0 12px}
+.leftmenu dd .title{cursor:pointer;background-color:#d4e7f0}
+.leftmenu dd .menuson{display:none;padding:0}
+.menuson li{list-style:none;line-height:40px}
+.leftmenu .menuson li cite{background:url(/images/list.gif) no-repeat;margin-left:32px;width:16px;height:16px;display:block;float:left;margin-top:12px}
+.leftmenu .menuson li.active{background-color:#3eafe0;color:#fff}
+.leftmenu .menuson li.active a{color:#fff}
+.leftmenu .menuson li.active cite{background-color:#3eafe0}
+.leftmenu .menuson.active{display:block}

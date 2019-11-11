@@ -1,0 +1,5 @@
+@import "../../components/trip/trip.wxss";
+.m-trip{margin:20rpx}
+.trip-title{margin-bottom:10rpx}
+.loading{color:#b0b0b0;text-align:center;margin:20rpx 0}
+.loading-gif{width:220rpx;height:42rpx;vertical-align:bottom}

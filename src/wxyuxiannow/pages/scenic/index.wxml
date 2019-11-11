@@ -1,0 +1,8 @@
+<!-- pages/scenic/index.wxml -->
+<import src="../../components/trip/trip" />
+<scroll-view class="list" style="height: {{ windowHeight }}px; width: {{ windowWidth }}px;" scroll-y="true" bindscrolltolower="loadMore" lower-threshold="800">
+    <block wx:for="{{ trips }}" wx:key="index">
+        <template is="m-trip" data="{{trip: item, mode: 1}}" />
+    </block>
+    <view class="loading">正在加载...</view>
+</scroll-view>

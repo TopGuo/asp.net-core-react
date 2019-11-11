@@ -1,0 +1,36 @@
+{
+  "name": "angular-ueditor",
+  "homepage": "https://github.com/zqjimlove/angular-ueditor",
+  "authors": [
+    "'Dio' <'zqjimlove@gmail.com'>"
+  ],
+  "description": "angualr port for Baidu ueditor",
+  "main": "dist/angular-ueditor.min.js",
+  "keywords": [
+    "angular",
+    "ueditor"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "sample",
+    "ueditor",
+    "src"
+  ],
+  "dependencies": {
+    "angular": "latest"
+  },
+  "_release": "fd89326e9c",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "fd89326e9c1cd97aa40985ff6cd39bd7061c4e53"
+  },
+  "_source": "https://github.com/zqjimlove/angular-ueditor.git",
+  "_target": "*",
+  "_originalSource": "angular-ueditor"
+}

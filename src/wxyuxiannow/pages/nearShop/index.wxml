@@ -1,0 +1,81 @@
+<!-- pages/nearShop/index.wxml -->
+<view class="container">
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text " class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" confirm-type="search" bindconfirm='toSearch' />
+        <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+          <icon type="clear" size="14"></icon>
+        </view>
+      </view>
+      <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+        <icon class="weui-icon-search" type="search" size="14"></icon>
+        <view class="weui-search-bar__text">搜索</view>
+      </label>
+    </view>
+    <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">
+      取消
+    </view>
+  </view>
+  <!-- 公告 -->
+  <view wx:if="{{dataList.length>0}}" class="notice">
+    <image class="notice_icon" src="/images/notice.png"></image>
+    <swiper wx:if="{{dataList.length>0}}" class="notice_swiper" vertical="true" autoplay="true" circular="true" interval="3000">
+      <navigator wx:for-items="{{dataList}}" wx:key="id" url="/pages/nearShop/notice?id={{item.id}}" open-type="navigate">
+        <swiper-item>
+          <view class="notice_itemr">{{item.title}}</view>
+        </swiper-item>
+      </navigator>
+    </swiper>
+  </view>
+  <view>
+    <swiper class="swiper-box" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{banners}}" wx:key="index">
+        <swiper-item>
+          <image class="slide-image" src="{{item.pic}}" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="text">
+    <view class="line_flag"></view>
+    <text>线下店铺</text>
+  </view>
+  <view wx:if="{{showLoading}}" class="shop-loading">
+    <view class="donut"></view>
+  </view>
+  <view wx:else>
+    <block wx:if="{{shops.length>0}}">
+      <view wx:for="{{shops}}" wx:key="index">
+        <view class="flex item" data-id="{{item.id}}" data-item="{{item}}" bindtap="toShopDetail">
+          <view class="item_left">
+            <image src="{{item.pic}}" />
+          </view>
+          <view class="item_middle">
+            <view>
+              <text class="title">{{item.name}}</text>
+            </view>
+            <view>
+              <text class="content">{{item.content}}</text>
+            </view>
+            <view>
+              <text class="look_count">浏览量:{{item.lookCount}}</text>
+            </view>
+          </view>
+          <view class="item_right">
+            <view>
+              <text class="far">距离:{{item.far}}公里</text>
+            </view>
+            <view>
+              <text class="type">{{item.type==1?'优惠':'砍价'}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="shop-placeholder">暂无数据...</view>
+    </block>
+  </view>
+</view>
