@@ -19,6 +19,9 @@ namespace webAdmin
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+            .ConfigureLogging(configureLogging =>
+            {
+                configureLogging.AddFile();
+            }).UseStartup<Startup>();
     }
 }

@@ -1,0 +1,112 @@
+2019-11-12 01:04:35.537 +08:00 [Error] application.middleware.ErrorHandlerMiddleware: [ErrorHandler中间件：]System.InvalidOperationException: No authentication handlers are registered. Did you forget to call AddAuthentication().Add[SomeAuthHandler]("Web",...)?
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authorization.Policy.PolicyEvaluator.AuthenticateAsync(AuthorizationPolicy policy, HttpContext context)
+   at Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter.OnAuthorizationAsync(AuthorizationFilterContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at application.middleware.ErrorHandlerMiddleware.Invoke(HttpContext context) in /Users/topbrids/netcore/asp.net-core-react/src/application/middleware/ErrorHandlerMiddleware.cs:line 33
+2019-11-12 01:08:08.610 +08:00 [Error] application.middleware.ErrorHandlerMiddleware: [ErrorHandler中间件：]System.InvalidOperationException: No authentication handlers are registered. Did you forget to call AddAuthentication().Add[SomeAuthHandler]("Web",...)?
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authorization.Policy.PolicyEvaluator.AuthenticateAsync(AuthorizationPolicy policy, HttpContext context)
+   at Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter.OnAuthorizationAsync(AuthorizationFilterContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at application.middleware.ErrorHandlerMiddleware.Invoke(HttpContext context) in /Users/topbrids/netcore/asp.net-core-react/src/application/middleware/ErrorHandlerMiddleware.cs:line 33
+2019-11-12 10:13:52.549 +08:00 [Error] application.middleware.ErrorHandlerMiddleware: [ErrorHandler中间件：]System.InvalidOperationException: No authentication handlers are registered. Did you forget to call AddAuthentication().Add[SomeAuthHandler]("Web",...)?
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authorization.Policy.PolicyEvaluator.AuthenticateAsync(AuthorizationPolicy policy, HttpContext context)
+   at Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter.OnAuthorizationAsync(AuthorizationFilterContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at application.middleware.ErrorHandlerMiddleware.Invoke(HttpContext context) in /Users/topbrids/netcore/asp.net-core-react/src/application/middleware/ErrorHandlerMiddleware.cs:line 33
+2019-11-12 10:15:48.986 +08:00 [Error] application.middleware.ErrorHandlerMiddleware: [ErrorHandler中间件：]System.InvalidOperationException: No authentication handlers are registered. Did you forget to call AddAuthentication().Add[SomeAuthHandler]("Web",...)?
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authorization.Policy.PolicyEvaluator.AuthenticateAsync(AuthorizationPolicy policy, HttpContext context)
+   at Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter.OnAuthorizationAsync(AuthorizationFilterContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at application.middleware.ErrorHandlerMiddleware.Invoke(HttpContext context) in /Users/topbrids/netcore/asp.net-core-react/src/application/middleware/ErrorHandlerMiddleware.cs:line 33
+2019-11-12 10:56:42.215 +08:00 [Error] application.middleware.ErrorHandlerMiddleware: [ErrorHandler中间件：]System.InvalidOperationException: No authentication handlers are registered. Did you forget to call AddAuthentication().Add[SomeAuthHandler]("Web",...)?
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authorization.Policy.PolicyEvaluator.AuthenticateAsync(AuthorizationPolicy policy, HttpContext context)
+   at Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter.OnAuthorizationAsync(AuthorizationFilterContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at application.middleware.ErrorHandlerMiddleware.Invoke(HttpContext context) in /Users/topbrids/netcore/asp.net-core-react/src/application/middleware/ErrorHandlerMiddleware.cs:line 33
+2019-11-12 10:58:13.753 +08:00 [Error] application.middleware.ErrorHandlerMiddleware: [ErrorHandler中间件：]System.NullReferenceException: Object reference not set to an instance of an object.
+   at Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler.ReadCookieTicket()
+   at Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler.HandleAuthenticateAsync()
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.AuthenticateAsync()
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authorization.Policy.PolicyEvaluator.AuthenticateAsync(AuthorizationPolicy policy, HttpContext context)
+   at Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter.OnAuthorizationAsync(AuthorizationFilterContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at application.middleware.ErrorHandlerMiddleware.Invoke(HttpContext context) in /Users/topbrids/netcore/asp.net-core-react/src/application/middleware/ErrorHandlerMiddleware.cs:line 33
+2019-11-12 11:00:16.624 +08:00 [Error] application.middleware.ErrorHandlerMiddleware: [ErrorHandler中间件：]System.NullReferenceException: Object reference not set to an instance of an object.
+   at Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler.ReadCookieTicket()
+   at Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler.HandleAuthenticateAsync()
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.AuthenticateAsync()
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authorization.Policy.PolicyEvaluator.AuthenticateAsync(AuthorizationPolicy policy, HttpContext context)
+   at Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter.OnAuthorizationAsync(AuthorizationFilterContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at application.middleware.ErrorHandlerMiddleware.Invoke(HttpContext context) in /Users/topbrids/netcore/asp.net-core-react/src/application/middleware/ErrorHandlerMiddleware.cs:line 33
+2019-11-12 11:00:47.824 +08:00 [Error] application.middleware.ErrorHandlerMiddleware: [ErrorHandler中间件：]System.NullReferenceException: Object reference not set to an instance of an object.
+   at Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler.ReadCookieTicket()
+   at Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler.HandleAuthenticateAsync()
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.AuthenticateAsync()
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authorization.Policy.PolicyEvaluator.AuthenticateAsync(AuthorizationPolicy policy, HttpContext context)
+   at Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter.OnAuthorizationAsync(AuthorizationFilterContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at application.middleware.ErrorHandlerMiddleware.Invoke(HttpContext context) in /Users/topbrids/netcore/asp.net-core-react/src/application/middleware/ErrorHandlerMiddleware.cs:line 33
+2019-11-12 11:04:28.351 +08:00 [Error] application.middleware.ErrorHandlerMiddleware: [ErrorHandler中间件：]System.NullReferenceException: Object reference not set to an instance of an object.
+   at Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler.ReadCookieTicket()
+   at Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler.HandleAuthenticateAsync()
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.AuthenticateAsync()
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authorization.Policy.PolicyEvaluator.AuthenticateAsync(AuthorizationPolicy policy, HttpContext context)
+   at Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter.OnAuthorizationAsync(AuthorizationFilterContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at application.middleware.ErrorHandlerMiddleware.Invoke(HttpContext context) in /Users/topbrids/netcore/asp.net-core-react/src/application/middleware/ErrorHandlerMiddleware.cs:line 33
+2019-11-12 11:07:22.877 +08:00 [Error] application.middleware.ErrorHandlerMiddleware: 
+[ErrorHandler中间件：]System.NullReferenceException: Object reference not set to an instance of an object.
+   at Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticaztionHandler.ReadCookieTicket()
+   at Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler.HandleAuthenticateAsync()
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.AuthenticateAsync()
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authorization.Policy.PolicyEvaluator.AuthenticateAsync(AuthorizationPolicy policy, HttpContext context)
+   at Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter.OnAuthorizationAsync(AuthorizationFilterContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at application.middleware.ErrorHandlerMiddleware.Invoke(HttpContext context) in /Users/topbrids/netcore/asp.net-core-react/src/application/middleware/ErrorHandlerMiddleware.cs:line 33
+2019-11-12 20:11:26.684 +08:00 [Error] application.middleware.ErrorHandlerMiddleware: [ErrorHandler中间件：]System.NullReferenceException: Object reference not set to an instance of an object.
+   at Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler.ReadCookieTicket()
+   at Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler.HandleAuthenticateAsync()
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.AuthenticateAsync()
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)
+   at Microsoft.AspNetCore.Authorization.Policy.PolicyEvaluator.AuthenticateAsync(AuthorizationPolicy policy, HttpContext context)
+   at Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter.OnAuthorizationAsync(AuthorizationFilterContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at application.middleware.ErrorHandlerMiddleware.Invoke(HttpContext context) in /Users/topbrids/netcore/asp.net-core-react/src/application/middleware/ErrorHandlerMiddleware.cs:line 33

@@ -178,6 +178,49 @@ namespace infrastructure.extensions
             });
             return string.Join(",", description);
         }
+
+        public static List<Tuple<int, string>> GetEnumToString<T>() where T : struct
+        {
+            List<Tuple<int, string>> list = new List<Tuple<int, string>>();
+            Type type = typeof(T);
+            type.GetFields().Where(t => t.FieldType == type).ToList().ForEach(t =>
+            {
+                DescriptionAttribute customAttribute = CustomAttributeExtensions.GetCustomAttribute<DescriptionAttribute>(t);
+                if (customAttribute != null && !string.IsNullOrEmpty(customAttribute.Description))
+                {
+                    list.Add(new Tuple<int, string>((int)t.GetValue(null), customAttribute.Description));
+                }
+                else
+                {
+                    list.Add(new Tuple<int, string>((int)t.GetValue(null), t.Name));
+                }
+            });
+            return list;
+        }
+
+        public static List<Tuple<int, string>> GetEnumToString(this Type enumType)
+        {
+            if (!enumType.GetTypeInfo().IsEnum)
+            {
+                throw new Exception("The type is not Enum");
+            }
+            List<Tuple<int, string>> list = new List<Tuple<int, string>>();
+
+            enumType.GetFields().Where(t => t.FieldType == enumType).ToList().ForEach(t =>
+            {
+                DescriptionAttribute customAttribute = CustomAttributeExtensions.GetCustomAttribute<DescriptionAttribute>(t);
+                if (customAttribute != null && !string.IsNullOrEmpty(customAttribute.Description))
+                {
+                    list.Add(new Tuple<int, string>((int)t.GetValue(null), customAttribute.Description));
+                }
+                else
+                {
+                    list.Add(new Tuple<int, string>((int)t.GetValue(null), t.Name));
+                }
+            });
+            return list;
+        }
+
         public static string FormatJson(this string json)
         {
             if (string.IsNullOrEmpty(json)) return json;

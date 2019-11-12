@@ -42,12 +42,12 @@ namespace domain.repository
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        MyResult DeleteRoles(RoleModel model);
+        MyResult<object> DeleteRoles(RoleModel model);
         /// <summary>
         /// 保存,添加,修改角色
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        MyResult SaveRoles(RoleModel model);
+        MyResult<object> SaveRoles(RoleModel model);
     }
 }
