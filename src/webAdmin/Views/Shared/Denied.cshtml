@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "权限不足";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    body {
+        background-color: #fcfcfc;
+    }
+
+    .jurisdiction {
+        width: 100%;
+        text-align: center;
+    }
+
+        .jurisdiction span {
+            color: red;
+            font-size: 18px;
+        }
+
+    .main-body {
+        background: #fcfcfc;
+    }
+</style>
+
+<div id="personal" class="container body-content">
+    <div class="jurisdiction">
+        <img src="~/images/jurisdiction.jpg">
+        <p></p>
+        <button class="btn btn-info" onclick="history.go(-1);">返回</button>
+    </div>
+</div>

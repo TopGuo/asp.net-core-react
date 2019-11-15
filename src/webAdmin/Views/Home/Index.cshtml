@@ -1,7 +1,78 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿
+@{
+    ViewData["Title"] = "登录";
+    Layout = "_LayoutRoot";
 }
 
-<div class="text-center">
-    HOME INDEX
+<div class="container body-content">
+    <div class="form-horizontal" style="position:absolute;left:50%;top:50%;width:0;height:0;">
+        <form name="loginForm" id="loginForm" ng-submit="login()" style="width:320px;position:absolute;margin-left:-160px;margin-top:-160px;">
+
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="glyphicon glyphicon-user"></i>
+                    </div>
+                    <input type="text" ng-model="model.LoginName" required ng-minlength="3" class="form-control" placeholder="请输入用户名" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="glyphicon glyphicon-lock"></i>
+                    </div>
+                    <input type="password" ng-model="model.password" required ng-minlength="3" class="form-control" placeholder="请输入密码" />
+                </div>
+            </div>
+            <div class="form-group wait-loading" ng-show="model.errCount>=3?true:false">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="glyphicon glyphicon-lock"></i>
+                    </div>
+                    <input type="text" ng-model="model.verCode" ng-minlength="4" ng-maxlength="4" class="form-control" placeholder="请输入验证码" style="width:200px;" />&nbsp;
+                    <img id="imgVerify" src="/Home/ValidateCode" alt="看不清？点击更换" onclick="this.src = this.src + '?'" style="vertical-align:middle;" />
+                </div>
+            </div>
+            <input ng-model="model.errCount" class="form-control" type="number" style="display:none;" />
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="glyphicon glyphicon-log-in"></i>
+                    </div>
+                    <button class="btn btn-primary" ng-disabled="loginForm.$invalid" style="width:280px;border-top-left-radius:0;border-bottom-left-radius:0;">登 &nbsp; 录</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
+
+@section RootScripts
+    {
+    <script type="text/javascript">
+        var from = '@(Context.Request.Query["From"])';
+        $angular.add(function ($scope, $query, $timeout, $sce) {
+            $scope.login = function () {
+                if ($scope.model.errCount >= 3 && ($scope.model.verCode == undefined || $scope.model.verCode == "")) {
+                    $Alert("请输入验证码！");
+                    return;
+                }
+                $query.post("/webapi/login", $scope.model, function (response) {
+                    if (response.code === 200) {
+                        if (from.length > 0) {
+                            location.href = decodeURI(from);
+                        } else {
+                            location.href = $url("/Welcome");
+                        }
+                    } else {
+                        if ($scope.model.errCount == undefined) {
+                            $scope.model.errCount = 1;
+                        } else {
+                            $scope.model.errCount++;
+                        }
+                        $Alert(response.message);
+                    }
+                });
+            };
+         });
+    </script>
+}

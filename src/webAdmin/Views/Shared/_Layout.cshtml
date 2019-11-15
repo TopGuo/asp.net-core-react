@@ -1,4 +1,138 @@
-﻿@{
+﻿@using System.Reflection
+@using domain.repository
+@using infrastructure.action
+@using Microsoft.AspNetCore.Mvc.Controllers
+@using domain.models
+@inject IPermissionService  PermissionService
+
+@{
     Layout="_LayoutRoot";
+    bool isActived = false;
+    var show = "true".Equals(infrastructure.utils.CookieUtil.GetCookie(domain.configs.Constants.ShowAllDataCookie, false), StringComparison.OrdinalIgnoreCase);
+    var _id = this.ViewContext.ActionDescriptor.Id;
+    var ma = (this.ViewContext.ActionDescriptor as ControllerActionDescriptor).MethodInfo.GetCustomAttribute<MenuActionAttribute>();
+    if (ma != null)
+    {
+        var m =PermissionService.CurrentMenus.FirstOrDefault(t => string.IsNullOrEmpty(t.ParentId) && t.ActionName.IndexOf(ma.ParentName, StringComparison.OrdinalIgnoreCase) > -1);
+        if (m != null)
+        {
+            _id = m.ActionId.ToString();
+        }
+    }
 }
-@RenderBody()
+<style>
+    .leftmenu{width:100%}
+    .leftmenu dd{line-height:47px;font-weight:700;font-size:14px;border-right:solid 1px #b7d5df}
+    .leftmenu dd span{margin:1px 8px 0 12px}
+    .leftmenu dd .title{cursor:pointer;background-color:#d4e7f0}
+    .leftmenu dd .menuson{display:none;padding:0}
+    .menuson li{list-style:none;line-height:40px}
+    .leftmenu .menuson li cite{background:url(/images/list.gif) no-repeat;margin-left:32px;width:16px;height:16px;display:block;float:left;margin-top:12px}
+    .leftmenu .menuson li.active{background-color:#3eafe0;color:#fff}
+    .leftmenu .menuson li.active a{color:#fff}
+    .leftmenu .menuson li.active cite{background-color:#3eafe0}
+    .leftmenu .menuson.active{display:block}
+</style>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container" style="width:100%;">
+        <div class="navbar-header pull-left">
+            <a asp-controller="Home" asp-action="Welcome" class="navbar-brand">
+                <i class="glyphicon glyphicon-home"></i>
+                @domain.configs.Constants.Company
+            </a>
+        </div>
+        <div class="navbar-header pull-right">
+            <ul class="nav my-nav">
+                <li>
+                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                        <img class="nav-user-photo" src="~/images/head.png" alt="Jason's Photo">
+                        <span class="user-info">@(((infrastructure.mvc.MvcIdentity)User.Identity).UserName)</span><i class="glyphicon glyphicon-menu-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                        <li><a href="/Home/ChangePassword"><i class="glyphicon glyphicon-user"></i>修改密码</a></li>
+                        <li class="divider"></li>
+                        <li> <a href="javascript:;" ng-click="logout()"><i class="glyphicon glyphicon-off"></i>退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container body-content">
+    <div class="sidebar">
+        <dl class="leftmenu">
+            @foreach (var m in PermissionService.CurrentMenus.Where(t => string.IsNullOrEmpty(t.ParentId)||!string.IsNullOrEmpty(t.ActionId)))
+            {
+                List<MenuModel> _menus = new List<MenuModel>();
+                if (PermissionService.CurrentMenus.Count(x => x.ParentId == m.ActionId) <= 0)
+                {
+                    continue;
+                }
+                else
+                {
+                    _menus = PermissionService.CurrentMenus.Where(t => t.ParentId == m.ActionId).OrderBy(t => t.ParentId).ThenBy(t => t.Orders).ToList();
+                    isActived = _menus.Any(t => t.ActionId.ToString().Equals(_id));
+                }
+                <dd>
+                    <div class="title">
+                        @*<img src="/images/leftico02.png" /> glyphicon glyphicon-music	*@
+                        <span><i class="glyphicon @m.Icon"></i></span>@m.ActionDescription
+                    </div>
+                    <ul class="menuson @(isActived?"active":"")">
+                        @foreach (var m1 in _menus)
+                        {
+                            <li class="@(_id.Equals(m1.ActionId.ToString(),StringComparison.OrdinalIgnoreCase)?"active":"")"><cite></cite><a href="@m1.Url"><span><i class="glyphicon @m1.Icon"></i></span>@(m1.ActionDescription)</a></li>
+                        }
+                    </ul>
+                </dd>
+            }
+        </dl>
+    </div>
+    <div class="main-content">
+        <ul class="breadcrumb">
+            <li><i class="glyphicon glyphicon-home"></i>首页</li>
+            <li id="_path">@ViewData["Title"]</li>
+            <li id="showAllData" style="display:none;"><label><input type="checkbox" onchange="_change(this)" @(show ? "checked" : "") />显示全部数据</label> </li>
+        </ul>
+        <div class="main-body">
+            @RenderBody()
+        </div>
+    </div>
+</div>
+@section Rootstyles{
+
+}
+@section RootScripts
+    {
+    <script type="text/javascript">
+        function _change(obj) {
+            var cookie = "ShowAllData=" + obj.checked + ";path=/";
+            document.cookie = cookie;
+        }
+        if ($(".mydatetimepicker").length > 0) {
+            $("#showAllData").show();
+        } else {
+            $("#showAllData").hide();
+        }
+        $('.title').click(function () {
+            var $ul = $(this).next('ul');
+            $('dd').find('ul').slideUp();
+            if ($ul.is(':visible')) {
+                $(this).next('ul').slideUp();
+            } else {
+                $(this).next('ul').slideDown();
+            }
+        });
+
+        $angular.add(function ($scope, $query, $timeout, $sce) {
+            $scope.logout = function () {
+                $query.get("/webapi/Logout", function (response) {
+                    if (response.code === 200) {
+                        location.href = $url("/");
+                    }
+                });
+            };
+        });
+    </script>
+    @RenderSection("Scripts", required: false)
+}

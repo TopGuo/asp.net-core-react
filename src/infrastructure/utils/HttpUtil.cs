@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Net.Http;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -71,6 +72,31 @@ namespace infrastructure.utils
                 }
             }
             catch (Exception ex) { throw new Exception(url + " :" + ex.Message); }
+        }
+
+        public static byte[] DownBytes(string url)
+        {
+            HttpMessageHandler handler = new HttpClientHandler();
+            using (HttpClient client = new HttpClient(handler))
+            {
+                try
+                {
+                    using (var stream = client.GetStreamAsync(url).GetAwaiter().GetResult())
+                    {
+                        var ms = new MemoryStream();
+                        stream.CopyTo(ms);
+                        byte[] bytes = new byte[ms.Length];
+                        ms.Position = 0;
+                        ms.Read(bytes, 0, bytes.Length);
+                        return bytes;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogUtil<HttpUtil>.Error(ex.Message);
+                }
+            }
+            return default(byte[]);
         }
     }
 }

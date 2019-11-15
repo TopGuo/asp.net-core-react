@@ -25,6 +25,7 @@
     "ng-csv":"0.3.6",
     "lodash": "4.16.2",
     "eonasdan-bootstrap-datetimepicker": "v4.17.45",
+    "ueditor":"1.4.3",
     "angular-ueditor": "*"
   }
 }

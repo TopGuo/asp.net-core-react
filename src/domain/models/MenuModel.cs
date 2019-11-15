@@ -9,5 +9,6 @@ namespace domain.models
         public int Orders { get; set; }
         public string ParentId { get; set; }
         public string ParentName { get; set; }
+        public string Icon { get; set; } = "glyphicon-asterisk";
     }
 }

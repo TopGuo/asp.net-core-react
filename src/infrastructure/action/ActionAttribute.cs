@@ -19,6 +19,7 @@ namespace infrastructure.action
         public string Name { get; }
         public ActionType Parent { get; }
         public int Order { get; }
+        public string Icon { get; set; } = "glyphicon-asterisk";
         public string ParentId
         {
             get

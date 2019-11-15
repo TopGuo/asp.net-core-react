@@ -1,0 +1,119 @@
+@{
+    ViewData["Title"] = ViewBag.title;
+}
+<style>
+    .form-inline .col-sm-12 {
+        line-height: 55px;
+    }
+
+    .form-inline .col-sm-4 .col-sm-4 {
+        line-height: 35px;
+    }
+
+    .form-inline .control-label {
+        text-align: right;
+    }
+</style>
+<form name="myForm">
+    <input class="form-control" type="text" ng-model="model1.id" style="display:none;" />
+    <div class="form-inline">
+        <div class="col-sm-12">
+            <label class="control-label col-sm-2">登录名称:</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" ng-model="model1.loginName" placeholder="登录名称" required />
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <label class="control-label col-sm-2">真实姓名:</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" ng-model="model1.fullName" placeholder="真实姓名" required />
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <label class="control-label col-sm-2">手机号:</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="tel" ng-model="model1.mobile" placeholder="请输入11位手机号" ng-minlength="11" ng-maxlength="11" required />
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <label class="control-label col-sm-2">身份证号:</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" ng-model="model1.idCard" placeholder="请输入身份证号" />
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <label class="control-label col-sm-2">权限:</label>
+            <div class="col-sm-10">
+                <select id="gender" class="form-control" ng-model="model1.accountType" ng-options="s.id as s.name for s in list" required>
+                    <option value="">--请选择--</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <label class="control-label col-sm-2">登录密码:</label>
+            <div class="col-sm-10">
+                <input class="form-control" name="password" type="password" ng-model="model1.password" ng-pattern="/[a-zA-Z0-9]/" placeholder="登录密码" ng-minlength="6" />
+                <span class="usererr assertive">新用户为：123456</span>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <label class="control-label col-sm-2">确认密码:</label>
+            <div class="col-sm-10">
+                <input class="form-control" name="confirmPassword" type="password" ng-model="model1.confirmPassword" ng-pattern="/[a-zA-Z0-9]/" placeholder="再次输入密码" ng-minlength="6" />
+                <span class="usererr assertive" style="color:red;" ng-show="model1.confirmPassword!=model1.password">两次密码输入不一致</span>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <label class="control-label col-sm-2">OpenId:</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" ng-model="model1.openId" placeholder="请输入OpenId" />
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="col-sm-10 col-sm-offset-2">
+                <button class="btn btn-success" ng-click="saveModel()" ng-disabled="myForm.$invalid||(model1.confirmPassword!=model1.password)">保 存</button>
+            </div>
+        </div>
+    </div>
+
+</form>
+@section Scripts{
+    <script type="text/javascript">
+                $angular.add(function ($scope, $query, $timeout, $sce) {
+                    var id = getUrlParam("id");
+                    console.log("dong"+id);
+                    $query.get("/webapi/GetBackstageUser?id=" + (id === null ? 0 : id), function (response) {
+                        if (response.code === 200) {
+                            $scope.model1 = response.data;
+                            if ($scope.model1.id > 0) {
+                                $scope.model1.password = $scope.model1.confirmPassword = "";
+                            }
+                            $scope.List = [];
+                            $query.post("/webapi/GetRoles", function (response) {
+                                if (response.code === 200) {
+                                    $scope.list = response.data;
+                                }
+                            });
+
+                        }
+                    });
+                    $scope.saveModel = function () {
+                        $query.post("/webapi/AddMemberAdd_Update", $scope.model1, function (response) {
+                            if (response.code === 200) {
+                                if (id !== null) {
+                                    $Alert("修改成功!").then(function () {
+                                        location.href = $url("/Home/BackstageUser");
+                                    });
+                                } else {
+                                    $Alert("添加成功!").then(function () {
+                                        location.href = $url("/Home/BackstageUser");
+                                    });
+                                }
+                            }
+                        });
+                    };
+
+
+                });
+    </script>
+}

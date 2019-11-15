@@ -221,7 +221,7 @@ namespace application.services
                 base.Delete(systemActionLists, true);
                 ParentAtions.ParentAtionsList.ForEach(t =>
                 {
-                    base.Add(new SystemActions { ActionId = t.Id, ActionName = t.Name, ActionDescription = t.Name, Orders = t.Order, Url = t.Url, CreateTime = DateTime.Now });
+                    base.Add(new SystemActions { ActionId = t.Id, ActionName = t.Name, ActionDescription = t.Name, Orders = t.Order, Url = t.Url, CreateTime = DateTime.Now, Icon = t.Icon });
                 });
                 var actions = base.Query<SystemActions>().ToList();
                 foreach (var a in actionDescriptor)
@@ -247,7 +247,8 @@ namespace application.services
                     dbAction.ActionDescription = attr.Name;
                     dbAction.ParentAction = attr.ParentId;
                     dbAction.Orders = attr.Order;
-                    dbAction.Url = PathUtil.Combine(a.ControllerName, a.ActionName);//$"/{a.ControllerName}/{a.ActionName}";
+                    dbAction.Icon = attr.Icon;
+                    dbAction.Url = PathUtil.Combine(a.ControllerName, a.ActionName);
                 }
                 base.Save();
                 _menus = base.Query<SystemActions>().Select(t => new MenuModel
@@ -257,7 +258,9 @@ namespace application.services
                     ActionDescription = t.ActionDescription,
                     Url = t.Url,
                     Orders = t.Orders ?? 0,
-                    ParentId = t.ParentAction
+                    ParentId = t.ParentAction,
+                    Icon = t.Icon
+
                 }).ToList();
                 _menus.ForEach(t =>
                 {

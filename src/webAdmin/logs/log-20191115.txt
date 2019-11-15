@@ -1,0 +1,18 @@
+2019-11-15 19:26:24.630 +08:00 [Error] application.middleware.ErrorHandlerMiddleware: [ErrorHandler中间件：]System.NullReferenceException: Object reference not set to an instance of an object.
+   at application.services.SetingService.UpdateAnnounce(AnnounceDto model) in /Users/topbrids/netcore/asp.net-core-react/src/application/services/SetingService.cs:line 113
+   at webAdmin.Controllers.WebApiController.AnnounceAdd_Update(AnnounceDto model) in /Users/topbrids/netcore/asp.net-core-react/src/webAdmin/Controllers/WebApiController.cs:line 115
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at application.middleware.ErrorHandlerMiddleware.Invoke(HttpContext context) in /Users/topbrids/netcore/asp.net-core-react/src/application/middleware/ErrorHandlerMiddleware.cs:line 33

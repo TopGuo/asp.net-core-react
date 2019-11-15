@@ -12,5 +12,6 @@ namespace domain.entitys
         public string Url { get; set; }
         public int? Orders { get; set; }
         public string ParentAction { get; set; }
+        public string Icon { get; set; }
     }
 }

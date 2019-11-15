@@ -22,6 +22,8 @@ namespace webAdmin
             .ConfigureLogging(configureLogging =>
             {
                 configureLogging.AddFile();
-            }).UseStartup<Startup>();
+            })
+            .UseUrls("http://127.0.0.1:50004")
+            .UseStartup<Startup>();
     }
 }

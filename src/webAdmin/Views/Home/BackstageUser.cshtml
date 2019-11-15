@@ -1,0 +1,105 @@
+@{
+    ViewData["Title"] = "管理员列表";
+}
+
+<style>
+    .search .form-inline {
+        line-height: 40px;
+    }
+</style>
+
+<div class="row search">
+    <div class="form-inline">
+        <input type="text" class="form-control" placeholder="姓名：" ng-model="search.fullName" />
+    </div>
+    <div class="form-inline">
+        <input type="text" class="form-control" placeholder="手机号：" ng-model="search.mobile" />
+    </div>
+    <div class="form-inline">
+        <label class="control-label">开始日期:</label>
+        <input type="text" class="form-control mydatetimepicker" ng-model="search.beginTime" ng-max-date="search.beginTime||defaultDate" placeholder="开始日期" />
+    </div>
+    <div class="form-inline">
+        <label class="control-label">结束日期:</label>
+        <input type="text" class="form-control mydatetimepicker" ng-model="search.endTime" ng-min-date="search.beginTime" ng-max-date="defaultDate" placeholder="结束日期" />
+    </div>
+    <button class="btn btn-primary" type="button" ng-click="pageChanged(true)">搜索</button><br />
+    <a class="btn btn-primary" href="/Home/AddMember">添加管理员</a>
+</div>
+
+
+<table class="table table-hover table-condensed table-bordered" style="width:auto;">
+    <thead>
+        <tr style="height:35px;">
+            <th style="width: 4%;">序号</th>
+            <th style="width: 5%;">用户名</th>
+            <th style="width: 5%;">角色</th>
+            <th style="width: 5%;">手机号</th>
+            <th style="width: 5%;">姓名</th>
+            <th style="width: 7%;">注册时间</th>
+            <th style="width: 8%;">最后修改时间</th>
+            <th style="width: 5%;">状态</th>
+            <th style="width: 7%;">操作</th>
+        </tr>
+    </thead>
+    <tbody class="wait-loaded">
+        <tr ng-repeat="m in List">
+            <td>{{(search.pageIndex-1)*10+($index+1)}}</td>
+            <td>{{m.loginName}}</td>
+            <td>{{m.roleName}}</td>
+            <td>{{m.mobile}}</td>
+            <td>{{m.fullName}}</td>
+            <td>{{m.createTime|date:'yyyy-MM-dd'}}</td>
+            <td>{{m.updateTime|date:'yyyy-MM-dd'}}</td>
+            <td>{{m.accountStatusName}}</td>
+            <td>
+                <a href="javascript:void(0);" ng-click="setStatus(m)">{{m.accountStatusName=="禁用"?"启用":"禁用"}}</a>|
+                <a href="/Home/AddMember?id={{m.id}}">修改</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="mypager wait-loaded">
+    <ul uib-pagination total-items="search.recordCount" items-per-page="search.pageSize" ng-change="pageChanged()" ng-model="search.pageIndex" max-size="7"
+        class="pagination-sm" boundary-links="true" num-pages="search.numPages" boundary-link-numbers="true" first-text="首页" last-text="末页" previous-text="上一页" next-text="下一页"></ul>
+    <div class="recordCount">共 {{search.recordCount}} 条</div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        $angular.add(function ($scope, $query, $timeout, $sce) {
+
+            $scope.search = { pageIndex: 1, pageSize: 10, gender: "-1", order: 1 };
+            $scope.setOrder = function (index) {
+                if (index == Math.abs($scope.search.order)) {
+                    index = -$scope.search.order;
+                }
+                $scope.search.order = index;
+                $scope.pageChanged(true);
+            };
+            $scope.pageChanged = function (reindex) {
+                if (reindex) {
+                    $scope.search.pageIndex = 1;
+                }
+                $query.post("/webapi/BackstageUser", { model: $scope.search }, function (response) {
+                    if (response.code === 200) {
+                        $scope.List = response.data;
+                        $scope.search.recordCount = response.recordCount;
+                    } else {
+                        $Alert(response.message);
+                    }
+                });
+            };
+            $scope.setStatus = function (model) {
+                $query.post("/webapi/SetMemberState", model, function (response) {
+                    if (response.code === 200) {
+                        $scope.pageChanged();
+                    } else {
+                        $Alert(response.message);
+                    }
+                });
+            }
+
+            $scope.pageChanged();
+        });
+    </script>
+}

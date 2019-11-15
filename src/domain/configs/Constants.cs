@@ -22,5 +22,20 @@ namespace domain.configs
         /// 网站授权协议
         /// </summary>
         public const string WEBSITE_AUTHENTICATION_SCHEME = "Web";
+        /// <summary>
+        /// 上次登录路径
+        /// </summary>
+        public const string LAST_LOGIN_PATH = "LAST_LOGIN_PATH";
+
+        public const string ShowAllDataCookie = "ShowAllData";
+        /// <summary>
+        /// 验证码图片
+        /// </summary>
+        public const string WEBSITE_VERIFICATION_CODE = "ValidateCode";
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string UPLOAD_TEMP_PATH = "Upload_Temp";
     }
 }

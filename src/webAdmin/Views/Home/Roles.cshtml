@@ -1,0 +1,135 @@
+@{
+    ViewData["Title"] = "角色管理";
+    int index = 0;
+}
+<style type="text/css">
+    .modal-body h4 {
+        font-weight: 600;
+    }
+
+    #menu li {
+        float: left;
+        list-style: none;
+        padding: 5px;
+    }
+
+        #menu li label {
+            font-weight: normal;
+        }
+</style>
+@model IReadOnlyList<domain.models.MenuModel>
+<button ng-click="addnew()" class="btn btn-primary">添加角色</button>
+<div class="clearfix"></div>
+<br />
+<table class="table table-hover table-condensed table-bordered" style="width:auto;">
+    <thead>
+        <tr style="height: 35px;">
+            <th>编号</th>
+            <th>名称</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody class="wait-loaded">
+        <tr ng-repeat="m in List">
+            <td>{{m.id}}</td>
+            <td><input type="text" class="form-control" required ng-model="m.name" placeholder="角色名称" /></td>
+            <td>
+                <button ng-click="saveRoles(m)" class="btn btn-primary btn-sm" ng-if="m.id!=1&&m.id!=2">保存</button>
+                <button ng-click="deleteRoles(m)" class="btn btn-primary btn-sm" ng-if="m.id!=1&&m.id!=2">删除</button>
+                <button ng-click="showPermission(m)" class="btn btn-primary btn-sm" ng-if="m.id!=1">设置权限</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="modal fade in" id="addModel" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document" style="height:100%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4>设置权限</h4>
+            </div>
+            <div class="modal-body">
+                @foreach (var m in Model.Where(t => string.IsNullOrEmpty(t.ParentId)))
+                {
+                    <h4 style="clear:both;">@m.ActionDescription</h4>
+                    <ul id="menu">
+                        @foreach (var m1 in Model.Where(t => t.ParentId == m.ActionId))
+                        {
+                            <li><label>@(m1.ActionDescription) <input type="checkbox" ng-checked="isSelected('@m1.ActionId')" ng-click="selectMenu('@m1.ActionId')" /></label> </li>
+                            index++;
+                        }
+                    </ul>
+                }
+                <br />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" ng-click="saveRoles(currentRole)">保 存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $angular.add(function ($scope, $query, $timeout, $sce) {
+            $scope.List = [];
+            $scope.load = function() {
+                $query.post("/webapi/GetRoles", function (response) {
+                    if (response.code === 200) {
+                        $scope.List = response.data;
+                    }
+                });
+            }
+            $scope.addnew = function () {
+                if (_.find($scope.List, { id: -100 }) == null) {
+                    $scope.List.push({ id: -100 });
+                }
+            };
+            $scope.saveRoles = function (r) {
+                $query.post("/webapi/SaveRoles", r, function (response) {
+                    if (response.code === 200) {
+                        r = response.data;
+                    }
+                    $("#addModel").modal("hide");
+                    $scope.load();
+                    $Alert(response.message);
+                });
+            };
+            $scope.deleteRoles = function (r) {
+                if (r.id == -100) {
+                    _.remove($scope.List, { id: -100 });
+                } else {
+                    $query.post("/webapi/DeleteRoles", r, function (response) {
+                        if (response.code === 200) {
+                            _.remove($scope.List, { id: r.id });
+                        }
+                        $scope.load();
+                        $Alert(response.message);
+                    });
+
+                }
+
+            };
+            $scope.showPermission = function (r) {
+                $("#addModel").modal("show");
+                $scope.currentRole = _.cloneDeep(r);
+            };
+            $scope.isSelected = function (id) {
+                if ($scope.currentRole) {
+                    return _.includes($scope.currentRole.menus, id);
+                }
+                return false;
+            }
+            $scope.selectMenu = function (id) {
+                if (_.includes($scope.currentRole.menus, id)) {
+                    _.remove($scope.currentRole.menus, function (i) { return i.toLowerCase() == id.toLowerCase(); });
+                } else {
+                    $scope.currentRole.menus.push(id);
+                }
+            };
+            $scope.load();
+        });
+    </script>
+
+}

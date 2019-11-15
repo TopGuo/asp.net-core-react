@@ -647,6 +647,7 @@ namespace domain.entitys
                 entity.Property(e => e.Orders).HasColumnType("int(11)");
 
                 entity.Property(e => e.ParentAction).HasColumnType("varchar(255)");
+                entity.Property(e => e.Icon).HasColumnType("varchar(100)");
 
                 entity.Property(e => e.Url)
                     .IsRequired()

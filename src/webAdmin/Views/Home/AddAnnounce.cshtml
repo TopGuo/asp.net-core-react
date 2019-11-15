@@ -1,0 +1,76 @@
+@{
+    ViewData["Title"] = "公告管理";
+}
+<style>
+    .form-inline .col-sm-12 {
+        line-height: 55px;
+    }
+
+    .form-inline .col-sm-4 .col-sm-4 {
+        line-height: 35px;
+    }
+
+    .form-inline .control-label {
+        text-align: right;
+    }
+</style>
+<form name="myForm">
+    <input class="form-control" type="text" ng-model="m.id" style="display:none;" />
+    <div class="form-inline">
+        <div class="col-sm-12">
+            <label class="control-label col-sm-2">标题:</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" ng-model="m.title" placeholder="标题" />
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <label class="control-label col-sm-2">类型:</label>
+            <div class="col-sm-10">
+                <select class="form-control" style="display:inline-block;width:auto;" ng-model="m.types">
+                    <option value="">请选择</option>
+                    <option value="0">首页</option>
+                    <option value="1">其他</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <label class="control-label col-sm-2">描述说明:</label>
+            <div class="col-sm-10">
+                <textarea class="ueditor" style="height:320px;max-width:none;" ng-model="m.content" placeholder="描述说明">
+                </textarea>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="col-sm-10 col-sm-offset-2">
+                <button class="btn btn-success" ng-disabled="myForm.$invalid" ng-click="saveModel()">保 存</button>
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts{
+    <script type="text/javascript">
+                $angular.add(function ($scope, $query, $timeout, $sce) {
+                    var id = getUrlParam("id");
+                    $query.get("/webapi/GetOneAnnounce?id=" + (id === null ? 0 : id), function (response) {
+                        if (response.code === 200) {
+                            $scope.m = response.data;
+                        }
+                    });
+                    $scope.saveModel = function (announce) {
+                        $query.post("/webapi/AnnounceAdd_Update", $scope.m, function (response) {
+                            if (response.code === 200) {
+                                if (id !== null) {
+                                    $Alert("修改成功!").then(function () {
+                                        location.href = $url("/Home/Announce");
+                                    });
+                                } else {
+                                    $Alert("添加成功!").then(function () {
+                                        location.href = $url("/Home/Announce");
+                                    });
+                                }
+                            }
+                        });
+                    };
+                });
+    </script>
+}

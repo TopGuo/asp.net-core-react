@@ -14,10 +14,16 @@ namespace domain.enums
         [Description("sign 签名非法")]
         ErrorSign = 10003,
         [Description("用户名或密码有误")]
-        ErrorUserNameOrPass=10004,
+        ErrorUserNameOrPass = 10004,
         [Description("不存在")]
-        NotFound=10005,
+        NotFound = 10005,
         [Description("禁止")]
-        Forbidden=10006
+        Forbidden = 10006,
+        [Description("无效密码")]
+        InvalidPassword = 10007,
+        [Description("账户禁用")]
+        AccountDisabled = 10008,
+        [Description("非法数据")]
+        InvalidData=10009
     }
 }

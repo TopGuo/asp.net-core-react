@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="~/lib/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
     <link rel="stylesheet" href="~/css/public.min.css" />
     <script type="text/javascript">
-        window.webPath = "@infrastructure.utils.PathUtil.WebPhysicalPath";
+        window.webPath = "@infrastructure.utils.PathUtil.WebVirtualPath";
     </script>
     @RenderSection("Rootstyles", required: false)
 </head>
 <body style="height:100%" ng-app="angularApp" ng-controller="angularCtrl">
     @RenderBody()
-    <footer>
+    <footer style="z-index: 999;">
         <div class="container" style="width:100%;">
             <p style="text-align:center;">&copy; @DateTime.Now.Year - @domain.configs.Constants.Company</p>
         </div>
@@ -27,6 +27,8 @@
     <script src="~/lib/moment/min/moment.min.js"></script>
     <script src="~/lib/moment/min/moment-with-locales.min.js"></script>
     <script src="~/lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/lib/angular-ueditor/dist/ueditor.config.js"></script>
+    <script src="~/lib/angular-ueditor/dist/ueditor.js"></script>
     <script src="~/lib/angular-ueditor/dist/angular-ueditor.min.js"></script>
     <script src="~/lib/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="~/lib/ng-csv/build/ng-csv.min.js"></script>

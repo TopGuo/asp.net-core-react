@@ -16,6 +16,12 @@ namespace infrastructure.action
             ActionType = actionType;
             Url = url;
         }
+        public ParentAtions(ActionType actionType, string url, string icon)
+        {
+            ActionType = actionType;
+            Icon = icon;
+            Url = url;
+        }
         /// <summary>
         /// 编号-重组一个和菜单相关的guid
         /// </summary>
@@ -39,7 +45,7 @@ namespace infrastructure.action
         /// 排序
         /// </summary>
         public int Order { get { return (int)ActionType; } }
-
+        public string Icon { get; set; } = "glyphicon-fire";
         static List<ParentAtions> parentActions = new List<ParentAtions>();
         internal ActionType ActionType { get; }
 

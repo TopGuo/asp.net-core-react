@@ -13,8 +13,8 @@ namespace infrastructure.action
         UsersManager,
         [Description("财务管理")]
         CaiwuManager,
-        [Description("测试杂谈")]
-        Test,
+        [Description("市场设置")]
+        ShiChangManager,
 
     }
 }
