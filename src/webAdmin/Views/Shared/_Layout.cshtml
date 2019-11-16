@@ -4,21 +4,21 @@
 @using Microsoft.AspNetCore.Mvc.Controllers
 @using domain.models
 @inject IPermissionService  PermissionService
-
 @{
     Layout="_LayoutRoot";
     bool isActived = false;
     var show = "true".Equals(infrastructure.utils.CookieUtil.GetCookie(domain.configs.Constants.ShowAllDataCookie, false), StringComparison.OrdinalIgnoreCase);
     var _id = this.ViewContext.ActionDescriptor.Id;
-    var ma = (this.ViewContext.ActionDescriptor as ControllerActionDescriptor).MethodInfo.GetCustomAttribute<MenuActionAttribute>();
+    var ma = (this.ViewContext.ActionDescriptor as ControllerActionDescriptor).MethodInfo.GetCustomAttribute<ActionAttribute>();
     if (ma != null)
     {
-        var m =PermissionService.CurrentMenus.FirstOrDefault(t => string.IsNullOrEmpty(t.ParentId) && t.ActionName.IndexOf(ma.ParentName, StringComparison.OrdinalIgnoreCase) > -1);
+        var m =PermissionService.CurrentMenus.FirstOrDefault(t => !string.IsNullOrEmpty(t.ParentId)&&t.ParentId.Equals(ma.ParentId));
         if (m != null)
         {
             _id = m.ActionId.ToString();
         }
     }
+    
 }
 <style>
     .leftmenu{width:100%}
@@ -75,13 +75,12 @@
                 }
                 <dd>
                     <div class="title">
-                        @*<img src="/images/leftico02.png" /> glyphicon glyphicon-music	*@
                         <span><i class="glyphicon @m.Icon"></i></span>@m.ActionDescription
                     </div>
                     <ul class="menuson @(isActived?"active":"")">
                         @foreach (var m1 in _menus)
                         {
-                            <li class="@(_id.Equals(m1.ActionId.ToString(),StringComparison.OrdinalIgnoreCase)?"active":"")"><cite></cite><a href="@m1.Url"><span><i class="glyphicon @m1.Icon"></i></span>@(m1.ActionDescription)</a></li>
+                            <li><cite></cite><a href="@m1.Url"><span><i class="glyphicon @m1.Icon"></i></span>@(m1.ActionDescription)</a></li>
                         }
                     </ul>
                 </dd>

@@ -25,7 +25,7 @@ namespace webAdmin
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IPermissionService, PermissionService>();
+            services.AddTransient<IPermissionService, PermissionService>();
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<ISetingService, SetingService>();
             services.Configure<CookiePolicyOptions>(options =>

@@ -65,7 +65,6 @@ namespace webAdmin.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [MenuAction("MemberController.BackstageUser(AccountViewModel)")]
         public ViewResult AddMember(string id = "0")
         {
             if (id.Equals("0"))
@@ -83,7 +82,6 @@ namespace webAdmin.Controllers
         {
             return View();//RegistActions.Menus
         }
-        [MenuAction("HomeController.AdManager()")]
         public ViewResult AdPicAdd_Updata(int id)
         {
             string title = "添加广告";

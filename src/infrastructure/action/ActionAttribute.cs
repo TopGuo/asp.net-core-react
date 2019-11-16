@@ -15,7 +15,6 @@ namespace infrastructure.action
             this.Parent = parent;
             this.Order = order;
         }
-
         public string Name { get; }
         public ActionType Parent { get; }
         public int Order { get; }
