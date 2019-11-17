@@ -445,10 +445,14 @@ namespace domain.entitys
                     .HasDefaultValueSql("''");
 
                 entity.Property(e => e.LookCount)
-                    .IsRequired()
-                    .HasColumnName("lookCount")
-                    .HasColumnType("varchar(11)")
-                    .HasDefaultValueSql("'0'");
+                .HasColumnName("lookCount")
+                .HasColumnType("int(11)")
+                .HasDefaultValueSql("'0'");
+                
+                entity.Property(e => e.IsDel)
+                .HasColumnName("isDel")
+                .HasColumnType("int(2)")
+                .HasDefaultValueSql("'0'");
 
                 entity.Property(e => e.Mark1)
                     .IsRequired()

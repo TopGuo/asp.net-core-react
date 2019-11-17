@@ -149,7 +149,7 @@ namespace application.services
 
         public IQueryable<TSource> Query<TSource>() where TSource : class
         {
-            return (IQueryable<TSource>)this.DataContext.Set<TSource>();
+            return this.DataContext.Set<TSource>();
         }
 
         /// <summary>

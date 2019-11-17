@@ -28,12 +28,7 @@ namespace webAdmin
             services.AddTransient<IPermissionService, PermissionService>();
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<ISetingService, SetingService>();
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => false;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
+            services.AddScoped<IUserService,UserService>();            
             services.AddMvcCustomer(Constants.WEBSITE_AUTHENTICATION_SCHEME, mvcOptions =>
              {
                  mvcOptions.AuthorizationSchemes = new List<MvcAuthorizeOptions>
@@ -61,7 +56,6 @@ namespace webAdmin
             }
             app.UseAuthentication();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
             app.UseErrorHandlerMiddleware();
             app.UseMvc(routes =>
             {

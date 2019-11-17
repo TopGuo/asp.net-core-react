@@ -15,43 +15,27 @@
                 <div class="col-sm-12">
                     <label class="control-label col-sm-2">广告位置:</label>
                     <div class="col-sm-10">
-                        <select class="form-control" ng-model="model1.adLocation" ng-options="s.item1 as s.item2 for s in list" required>
-                            <option value="">--请选择--</option>
+                        <select class="form-control" ng-model="model1.types" required>
+                            <option value="-1">请选择</option>
+                            <option value="0">首页</option>
+                            <option value="1">信息市场</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-sm-12">
-                    <label class="control-label col-sm-2">广告名称:</label>
+                    <label class="control-label col-sm-2">跳转路径:</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="text" ng-model="model1.adName" placeholder="广告名称" required />
-                    </div>
-                </div>
-                <div class="col-sm-12">
-                    <label class="control-label col-sm-2">开始时间:</label>
-                    <div class="col-sm-10">
-                        <input class="form-control mydatetimepicker" type="text" ng-model="model1.beginTime" placeholder="开始时间" ng-min-date="defaultDate" />
-                    </div>
-                </div>
-                <div class="col-sm-12">
-                    <label class="control-label col-sm-2">结束时间:</label>
-                    <div class="col-sm-10">
-                        <input class="form-control mydatetimepicker" type="text" ng-model="model1.endTime" placeholder="结束时间" ng-min-date="model1.beginTime" />
+                        <input class="form-control" type="text" ng-model="model1.jumpUrl" placeholder="跳转路径" required />
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <label class="control-label col-sm-2">图片:</label>
                     <div class="col-sm-10">
-                        <input type="file" ng-model="model1.adPic" title="点击上传图片" class="form-control" style="position:absolute;width:100%;height:100%;opacity:0;filter:alpha(opacity=0);cursor:pointer;" accept="image/png,image/jpeg,image/bmp" required onchange="$(this).scope().uploadHeadImage(this)" />
-                        <img ng-src="{{model1.adPic}}" style="max-width:250px;" title="浏览图片" alt="点击上传图片" />
+                        <input type="file" ng-model="model1.pic" title="点击上传图片" class="form-control" style="position:absolute;width:100%;height:100%;opacity:0;filter:alpha(opacity=0);cursor:pointer;" accept="image/png,image/jpeg,image/bmp" required onchange="$(this).scope().uploadHeadImage(this)" />
+                        <img ng-src="{{model1.pic}}" style="max-width:250px;" title="浏览图片" alt="点击上传图片" />
                     </div>
                 </div>
-                <div class="col-sm-12">
-                    <label class="control-label col-sm-2">内容描述:</label>
-                    <div class="col-sm-10">
-                        <textarea class="ueditor" config="customConfig" rows="10" cols="100" style="height:320px;max-width:none;" ng-model="model1.adDescription" placeholder="内容描述">
-                        </textarea>
-                    </div>
-                </div>
+                
                 <div class="col-sm-12">
                     <div class="col-sm-10 col-sm-offset-2">
                         <button class="btn btn-success" ng-click="saveModel1()" ng-disabled="myForm.$invalid">保 存</button>
@@ -64,11 +48,7 @@
 @section Scripts{
     <script type="text/javascript">
         $angular.add(function ($scope, $query, $timeout, $location) {
-            $scope.formDate=function(date) {
-                return formDate(date);
-            }
-            $scope.model1 = @Html.Raw(ViewBag.AdModel);
-            $scope.list =[];//@*Html.Raw(MvcExtensions.GetStrings<AdLocation>().GetJson());*@
+            $scope.model1 = {types:"-1",pic:"/images/add_pic.png"};
              $scope.customConfig = {
                  initialFrameWidth: "100%",
                  initialFrameHeight: 320,
@@ -80,14 +60,10 @@
                  catcherUrlPrefix: ''
              };
             $scope.saveModel1 = function () {
-            $query.post("/webApi/AdPicAdd_Updata", $scope.model1, function (response) {
+            $query.post("/webApi/BannerAdd_Updata", $scope.model1, function (response) {
                     if (response.status === 200) {
-                        var msg = "添加成功";
-                        if ($scope.model1.id != '@Guid.Empty') {
-                            msg = "修改成功";
-                        }
-                        $Alert(msg).then(function () {
-                            location.href = $url("/Home/AdManager");
+                        $Alert("添加成功!").then(function () {
+                            location.href = $url("/Home/BannerManager");
                         });
                     } else {
                         $Alert(response.message)
@@ -107,7 +83,7 @@
                         var ctx = canvas.getContext('2d');
                         $(canvas).attr({ width: w, height: h });
                         ctx.drawImage(img, 0, 0, w, h);
-                        $scope.model1.adPic = canvas.toDataURL('image/png', 0.8);
+                        $scope.model1.pic = canvas.toDataURL('image/png', 0.8);
                         $scope.$apply();
                     }
                     img.src = reader.result;

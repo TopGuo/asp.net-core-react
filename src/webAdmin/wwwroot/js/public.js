@@ -361,6 +361,7 @@ function queryService($http, $q, $timeout, $sce) {
     }
     return this;
 }
+
 var $angular = {
 	/**
 		*

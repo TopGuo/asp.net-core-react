@@ -37,5 +37,6 @@ namespace domain.configs
         /// 
         /// </summary>
         public const string UPLOAD_TEMP_PATH = "Upload_Temp";
+        public const string BANNER_PATH = "Banner";
     }
 }

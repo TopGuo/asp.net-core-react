@@ -1,7 +1,10 @@
+using System;
+using domain.configs;
 using domain.enums;
 using domain.models;
 using domain.models.dto;
 using domain.repository;
+using infrastructure.utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -122,7 +125,7 @@ namespace webAdmin.Controllers
         {
             return SetingService.GetAnnounces(model);
         }
-        
+
         //添加公告
         [HttpPost]
         public MyResult<object> AddAnnounce([FromBody]AnnounceDto model)
@@ -154,6 +157,27 @@ namespace webAdmin.Controllers
             return SetingService.GetAnnounceTitle();
         }
 
+        //获取banner
+        [HttpPost]
+        public MyResult<object> BannerManagerList([FromBody]BannerDto model)
+        {
+            return SetingService.GetBanner(model);
+        }
+        [HttpPost]
+        public MyResult<object> DelBannerPic([FromBody]BannerDto model)
+        {
+            return SetingService.DelBanner(model.Id);
+        }
+        [HttpPost]
+        public MyResult<object> BannerAdd_Updata([FromBody] BannerDto model)
+        {
+            if (!string.IsNullOrEmpty(model.Pic) && model.Pic.Length > 1000)
+            {
+                var fileName=DateTime.Now.GetTicket().ToString();
+                model.Pic=ImageHandlerUtil.SaveBase64Image(model.Pic,$"{fileName}.png",Constants.BANNER_PATH);
+            }
+            return SetingService.AddBanner(model);
+        }
         #endregion
     }
 }

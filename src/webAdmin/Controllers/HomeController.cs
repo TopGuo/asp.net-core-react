@@ -77,24 +77,15 @@ namespace webAdmin.Controllers
             }
             return View();
         }
-        [Action("广告管理", ActionType.ShiChangManager, 1)]
-        public ViewResult AdManager()
+        [Action("Banner管理", ActionType.ShiChangManager, 1)]
+        public ViewResult BannerManager()
         {
             return View();//RegistActions.Menus
         }
-        public ViewResult AdPicAdd_Updata(int id)
+        public ViewResult BannerAdd_Updata(int? id)
         {
             string title = "添加广告";
-            // if (id!=null&&!Guid.Empty.Equals(id))
-            // {
-            //     title = "修改广告";
-            // }
-            // else {
-            //     id = Guid.Empty;
-            // }
-            // ViewBag.AdModel = _carService.GetAdPicModel((Guid)id);
             ViewBag.title = title;
-
             return View();
         }
         [Action("公告管理", ActionType.ShiChangManager, 2)]
