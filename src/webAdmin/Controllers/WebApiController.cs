@@ -7,6 +7,7 @@ using domain.repository;
 using infrastructure.utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using webAdmin.Controllers.Base;
 
 namespace webAdmin.Controllers
 {
@@ -173,11 +174,39 @@ namespace webAdmin.Controllers
         {
             if (!string.IsNullOrEmpty(model.Pic) && model.Pic.Length > 1000)
             {
-                var fileName=DateTime.Now.GetTicket().ToString();
-                model.Pic=ImageHandlerUtil.SaveBase64Image(model.Pic,$"{fileName}.png",Constants.BANNER_PATH);
+                var fileName = DateTime.Now.GetTicket().ToString();
+                model.Pic = ImageHandlerUtil.SaveBase64Image(model.Pic, $"{fileName}.png", Constants.BANNER_PATH);
             }
             return SetingService.AddBanner(model);
         }
+
+        public MyResult<object> ScenicList([FromBody]ScenicDto model)
+        {
+            return SetingService.GetScenic(model);
+        }
+        public MyResult<object> DelScenic([FromBody]ScenicDto model)
+        {
+            return SetingService.DelScenic(model);
+        }
+        public MyResult<object> ScenicAdd_Updata([FromBody] ScenicDto model)
+        {
+            if (!string.IsNullOrEmpty(model.Pic) && model.Pic.Length > 1000)
+            {
+                var fileName = DateTime.Now.GetTicket().ToString();
+                model.Pic = ImageHandlerUtil.SaveBase64Image(model.Pic, $"{fileName}.png", Constants.SCENIC_PATH);
+            }
+            if (model.Id.HasValue)
+            {
+                return SetingService.UpdateScenic(model);
+            }
+            return SetingService.AddScenic(model);
+        }
+        public MyResult<object> GetOneScenic(int id)
+        {
+            ScenicDto model = new ScenicDto { Id = id };
+            return SetingService.GetOneScenic(model);
+        }
+
         #endregion
     }
 }

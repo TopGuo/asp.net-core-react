@@ -61,7 +61,7 @@
              };
             $scope.saveModel1 = function () {
             $query.post("/webApi/BannerAdd_Updata", $scope.model1, function (response) {
-                    if (response.code === 200) {
+                    if (response.status === 200) {
                         $Alert("添加成功!").then(function () {
                             location.href = $url("/Home/BannerManager");
                         });

@@ -81,7 +81,6 @@
     <script type="text/javascript">
                 $angular.add(function ($scope, $query, $timeout, $sce) {
                     var id = getUrlParam("id");
-                    console.log("dong"+id);
                     $query.get("/webapi/GetBackstageUser?id=" + (id === null ? 0 : id), function (response) {
                         if (response.code === 200) {
                             $scope.model1 = response.data;

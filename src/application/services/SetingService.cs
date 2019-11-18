@@ -316,6 +316,22 @@ namespace application.services
             return result;
         }
 
+        public MyResult<object> DelScenic(ScenicDto model)
+        {
+            MyResult result = new MyResult();
+            if (!model.Id.HasValue)
+            {
+                return result.SetStatus(ErrorCode.InvalidData, "id 非法");
+            }
+            var scenic = base.First<Scenic>(predicate => predicate.Id == model.Id);
+            if (scenic != null)
+            {
+                base.Delete(scenic, true);
+            }
+            result.Data = true;
+            return result;
+        }
+
         public MyResult<object> DelShop(ShopDto model)
         {
             MyResult result = new MyResult();
@@ -496,7 +512,52 @@ namespace application.services
 
         public MyResult<object> UpdateScenic(ScenicDto model)
         {
-            throw new System.NotImplementedException();
+            MyResult result = new MyResult();
+            if (!model.Id.HasValue)
+            {
+                return result.SetStatus(ErrorCode.InvalidData, "ID数据非法");
+            }
+            var scenic = base.First<Scenic>(predicate => predicate.Id == model.Id);
+            if (string.IsNullOrEmpty(model.Pic))
+            {
+                return result.SetStatus(ErrorCode.InvalidData, "图片数据非法");
+            }
+            if (string.IsNullOrEmpty(model.Title))
+            {
+                return result.SetStatus(ErrorCode.InvalidData, "标题数据非法");
+            }
+            if (string.IsNullOrEmpty(model.LTitle))
+            {
+                return result.SetStatus(ErrorCode.InvalidData, "L标题数据非法");
+            }
+            if (string.IsNullOrEmpty(model.Content))
+            {
+                return result.SetStatus(ErrorCode.InvalidData, "内容数据非法");
+            }
+
+            scenic.Title = model.Title;
+            scenic.Pic = model.Pic;
+            scenic.LTitle = model.LTitle;
+            scenic.Content = model.Content;
+            if (!string.IsNullOrEmpty(model.Order.ToString()) && model.Order > 0)
+            {
+                scenic.Order = model.Order;
+            }
+            if (!string.IsNullOrEmpty(model.LookCount.ToString()) && model.LookCount > 0)
+            {
+                scenic.LookCount = (int)model.LookCount;
+            }
+            if (!string.IsNullOrEmpty(model.Mark1))
+            {
+                scenic.Mark1 = model.Mark1;
+            }
+            if (!string.IsNullOrEmpty(model.Mark2))
+            {
+                scenic.Mark2 = model.Mark2;
+            }
+            base.Update(scenic, true);
+            result.Data = true;
+            return result;
         }
 
         public MyResult<object> UpdateShop(ShopDto model)

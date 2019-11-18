@@ -5,6 +5,7 @@ using infrastructure.action;
 using infrastructure.utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using webAdmin.Controllers.Base;
 
 namespace webAdmin.Controllers
 {
@@ -80,7 +81,7 @@ namespace webAdmin.Controllers
         [Action("Banner管理", ActionType.ShiChangManager, 1)]
         public ViewResult BannerManager()
         {
-            return View();//RegistActions.Menus
+            return View();
         }
         public ViewResult BannerAdd_Updata(int? id)
         {
@@ -97,5 +98,32 @@ namespace webAdmin.Controllers
         {
             return View();
         }
+
+        [Action("景点管理", ActionType.ShiChangManager, Icon = "glyphicon-plane")]
+        public ViewResult Scenic()
+        {
+            return View();
+        }
+        public ViewResult AddScenic_Update(int? id)
+        {
+            if (id.HasValue)
+            {
+                ViewBag.Title = "修改景点";
+            }
+            else
+            {
+                ViewBag.Title = "添加景点";
+            }
+            return View();
+        }
+
+        [Action("用户管理", ActionType.UsersManager, Icon = "glyphicon-user")]
+        public ViewResult UserManager() { return View(); }
+
+        public ViewResult AddUser_Update() { return View(); }
+
+        [Action("店铺管理", ActionType.ShiChangManager, Icon = "glyphicon-shopping-cart")]
+        public ViewResult Shop() { return View(); }
+
     }
 }

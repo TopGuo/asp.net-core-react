@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 
-namespace webAdmin.Controllers
+namespace webAdmin.Controllers.Base
 {
     [MvcAuthorize(AuthenticationSchemes = Constants.WEBSITE_AUTHENTICATION_SCHEME)]
     public class WebBaseController : Controller

@@ -42,6 +42,7 @@ namespace webAdmin
                     }
                  };
              });
+             services.Configure<ConnectionStringList>(Configuration.GetSection("ConnectionStrings"));
             services.RegisterService();
         }
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -57,6 +58,12 @@ namespace webAdmin
             app.UseAuthentication();
             app.UseStaticFiles();
             app.UseErrorHandlerMiddleware();
+            app.UseCors(t =>
+            {
+                t.WithMethods("POST", "PUT", "GET");
+                t.WithHeaders("X-Requested-With", "Content-Type", "User-Agent");
+                t.WithOrigins("*");
+            });
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

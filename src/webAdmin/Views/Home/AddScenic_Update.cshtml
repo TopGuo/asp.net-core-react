@@ -12,30 +12,51 @@
         <div role="tabpanel" class="tab-pane active" id="setting_1">
             <div class="form-inline">
                 <input class="form-control" type="text" data-ng-model="model1.id" style="display:none;" />
+                
                 <div class="col-sm-12">
-                    <label class="control-label col-sm-2">广告位置:</label>
+                    <label class="control-label col-sm-2">标题:</label>
                     <div class="col-sm-10">
-                        <select class="form-control" ng-model="model1.types" required>
-                            <option value="-1">请选择</option>
-                            <option value="0">首页</option>
-                            <option value="1">信息市场</option>
-                        </select>
+                        <input class="form-control" type="text" ng-model="model1.title" placeholder="标题" required />
                     </div>
                 </div>
                 <div class="col-sm-12">
-                    <label class="control-label col-sm-2">跳转路径:</label>
+                    <label class="control-label col-sm-2">副标题:</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="text" ng-model="model1.jumpUrl" placeholder="跳转路径" required />
+                        <input class="form-control" type="text" ng-model="model1.lTitle" placeholder="副标题" required />
                     </div>
                 </div>
                 <div class="col-sm-12">
-                    <label class="control-label col-sm-2">图片:</label>
+                    <label class="control-label col-sm-2">浏览量:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" ng-model="model1.lookCount" placeholder="浏览量" required />
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <label class="control-label col-sm-2">备注1:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" ng-model="model1.mark1" placeholder="备注1" required />
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <label class="control-label col-sm-2">备注2:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" ng-model="model1.mark2" placeholder="备注2" required />
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <label class="control-label col-sm-2">封面图片:</label>
                     <div class="col-sm-10">
                         <input type="file" ng-model="model1.pic" title="点击上传图片" class="form-control" style="position:absolute;width:100%;height:100%;opacity:0;filter:alpha(opacity=0);cursor:pointer;" accept="image/png,image/jpeg,image/bmp" required onchange="$(this).scope().uploadHeadImage(this)" />
                         <img ng-src="{{model1.pic}}" style="max-width:250px;" title="浏览图片" alt="点击上传图片" />
                     </div>
                 </div>
-                
+                <div class="col-sm-12">
+                    <label class="control-label col-sm-2">景点文章内容:</label>
+                    <div class="col-sm-10">
+                        <textarea required config="customConfig" class="ueditor" style="height:320px;max-width:none;" ng-model="model1.content" placeholder="描述说明">
+                        </textarea>
+                    </div>
+                </div>
                 <div class="col-sm-12">
                     <div class="col-sm-10 col-sm-offset-2">
                         <button class="btn btn-success" ng-click="saveModel1()" ng-disabled="myForm.$invalid">保 存</button>
@@ -48,7 +69,7 @@
 @section Scripts{
     <script type="text/javascript">
         $angular.add(function ($scope, $query, $timeout, $location) {
-            $scope.model1 = {types:"-1",pic:"/images/add_pic.png"};
+            $scope.model1 = {pic:"/images/add_pic.png"};
              $scope.customConfig = {
                  initialFrameWidth: "100%",
                  initialFrameHeight: 320,
@@ -59,11 +80,17 @@
                  catcherFieldName: "upfile",
                  catcherUrlPrefix: ''
              };
+            var id = getUrlParam("id");
+            $query.get("/webapi/GetOneScenic?id=" + (id === null ? 0 : id), function (response) {
+                if (response.code === 200) {
+                    $scope.model1 = response.data;
+                }
+            });
             $scope.saveModel1 = function () {
-            $query.post("/webApi/BannerAdd_Updata", $scope.model1, function (response) {
+            $query.post("/webApi/ScenicAdd_Updata", $scope.model1, function (response) {
                     if (response.code === 200) {
                         $Alert("添加成功!").then(function () {
-                            location.href = $url("/Home/BannerManager");
+                            location.href = $url("/Home/Scenic");
                         });
                     } else {
                         $Alert(response.message)

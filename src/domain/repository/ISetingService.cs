@@ -44,6 +44,7 @@ namespace domain.repository
 
         //添加景点
         MyResult<object> AddScenic(ScenicDto model);
+        MyResult<object> DelScenic(ScenicDto model);
         //获取景点
         MyResult<object> GetScenic(ScenicDto model);
         //修改景点
