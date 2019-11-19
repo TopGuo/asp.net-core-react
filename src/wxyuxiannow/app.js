@@ -1,11 +1,13 @@
-
+var Api = require("./utils/httpPost");
 App({
   onLaunch: function () {
     const that = this;
+    Api.Post("/api/WxLogin", {}).then(res => {
+      console.log('res=', res)
+    });
     wx.getSystemInfo({
       success(res) {
         that.systemInfo = res;
-
       },
     });
     /**
@@ -46,9 +48,16 @@ App({
       }
     });
   },
+  onShow: function (e) {
+    this.globalData.launchOptions = e;
+    if (e && e.query && e.query.invite_id) {
+      wx.setStorageSync('refId', e.query.invite_id);
+    }
+  },
   globalData: {
     userInfo: null,
     isConnected: true,
+    launchOptions: null
   },
   systemInfo: null,
 })

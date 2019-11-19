@@ -130,11 +130,11 @@ Page({
     dataList: [
       {
         "id": 1,
-        "title":"蔚县Now今日上线"
+        "title": "蔚县Now今日上线"
       },
       {
         "id": 2,
-        "title":"蔚县人自己的微服务平台"
+        "title": "蔚县人自己的微服务平台"
       }
     ],
     indicatorDots: true,

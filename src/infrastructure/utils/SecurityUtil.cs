@@ -1,5 +1,7 @@
 using System;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace infrastructure.utils
@@ -88,5 +90,53 @@ namespace infrastructure.utils
             return _sign.Equals(sign, StringComparison.OrdinalIgnoreCase);
         }
 
+        /// <summary>
+        /// 微信小程序 encryptedData 解密
+        /// </summary>
+        /// <param name="encryptedDataStr"></param>
+        /// <param name="key">session_key</param>
+        /// <param name="iv">iv</param>
+        /// <returns></returns>
+        public static string AES_128_CBC_Decrypt(string encryptedDataStr, string key, string iv)
+        {
+            var aes = Aes.Create();
+            //设置 cipher 格式 AES-128-CBC 
+            aes.KeySize = 128;
+            aes.Padding = PaddingMode.PKCS7;
+            aes.Mode = CipherMode.CBC;
+            aes.Key = Convert.FromBase64String(key);
+            aes.IV = Convert.FromBase64String(iv);
+            byte[] encryptedData = Convert.FromBase64String(encryptedDataStr);
+            //解密 
+            ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
+            string result;
+            using (MemoryStream msDecrypt = new MemoryStream(encryptedData))
+            {
+                using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                {
+                    using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                    {
+                        result = srDecrypt.ReadToEnd();
+                    }
+                }
+            }
+            return result;
+        }
+        /// <summary>
+        /// 微信小程序验签
+        /// </summary>
+        /// <param name="rawData"></param>
+        /// <param name="signature"></param>
+        /// <param name="sessionKey"></param>
+        /// <returns></returns>
+        public static bool ValidWxUserSign(string rawData, string signature, string sessionKey)
+        {
+            var sha1 = SHA1.Create();
+            var source = Encoding.UTF8.GetBytes(rawData + sessionKey);
+            var target = sha1.ComputeHash(source);
+            var result = BitConverter.ToString(target).Replace("-", "").ToLower();
+            return result.Equals(signature);
+
+        }
     }
 }

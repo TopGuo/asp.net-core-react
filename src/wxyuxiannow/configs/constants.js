@@ -90,7 +90,9 @@ const article = `< !DOCTYPE HTML ><!--注释: wxParse试验文本-->
 	</div>
 	<!--ap-->
     `;
-
+const serviceKey = 'xingchenwuxian';
 module.exports = {
-    article
+	article: article,
+	serviceKey: serviceKey,
+	baseUrl: "http://127.0.0.1:50004"
 }
