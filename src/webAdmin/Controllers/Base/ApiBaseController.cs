@@ -54,10 +54,13 @@ namespace webAdmin.Controllers.Base
                         ReqParams[kv.Key] = kv.Value.ToString();
                     }
                 }
-                var values = context.HttpContext.GetContextDict();
-                foreach (var kv in values)
+                if (context.HttpContext.Request.Method.Equals("Post") || context.HttpContext.Request.Method.Equals("POST"))
                 {
-                    ReqParams[kv.Key] = kv.Value.ToString();
+                    var values = context.HttpContext.GetContextDict();
+                    foreach (var kv in values)
+                    {
+                        ReqParams[kv.Key] = kv.Value.ToString();
+                    }
                 }
                 if (SourceType == SourceType.Unknown)
                 {
