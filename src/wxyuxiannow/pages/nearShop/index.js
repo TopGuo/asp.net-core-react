@@ -1,4 +1,6 @@
 // pages/nearShop/index.js
+const Api = require('../../utils/httpPost');
+const constant = require('../../configs/constants');
 Page({
 
   /**
@@ -127,16 +129,7 @@ Page({
         "closeTime": "22:00"
       }
     ],
-    dataList: [
-      {
-        "id": 1,
-        "title": "蔚县Now今日上线"
-      },
-      {
-        "id": 2,
-        "title": "蔚县人自己的微服务平台"
-      }
-    ],
+    dataList: [],
     indicatorDots: true,
     autoplay: true,
     interval: 5000,
@@ -153,7 +146,6 @@ Page({
     wx.navigateTo({
       url: navigateUrl
     })
-    console.log(value);
   },
   // 以下为搜索框事件
   showInput: function () {
@@ -188,55 +180,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    Api.Post('/api/Announces', {}).then(res => {
+      if (res.code == 200) {
+        this.setData({
+          dataList: res.data
+        })
+      }
+    });
+    Api.Post('/api/Banners', { types: 0 }).then(res => {
+      let tempArry = [];
+      if (res.code == 200) {
+        res.data.map((v) => {
+          let tempObj = {};
+          tempObj.pic = `${constant.baseUrl}${v.pic}`;
+          tempArry.push(tempObj);
+        });
+        this.setData({
+          banners: tempArry
+        })
+      }
+    })
   }
 })

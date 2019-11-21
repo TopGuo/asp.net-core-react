@@ -32,12 +32,16 @@ namespace domain.configs
         /// 验证码图片
         /// </summary>
         public const string WEBSITE_VERIFICATION_CODE = "ValidateCode";
-        
+
         /// <summary>
         /// 
         /// </summary>
         public const string UPLOAD_TEMP_PATH = "Upload_Temp";
         public const string BANNER_PATH = "Banner";
         public const string SCENIC_PATH = "scenic";
+        public const string WxAppId = "wxffeedd2ae4c6df3a";
+        public const string WxSecret = "33cb587c96804bbacebbde7fdd6a03f9";
+        public const string WxPic = "WxPic";
+        public const string WxAccessToken = "";
     }
 }

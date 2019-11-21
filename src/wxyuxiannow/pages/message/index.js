@@ -1,6 +1,7 @@
 // pages/message/index.js
+const Api = require('../../utils/httpPost');
+const constant = require('../../configs/constants');
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -104,7 +105,6 @@ Page({
       curPage: 1,
       cateScrollTop: offset
     });
-    // this.getGoodsList(this.data.activeCategoryId);
   },
   swiperchange: function (e) {
     this.setData({
@@ -131,7 +131,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    Api.Post('/api/Banners', { types: 1 }).then(res => {
+      let tempArry = [];
+      if (res.code == 200) {
+        res.data.map((v) => {
+          let tempObj = {};
+          tempObj.pic = `${constant.baseUrl}${v.pic}`;
+          tempObj.id = v.id;
+          tempArry.push(tempObj);
+        });
+        this.setData({
+          banners: tempArry
+        })
+      }
+    })
   },
 
   /**

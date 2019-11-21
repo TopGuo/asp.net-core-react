@@ -1,10 +1,7 @@
-var Api = require("./utils/httpPost");
+
 App({
   onLaunch: function () {
     const that = this;
-    Api.Post("/api/WxLogin", {}).then(res => {
-      console.log('res=', res)
-    });
     wx.getSystemInfo({
       success(res) {
         that.systemInfo = res;

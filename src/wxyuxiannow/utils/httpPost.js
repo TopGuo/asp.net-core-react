@@ -25,7 +25,6 @@ function Post(api, data) {
       },
       complete(complete) {
         // 加载完成
-        console.log("complete")
       }
     })
   });

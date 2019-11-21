@@ -774,7 +774,7 @@ namespace domain.entitys
                 entity.Property(e => e.Pic)
                     .IsRequired()
                     .HasColumnName("pic")
-                    .HasColumnType("varchar(100)")
+                    .HasColumnType("varchar(300)")
                     .HasDefaultValueSql("''");
 
                 entity.Property(e => e.RefId)

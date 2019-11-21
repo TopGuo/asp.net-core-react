@@ -15,6 +15,8 @@ namespace domain.entitys
         public int Status { get; set; }
         public int RefId { get; set; }
         public decimal Amount { get; set; }
+        public string OpenId { get; set; }
+        public string SessionKey { get; set; }
         public DateTime CreateTime { get; set; }
         public DateTime UpdateTime { get; set; }
     }

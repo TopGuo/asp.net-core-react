@@ -56,7 +56,7 @@ namespace application.services
             Banner banner = new Banner
             {
                 Pic = model.Pic,
-                Types = model.Types
+                Types = (int)model.Types
             };
             if (!string.IsNullOrEmpty(model.JumpUrl))
             {
@@ -390,7 +390,12 @@ namespace application.services
         public MyResult<object> GetBanner(BannerDto model)
         {
             MyResult result = new MyResult();
-            var banner = base.Where<Banner>(predicate => predicate.IsDel.Equals(0)).Take(3);
+            var query = base.Query<Banner>();
+            if (model.Types.HasValue)
+            {
+                query = query.Where(predicate => predicate.Types.Equals(model.Types));
+            }
+            var banner = query.Where<Banner>(predicate => predicate.IsDel.Equals(0));
             result.Data = banner;
             return result;
         }
@@ -459,7 +464,7 @@ namespace application.services
         {
             MyResult result = new MyResult();
             var sql = "select id,userId,title,lTitle,lookCount,pic,mark1,mark2,createTime from scenic where isDel=0;";
-            var scenic = base.dbConnection.Query<Scenic>(sql).AsQueryable().Pages(model.PageIndex, model.PageSize, out int count, out int pageCount);
+            var scenic = base.dbConnection.Query<ScenicDto2>(sql).AsQueryable().Pages(model.PageIndex, model.PageSize, out int count, out int pageCount);
             result.PageCount = pageCount;
             result.RecordCount = count;
             result.Data = scenic;

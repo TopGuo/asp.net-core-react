@@ -24,6 +24,8 @@ namespace domain.enums
         [Description("账户禁用")]
         AccountDisabled = 10008,
         [Description("非法数据")]
-        InvalidData=10009
+        InvalidData = 10009,
+        [Description("数据已存在")]
+        HasValued = 20001,
     }
 }

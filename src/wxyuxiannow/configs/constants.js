@@ -91,8 +91,10 @@ const article = `< !DOCTYPE HTML ><!--注释: wxParse试验文本-->
 	<!--ap-->
     `;
 const serviceKey = 'xingchenwuxian';
+const shareProfile = '蔚州新时代 开奖啦';
 module.exports = {
 	article: article,
 	serviceKey: serviceKey,
-	baseUrl: "http://127.0.0.1:50004"
+	baseUrl: "http://192.168.5.3:50004",
+	shareProfile:shareProfile
 }

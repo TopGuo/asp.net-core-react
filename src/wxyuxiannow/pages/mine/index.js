@@ -1,4 +1,5 @@
 const app = getApp()
+const auth = require("../../utils/auth");
 Page({
 
   /**
@@ -6,8 +7,8 @@ Page({
    */
   data: {
     userInfo: false,
-    userMobile:'18333103619',
-    isVip:true
+    userMobile: '18333103619',
+    isVip: true
   },
   onGotUserInfo(e) {
     console.log(e.detail.userInfo)
@@ -20,7 +21,7 @@ Page({
     }
     if (app.globalData.isConnected) {
       wx.setStorageSync('userInfo', e.detail.userInfo)
-      AUTH.login(this);
+      auth.login(this);
     } else {
       wx.showToast({
         title: '当前无网络',
@@ -33,6 +34,12 @@ Page({
       title: '关于我们',
       content: '河北星辰无限科技有限公司 \r\n成立于2016年\r\n总部位于河北省石家庄市桥西区想悦天地',
       showCancel: false
+    })
+  },
+  loginOut:function () {
+    auth.loginOut();
+    wx.reLaunch({
+      url: '/pages/mine/index'
     })
   },
   /**
@@ -55,7 +62,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    const _this = this;
+    auth.checkHasLogined().then(isLogined => {
+      if (isLogined) {
+        _this.setData({
+          userInfo: wx.getStorageSync('userInfo')
+        })
+      }
+    })
   },
 
   /**

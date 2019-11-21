@@ -1,20 +1,31 @@
 // pages/nearShop/notice.js
 const WxParse = require('../../wxParse/wxParse.js');
-const constants=require('../../configs/constants.js');
+const Api = require('../../utils/httpPost');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    notice: { title: "跟我左边画条龙" }
+    notice: { title: "跟我左边画条龙" },
+    article: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    WxParse.wxParse('article', 'html', constants.article, this, 5);
+    console.log(options)
+    Api.Post('/api/OneAnnounces', { id: options.id }).then(res => {
+      console.log(res)
+      this.setData({
+        article: res.data.content,
+        notice: {
+          title: res.data.createTime
+        }
+      });
+      WxParse.wxParse('article', 'html', this.data.article, this, 5);
+    });
   },
 
   /**
