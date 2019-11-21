@@ -179,15 +179,17 @@ namespace webAdmin.Controllers
             }
             return SetingService.AddBanner(model);
         }
-
+        [HttpPost]
         public MyResult<object> ScenicList([FromBody]ScenicDto model)
         {
             return SetingService.GetScenic(model);
         }
+        [HttpPost]
         public MyResult<object> DelScenic([FromBody]ScenicDto model)
         {
             return SetingService.DelScenic(model);
         }
+        [HttpPost]
         public MyResult<object> ScenicAdd_Updata([FromBody] ScenicDto model)
         {
             if (!string.IsNullOrEmpty(model.Pic) && model.Pic.Length > 1000)
@@ -205,6 +207,30 @@ namespace webAdmin.Controllers
         {
             ScenicDto model = new ScenicDto { Id = id };
             return SetingService.GetOneScenic(model);
+        }
+        [HttpPost]
+        public MyResult<object> MessType([FromBody]MessageTypeDto model)
+        {
+            return SetingService.GetMessageType(model);
+        }
+        [HttpPost]
+        public MyResult<object> SaveMessageType([FromBody]MessageTypeDto model)
+        {
+            if (!string.IsNullOrEmpty(model.Pic) && model.Pic.Length > 1000)
+            {
+                var fileName = DateTime.Now.GetTicket().ToString();
+                model.Pic = ImageHandlerUtil.SaveBase64Image(model.Pic, $"{fileName}.png", Constants.MessageType_PATH);
+            }
+            if (model.Id.HasValue)
+            {
+                return SetingService.UpdateMessageType(model);
+            }
+            return SetingService.AddMessageType(model);
+        }
+        [HttpPost]
+        public MyResult<object> DelMessageType([FromBody]MessageTypeDto model)
+        {
+            return SetingService.DelMessageType(model);
         }
 
         #endregion

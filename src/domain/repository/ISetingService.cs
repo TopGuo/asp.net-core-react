@@ -41,6 +41,7 @@ namespace domain.repository
         MyResult<object> GetMessageType(MessageTypeDto model);
         //修改消息类别
         MyResult<object> DelMessageType(MessageTypeDto model);
+        MyResult<object> UpdateMessageType(MessageTypeDto model);
 
         //添加景点
         MyResult<object> AddScenic(ScenicDto model);

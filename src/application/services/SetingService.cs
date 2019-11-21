@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Dapper;
 using domain.configs;
@@ -120,6 +121,11 @@ namespace application.services
             if (string.IsNullOrEmpty(model.Types.ToString()) || model.Types < 0)
             {
                 return result.SetStatus(ErrorCode.InvalidData, "类型数据非法");
+            }
+            var type = base.First<MessageType>(predicate => predicate.Types.Equals(model.Types));
+            if (type != null)
+            {
+                return result.SetStatus(ErrorCode.InvalidData, "信息类别重复");
             }
             MessageType messageType = new MessageType
             {
@@ -513,6 +519,49 @@ namespace application.services
         public MyResult<object> UpdateMessage(MessageDto model)
         {
             throw new System.NotImplementedException();
+        }
+
+        public MyResult<object> UpdateMessageType(MessageTypeDto model)
+        {
+            MyResult result = new MyResult();
+            if (!model.Id.HasValue)
+            {
+                return result.SetStatus(ErrorCode.InvalidData, "Id非法");
+            }
+            if (string.IsNullOrEmpty(model.Pic))
+            {
+                return result.SetStatus(ErrorCode.InvalidData, "图片数据非法");
+            }
+            if (string.IsNullOrEmpty(model.Title))
+            {
+                return result.SetStatus(ErrorCode.InvalidData, "标题数据非法");
+            }
+            if (string.IsNullOrEmpty(model.Types.ToString()) || model.Types < 0)
+            {
+                return result.SetStatus(ErrorCode.InvalidData, "类型数据非法");
+            }
+            var type = base.First<MessageType>(predicate => predicate.Types.Equals(model.Types));
+            if (type != null)
+            {
+                return result.SetStatus(ErrorCode.InvalidData, "信息类别重复");
+            }
+            var type2 = base.dbConnection.QueryFirstOrDefault<MessageType>($"select * from messageType where isDel=0 and id={model.Id}");
+            // var type2 = base.First<MessageType>(predicate => predicate.Id.Equals(model.Id));
+            if (type2 == null)
+            {
+                return result.SetStatus(ErrorCode.NotFound, "信息不存在");
+            }
+            type2.Title = model.Title;
+            type2.Pic = model.Pic;
+            type2.Types = model.Types;
+            type2.UpdateTime = DateTime.Now;
+            if (!string.IsNullOrEmpty(model.Order.ToString()) && model.Order > 0)
+            {
+                type2.Order = model.Order;
+            }
+            base.Update(type2, true);
+            result.Data = true;
+            return result;
         }
 
         public MyResult<object> UpdateScenic(ScenicDto model)

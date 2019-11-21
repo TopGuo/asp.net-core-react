@@ -124,6 +124,8 @@ namespace webAdmin.Controllers
 
         [Action("店铺管理", ActionType.ShiChangManager, Icon = "glyphicon-shopping-cart")]
         public ViewResult Shop() { return View(); }
+        [Action("信息类别管理", ActionType.SystemManager)]
+        public ViewResult MessType() { return View(); }
 
     }
 }
