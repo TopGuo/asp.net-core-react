@@ -1,0 +1,141 @@
+2019-11-20 09:56:24.609 +08:00 [Error] webAdmin.Controllers.Base.ApiBaseController: Could not find file '/WxPic1574214984570.png'.
+System.IO.FileNotFoundException: Could not find file '/WxPic1574214984570.png'.
+File name: '/WxPic1574214984570.png'
+   at System.IO.FileInfo.get_Length()
+   at application.services.WxService.GetUnlimited(Int32 userId) in /Users/topbrids/netcore/asp.net-core-react/src/application/services/WxService.cs:line 141
+   at webAdmin.Controllers.ApiController.Unlimited(UnlimitedDto model) in /Users/topbrids/netcore/asp.net-core-react/src/webAdmin/Controllers/ApiController.cs:line 33
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+2019-11-20 09:58:08.361 +08:00 [Error] webAdmin.Controllers.Base.ApiBaseController: Access to the path '/WxPic' is denied.
+System.UnauthorizedAccessException: Access to the path '/WxPic' is denied. ---> System.IO.IOException: Permission denied
+   --- End of inner exception stack trace ---
+   at System.IO.FileSystem.CreateDirectory(String fullPath)
+   at System.IO.DirectoryInfo.Create()
+   at application.services.WxService.GetUnlimited(Int32 userId) in /Users/topbrids/netcore/asp.net-core-react/src/application/services/WxService.cs:line 130
+   at webAdmin.Controllers.ApiController.Unlimited(UnlimitedDto model) in /Users/topbrids/netcore/asp.net-core-react/src/webAdmin/Controllers/ApiController.cs:line 33
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+2019-11-20 10:28:58.638 +08:00 [Error] webAdmin.Controllers.Base.ApiBaseController: A null reference or invalid value was found [GDI+ status: InvalidParameter]
+System.ArgumentException: A null reference or invalid value was found [GDI+ status: InvalidParameter]
+   at System.DrawingCore.GDIPlus.CheckStatus(Status status)
+   at System.DrawingCore.Image.CreateFromHandle(IntPtr handle)
+   at System.DrawingCore.Image.LoadFromStream(Stream stream, Boolean keepAlive)
+   at application.services.WxService.GetUnlimited(Int32 userId) in /Users/topbrids/netcore/asp.net-core-react/src/application/services/WxService.cs:line 131
+   at webAdmin.Controllers.ApiController.Unlimited(UnlimitedDto model) in /Users/topbrids/netcore/asp.net-core-react/src/webAdmin/Controllers/ApiController.cs:line 33
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+2019-11-20 10:33:52.100 +08:00 [Error] webAdmin.Controllers.Base.ApiBaseController: A null reference or invalid value was found [GDI+ status: InvalidParameter]
+System.ArgumentException: A null reference or invalid value was found [GDI+ status: InvalidParameter]
+   at System.DrawingCore.GDIPlus.CheckStatus(Status status)
+   at System.DrawingCore.Image.CreateFromHandle(IntPtr handle)
+   at System.DrawingCore.Image.LoadFromStream(Stream stream, Boolean keepAlive)
+   at infrastructure.utils.ImageHandlerUtil.WaterMarks(Byte[] bytes, String waterMarks, String filePath) in /Users/topbrids/netcore/asp.net-core-react/src/infrastructure/utils/ImageHandlerUtil.cs:line 100
+   at application.services.WxService.GetUnlimited(Int32 userId) in /Users/topbrids/netcore/asp.net-core-react/src/application/services/WxService.cs:line 131
+   at webAdmin.Controllers.ApiController.Unlimited(UnlimitedDto model) in /Users/topbrids/netcore/asp.net-core-react/src/webAdmin/Controllers/ApiController.cs:line 33
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+2019-11-20 10:35:37.355 +08:00 [Error] webAdmin.Controllers.Base.ApiBaseController: A null reference or invalid value was found [GDI+ status: InvalidParameter]
+System.ArgumentException: A null reference or invalid value was found [GDI+ status: InvalidParameter]
+   at System.DrawingCore.GDIPlus.CheckStatus(Status status)
+   at System.DrawingCore.Image.CreateFromHandle(IntPtr handle)
+   at System.DrawingCore.Image.LoadFromStream(Stream stream, Boolean keepAlive)
+   at infrastructure.utils.ImageHandlerUtil.WaterMarks(Byte[] bytes, String waterMarks, String filePath) in /Users/topbrids/netcore/asp.net-core-react/src/infrastructure/utils/ImageHandlerUtil.cs:line 100
+   at application.services.WxService.GetUnlimited(Int32 userId) in /Users/topbrids/netcore/asp.net-core-react/src/application/services/WxService.cs:line 131
+   at webAdmin.Controllers.ApiController.Unlimited(UnlimitedDto model) in /Users/topbrids/netcore/asp.net-core-react/src/webAdmin/Controllers/ApiController.cs:line 33
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+2019-11-20 14:46:00.857 +08:00 [Error] webAdmin.Controllers.Base.ApiBaseController: A null reference or invalid value was found [GDI+ status: InvalidParameter]
+System.ArgumentException: A null reference or invalid value was found [GDI+ status: InvalidParameter]
+   at System.DrawingCore.GDIPlus.CheckStatus(Status status)
+   at System.DrawingCore.Image.CreateFromHandle(IntPtr handle)
+   at System.DrawingCore.Image.LoadFromStream(Stream stream, Boolean keepAlive)
+   at infrastructure.utils.ImageHandlerUtil.WaterMarks(Byte[] bytes, String waterMarks, String filePath) in /Users/topbrids/netcore/asp.net-core-react/src/infrastructure/utils/ImageHandlerUtil.cs:line 100
+   at application.services.WxService.GetUnlimited(Int32 userId) in /Users/topbrids/netcore/asp.net-core-react/src/application/services/WxService.cs:line 129
+   at webAdmin.Controllers.ApiController.Unlimited(UnlimitedDto model) in /Users/topbrids/netcore/asp.net-core-react/src/webAdmin/Controllers/ApiController.cs:line 33
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+2019-11-20 14:47:45.893 +08:00 [Error] webAdmin.Controllers.Base.ApiBaseController: A null reference or invalid value was found [GDI+ status: InvalidParameter]
+System.ArgumentException: A null reference or invalid value was found [GDI+ status: InvalidParameter]
+   at System.DrawingCore.GDIPlus.CheckStatus(Status status)
+   at System.DrawingCore.Image.CreateFromHandle(IntPtr handle)
+   at System.DrawingCore.Image.LoadFromStream(Stream stream, Boolean keepAlive)
+   at infrastructure.utils.ImageHandlerUtil.WaterMarks(Byte[] bytes, String waterMarks, String filePath) in /Users/topbrids/netcore/asp.net-core-react/src/infrastructure/utils/ImageHandlerUtil.cs:line 100
+   at application.services.WxService.GetUnlimited(Int32 userId) in /Users/topbrids/netcore/asp.net-core-react/src/application/services/WxService.cs:line 129
+   at webAdmin.Controllers.ApiController.Unlimited(UnlimitedDto model) in /Users/topbrids/netcore/asp.net-core-react/src/webAdmin/Controllers/ApiController.cs:line 33
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+2019-11-20 14:52:36.545 +08:00 [Error] webAdmin.Controllers.Base.ApiBaseController: https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=27_dxlK1ROyrl2PHHG41rAnXG_e9HM-Ff0hdDas_PsZqHnSIOgGlI-cc1-Tx1N5WZ4V4RXm9vZ5SgIB5l2GfLJKL5Kr59JeQidVcqcyyPBWB4NDAS35AZW7YtjKTo-vA9f60ClNx3Sm1mLACc4bJXEbAHABPW :A null reference or invalid value was found [GDI+ status: InvalidParameter]
+System.Exception: https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=27_dxlK1ROyrl2PHHG41rAnXG_e9HM-Ff0hdDas_PsZqHnSIOgGlI-cc1-Tx1N5WZ4V4RXm9vZ5SgIB5l2GfLJKL5Kr59JeQidVcqcyyPBWB4NDAS35AZW7YtjKTo-vA9f60ClNx3Sm1mLACc4bJXEbAHABPW :A null reference or invalid value was found [GDI+ status: InvalidParameter]
+   at infrastructure.utils.HttpUtil.PostByte(String url, String postData, String contentType, X509Certificate2 cert, String headerAuthorization, String charset, String contentCharset) in /Users/topbrids/netcore/asp.net-core-react/src/infrastructure/utils/HttpUtil.cs:line 118
+   at application.services.WxService.GetUnlimited(Int32 userId) in /Users/topbrids/netcore/asp.net-core-react/src/application/services/WxService.cs:line 121
+   at webAdmin.Controllers.ApiController.Unlimited(UnlimitedDto model) in /Users/topbrids/netcore/asp.net-core-react/src/webAdmin/Controllers/ApiController.cs:line 33
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+2019-11-20 14:54:23.251 +08:00 [Error] webAdmin.Controllers.Base.ApiBaseController: https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=27_dxlK1ROyrl2PHHG41rAnXG_e9HM-Ff0hdDas_PsZqHnSIOgGlI-cc1-Tx1N5WZ4V4RXm9vZ5SgIB5l2GfLJKL5Kr59JeQidVcqcyyPBWB4NDAS35AZW7YtjKTo-vA9f60ClNx3Sm1mLACc4bJXEbAHABPW :A null reference or invalid value was found [GDI+ status: InvalidParameter]
+System.Exception: https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=27_dxlK1ROyrl2PHHG41rAnXG_e9HM-Ff0hdDas_PsZqHnSIOgGlI-cc1-Tx1N5WZ4V4RXm9vZ5SgIB5l2GfLJKL5Kr59JeQidVcqcyyPBWB4NDAS35AZW7YtjKTo-vA9f60ClNx3Sm1mLACc4bJXEbAHABPW :A null reference or invalid value was found [GDI+ status: InvalidParameter]
+   at infrastructure.utils.HttpUtil.PostByte(String url, String postData, String contentType, X509Certificate2 cert, String headerAuthorization, String charset, String contentCharset) in /Users/topbrids/netcore/asp.net-core-react/src/infrastructure/utils/HttpUtil.cs:line 118
+   at application.services.WxService.GetUnlimited(Int32 userId) in /Users/topbrids/netcore/asp.net-core-react/src/application/services/WxService.cs:line 121
+   at webAdmin.Controllers.ApiController.Unlimited(UnlimitedDto model) in /Users/topbrids/netcore/asp.net-core-react/src/webAdmin/Controllers/ApiController.cs:line 33
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+2019-11-20 14:55:20.385 +08:00 [Error] webAdmin.Controllers.Base.ApiBaseController: https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=27_dxlK1ROyrl2PHHG41rAnXG_e9HM-Ff0hdDas_PsZqHnSIOgGlI-cc1-Tx1N5WZ4V4RXm9vZ5SgIB5l2GfLJKL5Kr59JeQidVcqcyyPBWB4NDAS35AZW7YtjKTo-vA9f60ClNx3Sm1mLACc4bJXEbAHABPW :A null reference or invalid value was found [GDI+ status: InvalidParameter]
+System.Exception: https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=27_dxlK1ROyrl2PHHG41rAnXG_e9HM-Ff0hdDas_PsZqHnSIOgGlI-cc1-Tx1N5WZ4V4RXm9vZ5SgIB5l2GfLJKL5Kr59JeQidVcqcyyPBWB4NDAS35AZW7YtjKTo-vA9f60ClNx3Sm1mLACc4bJXEbAHABPW :A null reference or invalid value was found [GDI+ status: InvalidParameter]
+   at infrastructure.utils.HttpUtil.PostByte(String url, String postData, String contentType, X509Certificate2 cert, String headerAuthorization, String charset, String contentCharset) in /Users/topbrids/netcore/asp.net-core-react/src/infrastructure/utils/HttpUtil.cs:line 118
+   at application.services.WxService.GetUnlimited(Int32 userId) in /Users/topbrids/netcore/asp.net-core-react/src/application/services/WxService.cs:line 121
+   at webAdmin.Controllers.ApiController.Unlimited(UnlimitedDto model) in /Users/topbrids/netcore/asp.net-core-react/src/webAdmin/Controllers/ApiController.cs:line 33
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+2019-11-20 15:42:34.426 +08:00 [Error] webAdmin.Controllers.Base.ApiBaseController: Generic Error [GDI+ status: GenericError]
+System.Exception: Generic Error [GDI+ status: GenericError]
+   at System.DrawingCore.GDIPlus.CheckStatus(Status status)
+   at System.DrawingCore.Image.Save(String filename, ImageCodecInfo encoder, EncoderParameters encoderParams)
+   at infrastructure.utils.ImageHandlerUtil.WaterMarks(Byte[] bytes, String waterMarks, String filePath, Brush brush, Int32 fontSize) in /Users/topbrids/netcore/asp.net-core-react/src/infrastructure/utils/ImageHandlerUtil.cs:line 120
+   at application.services.WxService.GetUnlimited(Int32 userId) in /Users/topbrids/netcore/asp.net-core-react/src/application/services/WxService.cs:line 125
+   at webAdmin.Controllers.ApiController.Unlimited(UnlimitedDto model) in /Users/topbrids/netcore/asp.net-core-react/src/webAdmin/Controllers/ApiController.cs:line 33
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+2019-11-20 15:44:48.582 +08:00 [Error] webAdmin.Controllers.Base.ApiBaseController: Generic Error [GDI+ status: GenericError]
+System.Exception: Generic Error [GDI+ status: GenericError]
+   at System.DrawingCore.GDIPlus.CheckStatus(Status status)
+   at System.DrawingCore.Image.Save(String filename, ImageCodecInfo encoder, EncoderParameters encoderParams)
+   at infrastructure.utils.ImageHandlerUtil.WaterMarks(Byte[] bytes, String waterMarks, String filePath, Brush brush, Int32 fontSize) in /Users/topbrids/netcore/asp.net-core-react/src/infrastructure/utils/ImageHandlerUtil.cs:line 120
+   at application.services.WxService.GetUnlimited(Int32 userId) in /Users/topbrids/netcore/asp.net-core-react/src/application/services/WxService.cs:line 130
+   at webAdmin.Controllers.ApiController.Unlimited(UnlimitedDto model) in /Users/topbrids/netcore/asp.net-core-react/src/webAdmin/Controllers/ApiController.cs:line 33
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()

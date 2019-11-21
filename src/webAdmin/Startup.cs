@@ -28,7 +28,9 @@ namespace webAdmin
             services.AddTransient<IPermissionService, PermissionService>();
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<ISetingService, SetingService>();
-            services.AddScoped<IUserService,UserService>();            
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IWxService, WxService>();
+
             services.AddMvcCustomer(Constants.WEBSITE_AUTHENTICATION_SCHEME, mvcOptions =>
              {
                  mvcOptions.AuthorizationSchemes = new List<MvcAuthorizeOptions>
@@ -42,7 +44,7 @@ namespace webAdmin
                     }
                  };
              });
-             services.Configure<ConnectionStringList>(Configuration.GetSection("ConnectionStrings"));
+            services.Configure<ConnectionStringList>(Configuration.GetSection("ConnectionStrings"));
             services.RegisterService();
         }
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
