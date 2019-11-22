@@ -39,6 +39,7 @@ namespace domain.configs
         public const string UPLOAD_TEMP_PATH = "Upload_Temp";
         public const string BANNER_PATH = "Banner";
         public const string MessageType_PATH = "MessageType";
+        public const string Message_Path = "Message";
         public const string SCENIC_PATH = "scenic";
         public const string WxAppId = "wxffeedd2ae4c6df3a";
         public const string WxSecret = "33cb587c96804bbacebbde7fdd6a03f9";

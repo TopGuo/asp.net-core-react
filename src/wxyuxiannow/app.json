@@ -10,7 +10,8 @@
     "pages/message/pubMessage/pubmessage",
     "pages/mine/company/hezuo",
     "pages/mine/callFriends/index",
-    "pages/mine/myTeam/index"
+    "pages/mine/myTeam/index",
+    "pages/message/detail/detail"
   ],
   "tabBar": {
     "list": [

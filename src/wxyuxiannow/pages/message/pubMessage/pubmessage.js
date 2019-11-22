@@ -1,107 +1,126 @@
+const Api = require('../../../utils/httpPost');
+const auth = require('../../../utils/auth');
+const constant = require('../../../configs/constants');
 Page({
     data: {
-        filePath: "",
+        baseImgs: [],
         images: [],
-        uploadImgs: [],
         count: 9,
-        array: ['招聘求职', '本地服务', '房屋出租', '征婚交友'],
+        array: [],
         index: -1,
-        textArea:''
+        types: -1,//类别
+        textArea: '暂无'//内容
     },
-    bindPickerChange: function(e) {
-        console.log('picker发送选择改变，携带值为', e.detail.value)
-        this.setData({
-            index: e.detail.value
+    onLoad: function () {
+        //验证是否登录
+        auth.checkHasLogined().then(isLogined => {
+            if (isLogined) {
+                Api.Post('/api/MessageType', {}).then(res => {
+                    let tempArry = [];
+                    if (res.code == 200) {
+                        res.data.map((v) => {
+                            let tempObj = {};
+                            tempObj.name = v.title;
+                            tempObj.types = v.types
+                            tempArry.push(tempObj);
+                        });
+                        this.setData({
+                            array: tempArry
+                        })
+                    }
+                })
+            } else {
+                wx.showModal({
+                    title: '提示',
+                    content: '本次操作需要您的登录授权',
+                    cancelText: '暂不登录',
+                    confirmText: '前往登录',
+                    success(res) {
+                        if (res.confirm) {
+                            wx.switchTab({
+                                url: "/pages/mine/index"
+                            })
+                        } else {
+                            wx.navigateBack()
+                        }
+                    }
+                })
+            }
         })
     },
-    bindAreaBlur:function(e) {
-      console.log(e.detail.value)
-      this.setData({
-          textArea:e.detail.value
-      })
+    bindPickerChange: function (e) {
+        let type = this.data.array[e.detail.value].types;
+        this.setData({
+            index: e.detail.value,
+            types: type
+        })
+    },
+    bindAreaBlur: function (e) {
+        this.setData({
+            textArea: e.detail.value
+        })
     },
     chooseImage: function (e) {
         var selectPictureNum = e.target.dataset.num;
-        this.setData({
-            count: 9 - selectPictureNum
-        })
+        if (selectPictureNum >= 6) {
+            wx.showModal({
+                title: '提示',
+                content: '最多上传6张图片',
+                cancelText: '取消'
+            })
+            return;
+        }
         var that = this;
         wx.chooseImage({
-            count: that.data.count, // 默认9
             sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
             sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
             success: function (res) {
                 var tempFilePaths = res.tempFilePaths;
                 that.setData({
-                    filePath: res.tempFilePaths[0],
-                    images: that.data.images.concat(tempFilePaths),
-                    uploadImgs: res.tempFilePaths
+                    images: that.data.images.concat(tempFilePaths)
                 })
-            },
+                that.uploadImg(tempFilePaths);
+            }
         })
 
     },
-    uploadImg: function () {
-        var that = this;
-        console.log(JSON.stringify(that.data.uploadImgs))
-        for (var i = 0; i < that.data.uploadImgs.length; i++) {
-            var filePath = that.data.uploadImgs[i];
-
-            uploadImage(
-                {
-                    filePath: filePath,
-                    dir: "images/",
-                    success: function (res) {
-                        console.log("上传成功")
-                        console.log("上传成功" + JSON.stringify(res))
-                    },
-                    fail: function (res) {
-                        console.log("上传失败")
-                        console.log(res)
-                    }
-                })
-        }
+    uploadImg: function (uploadImgs) {
+        uploadImgs.map((v) => {
+            this.uploadBase64File(v);
+        });
 
     },
-    uploadFile: function (params) {
-        if (!params.filePath) {
-            wx.showModal({
-                title: '图片错误',
-                content: '请重试',
-                showCancel: false,
-            })
-            return;
-        }
-        
-        wx.uploadFile({
-            url: 'url',
-            filePath: params.filePath,
-            name: 'file',
-            formData: {
-                //'name': "picture.png",
-                // 'key': aliyunFileKey,
-                // 'policy': policyBase64,
-                // 'OSSAccessKeyId': accessid,
-                // 'signature': signature,
-                'success_action_status': '200',
-            },
-            success: function (res) {
-                if (res.statusCode != 200) {
-                    if (params.fail) {
-                        params.fail(res)
+    uploadBase64File: function (v) {
+        wx.getFileSystemManager().readFile({
+            filePath: v, //选择图片返回的相对路径
+            encoding: 'base64', //编码格式
+            success: (res) => {
+                let baseImg = 'data:image/png;base64,' + res.data
+                this.data.baseImgs.push(baseImg);
+            }
+        })
+    },
+    pubMessage: function () {
+        wx.showLoading()
+        Api.Post('/api/PubMessage', { basePics: this.data.baseImgs, content: this.data.textArea, types: this.data.types }).then(res => {
+            wx.hideLoading();
+            if (res.code == 200) {
+                wx.showModal({
+                    title: '提示',
+                    content: '发布信息成功',
+                    confirmText: '确定',
+                    success(res) {
+                        if (res.confirm) {
+                            wx.navigateBack()
+                        }
                     }
-                    return;
-                }
-                if (params.success) {
-                    params.success(aliyunFileKey);
-                }
-            },
-            fail: function (err) {
-                err.wxaddinfo = aliyunServerURL;
-                if (params.fail) {
-                    params.fail(err)
-                }
-            },
+                })
+            } else {
+                wx.showModal({
+                    title: '提示',
+                    content: '发布信息失败' + res.message
+                })
+            }
         })
     }
 })

@@ -79,20 +79,21 @@ namespace application.services
             {
                 return result.SetStatus(ErrorCode.InvalidData, "图片数据非法");
             }
-            if (string.IsNullOrEmpty(model.Title))
-            {
-                return result.SetStatus(ErrorCode.InvalidData, "标题数据非法");
-            }
+            // if (string.IsNullOrEmpty(model.Title))
+            // {
+            //     return result.SetStatus(ErrorCode.InvalidData, "标题数据非法");
+            // }
             if (string.IsNullOrEmpty(model.Types.ToString()) || model.Types < 0)
             {
                 return result.SetStatus(ErrorCode.InvalidData, "类型数据非法");
             }
             MessageInfo messageInfo = new MessageInfo
             {
-                Title = model.Title,
+                Title = model?.Title ?? "",
                 Content = model.Content,
                 Pics = model.Pics,
-                Types = model.Types
+                Types = model.Types,
+                UserId = model.UserId
             };
             if (!string.IsNullOrEmpty(model.Order.ToString()) && model.Order > 0)
             {
@@ -409,11 +410,13 @@ namespace application.services
         public MyResult<object> GetMessage(MessageDto model)
         {
             MyResult result = new MyResult();
-            var query = base.Query<MessageInfo>().Where(predicate => predicate.IsDel.Equals(0));
+            var sql = $"select miu.*,mt.title from (select mi.id,mi.content,mi.lookCount,mi.Pics,mi.types,u.nickName,u.pic,mi.createTime,mi.isDel from messageInfo mi left join user u on mi.userId=u.id) miu left join messageType mt on miu.types=mt.types where miu.isDel=0";
             if (model.Types > 0)
             {
-                query = query.Where(predicate => predicate.Types.Equals(model.Types));
+                sql = sql + $" and miu.types={model.Types}";
             }
+            sql = sql + $" order by miu.createTime desc";
+            var query = base.dbConnection.Query<MessageDto2>(sql).AsQueryable();
             query = query.Pages(model.PageIndex, model.PageSize, out int count, out int pageCount);
             result.PageCount = pageCount;
             result.RecordCount = count;
@@ -439,6 +442,21 @@ namespace application.services
             }
             var announce = base.First<Announce>(predicate => predicate.Id == id);
             result.Data = announce;
+            return result;
+        }
+
+        public MyResult<object> GetOneMessage(MessageDto model)
+        {
+            MyResult result = new MyResult();
+            var sql = $"select miu.*,mt.title from (select mi.id,mi.content,mi.lookCount,mi.Pics,mi.types,u.nickName,u.pic,mi.createTime,mi.isDel from messageInfo mi left join user u on mi.userId=u.id) miu left join messageType mt on miu.types=mt.types where miu.isDel=0 and miu.id={model.Id}";
+            var query = base.dbConnection.QueryFirstOrDefault<MessageDto2>(sql);
+            var messageInfo = base.dbConnection.QueryFirstOrDefault<MessageInfo>($"select * from messageInfo where id={model.Id}");
+            if (messageInfo != null)
+            {
+                messageInfo.LookCount += 1;
+            }
+            base.Update(messageInfo, true);
+            result.Data = query;
             return result;
         }
 

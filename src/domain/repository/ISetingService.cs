@@ -28,6 +28,7 @@ namespace domain.repository
 
         //获取信息市场列表
         MyResult<object> GetMessage(MessageDto model);
+        MyResult<object> GetOneMessage(MessageDto model);
         //删除信息
         MyResult<object> DelMessage(MessageDto model);
         //添加信息

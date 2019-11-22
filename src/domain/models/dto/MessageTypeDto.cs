@@ -1,3 +1,4 @@
+
 namespace domain.models.dto
 {
     public class MessageTypeDto : BaseModel
