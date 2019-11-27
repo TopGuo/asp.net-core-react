@@ -1,9 +1,9 @@
 <view>
     <view class="shop-pic">
-        <image class="img" src="{{shopInfo.pic}}" mode="scaleToFill" />
+        <image class="img" src="{{shopInfo.logoPic}}" mode="scaleToFill" />
     </view>
     <view class="shop-c">
-        <text class="shop-name">{{shopInfo.name}}</text>
+        <text class="shop-name">{{shopInfo.title}}</text>
         <text class="location">{{shopInfo.location}}</text>
         <view class="time">
             <text class="t1">营业时间</text>

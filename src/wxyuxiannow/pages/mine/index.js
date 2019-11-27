@@ -1,5 +1,6 @@
 const app = getApp()
 const auth = require("../../utils/auth");
+const Api = require('../../utils/httpPost');
 Page({
 
   /**
@@ -8,7 +9,8 @@ Page({
   data: {
     userInfo: false,
     userMobile: '18333103619',
-    isVip: true
+    isVip: false,
+    shopId: -1
   },
   onGotUserInfo(e) {
     console.log(e.detail.userInfo)
@@ -36,17 +38,18 @@ Page({
       showCancel: false
     })
   },
-  loginOut:function () {
+  heZuo: function () {
+    wx.showModal({
+      title: '商务合作',
+      content: '河北星辰无限科技有限公司 \r\n客服联系方式\r\n 17336318815',
+      showCancel: false
+    })
+  },
+  loginOut: function () {
     auth.loginOut();
     wx.reLaunch({
       url: '/pages/mine/index'
     })
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
   },
 
   /**
@@ -70,40 +73,13 @@ Page({
         })
       }
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    Api.Post('/api/CheckUserStatus', {}, 'Get').then(res => {
+      if (res.code == 200) {
+        this.setData({
+          isVip: res.data.status,
+          shopId: res.data.id
+        })
+      }
+    });
   }
 })

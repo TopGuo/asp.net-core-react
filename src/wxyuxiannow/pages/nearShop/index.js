@@ -8,113 +8,12 @@ Page({
    */
   data: {
     inputShowed: false,
+    curPage: 1,
     inputVal: "", // 搜索框内容
-    banners: [
-      {
-        "pic": "../../images/banner/b1.png"
-      },
-      {
-        "pic": "../../images/banner/b2.png"
-      },
-      {
-        "pic": "../../images/banner/b3.png"
-      }, {
-        "pic": "../../images/banner/b4.png"
-      }
-    ],
+    banners: [],
     shops: [
       {
         "id": 1,
-        "pic": "http://bpic.588ku.com/element_origin_min_pic/16/10/30/528aa13209e86d5d9839890967a6b9c1.jpg",
-        "name": "londis美发店",
-        "content": "美发店啦啦啦",
-        "lookCount": 300,
-        "type": 1,
-        "far": 12.6,
-        "location": "河北省石家庄市裕华区同祥城",
-        "telphone": "18333103619",
-        "latitude": 85,
-        "longitude": 100,
-        "openTime": "8:00",
-        "closeTime": "22:00"
-      },
-      {
-        "id": 2,
-        "pic": "http://bpic.588ku.com/element_origin_min_pic/16/10/30/528aa13209e86d5d9839890967a6b9c1.jpg",
-        "name": "londis美发店",
-        "content": "美发店啦啦啦,美发店啦啦啦",
-        "lookCount": 300,
-        "type": 1,
-        "far": 12.6,
-        "location": "河北省石家庄市裕华区同祥城",
-        "telphone": "18333103619",
-        "latitude": 85,
-        "longitude": 100,
-        "openTime": "8:00",
-        "closeTime": "22:00"
-      },
-      {
-        "id": 3,
-        "pic": "http://bpic.588ku.com/element_origin_min_pic/16/10/30/528aa13209e86d5d9839890967a6b9c1.jpg",
-        "name": "londis美发店",
-        "content": "美发店啦啦啦",
-        "lookCount": 300,
-        "type": 1,
-        "far": 12.6,
-        "location": "河北省石家庄市裕华区同祥城",
-        "telphone": "18333103619",
-        "latitude": 85,
-        "longitude": 100,
-        "openTime": "8:00",
-        "closeTime": "22:00"
-      },
-      {
-        "id": 4,
-        "pic": "http://bpic.588ku.com/element_origin_min_pic/16/10/30/528aa13209e86d5d9839890967a6b9c1.jpg",
-        "name": "londis美发店",
-        "content": "美发店啦啦啦",
-        "lookCount": 300,
-        "type": 1,
-        "far": 12.6,
-        "location": "河北省石家庄市裕华区同祥城",
-        "telphone": "18333103619",
-        "latitude": 85,
-        "longitude": 100,
-        "openTime": "8:00",
-        "closeTime": "22:00"
-      },
-      {
-        "id": 5,
-        "pic": "http://bpic.588ku.com/element_origin_min_pic/16/10/30/528aa13209e86d5d9839890967a6b9c1.jpg",
-        "name": "londis美发店",
-        "content": "美发店啦啦啦",
-        "lookCount": 300,
-        "type": 1,
-        "far": 12.6,
-        "location": "河北省石家庄市裕华区同祥城",
-        "telphone": "18333103619",
-        "latitude": 85,
-        "longitude": 100,
-        "openTime": "8:00",
-        "closeTime": "22:00"
-      },
-      {
-        "id": 6,
-        "pic": "http://bpic.588ku.com/element_origin_min_pic/16/10/30/528aa13209e86d5d9839890967a6b9c1.jpg",
-        "name": "londis美发店",
-        "content": "美发店啦啦啦",
-        "lookCount": 300,
-        "type": 1,
-        "far": 12.6,
-        "location": "河北省石家庄市裕华区同祥城",
-        "telphone": "18333103619",
-        "latitude": 85,
-        "longitude": 100,
-        "openTime": "8:00",
-        "closeTime": "22:00"
-      },
-      {
-        "id": 7,
         "pic": "http://bpic.588ku.com/element_origin_min_pic/16/10/30/528aa13209e86d5d9839890967a6b9c1.jpg",
         "name": "londis美发店",
         "content": "美发店啦啦啦",
@@ -136,11 +35,13 @@ Page({
     duration: 1000,
     circular: true,
     sideMargin: '1rpx',
-    showLoading: false
+    showLoading: false,
+    loadingHiden: true,
+    longitude: 0,
+    latitude: 0
   },
   toShopDetail: function (options) {
     let value = options.currentTarget.dataset;
-    console.log('nearShopToShopDetail', value)
     let shopInfo = JSON.stringify(value.item);
     let navigateUrl = `../nearShop/shopDetail/index?shopInfo=${shopInfo}`;
     wx.navigateTo({
@@ -171,10 +72,6 @@ Page({
   },
   toSearch: function () {
     console.log('search...', this.data.inputVal)
-    // this.setData({
-    //   curPage: 1
-    // });
-    // this.getGoodsList(this.data.activeCategoryId);
   },
   /**
    * 生命周期函数--监听页面加载
@@ -199,6 +96,72 @@ Page({
           banners: tempArry
         })
       }
+    })
+  },
+  onShow: function () {
+    let that = this;
+    wx.getLocation({
+      type: "gcj02",
+      success(res) {
+        const latitude = res.latitude
+        const longitude = res.longitude
+        that.setData({
+          longitude: longitude,
+          latitude: latitude
+        })
+        that.getShopList(false);
+      }
+    })
+
+  },
+  onReachBottom: function () {
+    this.setData({
+      curPage: this.data.curPage + 1
+    });
+    this.getShopList(true)
+  },
+  onPullDownRefresh: function () {
+    this.setData({
+      curPage: 1
+    });
+    this.getShopList(false)
+    wx.stopPullDownRefresh()
+  },
+  getShopList: function (append) {
+    var that = this;
+    wx.showLoading({
+      "mask": true
+    })
+    Api.Post('/api/Shops', {
+      pageIndex: this.data.curPage,
+      longitude: that.data.longitude,
+      latitude: that.data.latitude
+    }).then(function (res) {
+      wx.hideLoading()
+      if (res.data.length == 0) {
+        let newData = {
+          loadingHiden: false
+        }
+        if (!append) {
+          newData.shops = []
+        }
+        that.setData(newData);
+        return
+      }
+      let tempArry = [];
+      if (append) {
+        tempArry = that.data.shops
+      }
+      res.data.map((v) => {
+        let tempObj = v;
+        tempObj.logoPic = `${constant.baseUrl}${v.logoPic}`;
+        tempObj.distance = v.distance.toFixed(3)
+        tempArry.push(tempObj)
+      });
+      that.setData({
+        loadingHiden: true,
+        shops: tempArry,
+      });
     })
   }
 })

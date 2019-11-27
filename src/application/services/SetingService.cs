@@ -7,6 +7,7 @@ using domain.enums;
 using domain.models.dto;
 using domain.repository;
 using infrastructure.extensions;
+using infrastructure.utils;
 using Microsoft.Extensions.Options;
 
 namespace application.services
@@ -209,9 +210,14 @@ namespace application.services
             {
                 return result.SetStatus(ErrorCode.InvalidData, "店铺Logo无效");
             }
-            if (model.Latitude.HasValue)
+            if (!model.PhoneNum.IsMobile())
             {
-
+                return result.SetStatus(ErrorCode.InvalidData, "手机号无效");
+            }
+            var isHasShop = base.First<Shop>(Predicate => Predicate.UserId.Equals(model.UserId));
+            if (isHasShop != null)
+            {
+                return result.SetStatus(ErrorCode.InvalidData, "店铺信息已存在");
             }
             Shop shop = new Shop
             {
@@ -221,7 +227,8 @@ namespace application.services
                 Content = model.Content,
                 LogoPic = model.LogoPic,
                 OpenTime = model.OpenTime,
-                CloseTime = model.CloseTime
+                CloseTime = model.CloseTime,
+                PhoneNum = model.PhoneNum
             };
             if (model.Latitude.HasValue)
             {
@@ -245,11 +252,16 @@ namespace application.services
             }
             if (string.IsNullOrEmpty(model.Pic))
             {
-                return result.SetStatus(ErrorCode.InvalidData, "图片n内容非法");
+                return result.SetStatus(ErrorCode.InvalidData, "图片内容非法");
+            }
+            var conuts = base.Count<ShopsDetail>(predicate => predicate.ShopId.Equals(model.ShopId));
+            if (conuts > 4)
+            {
+                return result.SetStatus(ErrorCode.InvalidData, "添加图片数量超出限制 如需扩容请联系管理员");
             }
             ShopsDetail shopsDetail = new ShopsDetail
             {
-                ShopId = model.ShopId,
+                ShopId = (int)model.ShopId,
                 Pic = model.Pic
             };
             if (!string.IsNullOrEmpty(model.Content))
@@ -258,6 +270,23 @@ namespace application.services
             }
             base.Add(shopsDetail, true);
             result.Data = true;
+            return result;
+        }
+
+        public MyResult<object> CheckUserStatus(int userId)
+        {
+            MyResult result = new MyResult();
+            if (userId <= 0)
+            {
+                return result.SetStatus(ErrorCode.InvalidData, "用户非法");
+            }
+            var userShop = base.First<Shop>(predicate => predicate.UserId.Equals(userId));
+            if (userShop == null)
+            {
+                result.Data = new { Id = -1, Status = -1 };
+                return result;
+            }
+            result.Data = new { Id = userShop.Id, Status = userShop.Status };
             return result;
         }
 
@@ -433,6 +462,16 @@ namespace application.services
             return result;
         }
 
+        public MyResult<object> GetMyteam(UserDto model)
+        {
+            MyResult result = new MyResult();
+            var user = base.Where<User>(predicate => predicate.RefId.Equals(model.Id)).Select(selector => new { selector.NickName, selector.Pic, selector.CreateTime }).Pages(model.PageIndex, model.PageSize, out int count, out int pageCount);
+            result.PageCount = pageCount;
+            result.RecordCount = count;
+            result.Data = user;
+            return result;
+        }
+
         public MyResult<object> GetOneAnnounce(int id)
         {
             MyResult result = new MyResult();
@@ -472,14 +511,14 @@ namespace application.services
             return result;
         }
 
-        public MyResult<object> GetOneShop(ShopDto model)
+        public MyResult<object> GetOneShop(ShopDetailDto model)
         {
             MyResult result = new MyResult();
-            if (!model.Id.HasValue)
+            if (!model.ShopId.HasValue)
             {
                 return result.SetStatus(ErrorCode.InvalidData, "商户ID无效");
             }
-            var shopsDetail = base.First<ShopsDetail>(predicate => predicate.ShopId.Equals(model.Id));
+            var shopsDetail = base.Where<ShopsDetail>(predicate => predicate.ShopId.Equals(model.ShopId));
             result.Data = shopsDetail;
             return result;
         }
@@ -498,8 +537,8 @@ namespace application.services
         public MyResult<object> GetShops(ShopDto model)
         {
             MyResult result = new MyResult();
-            var sql = "select s.id,s.title,s.content,s.logoPic,s.types,s.openTime,s.closeTime,s.phoneNum,u.pic,u.nickName,st_distance_sphere(point(116,22),point(s.latitude,s.longitude))/1000 distance from shop s left join user u on s.userId=u.id order by distance;";
-            var scenic = base.dbConnection.Query<ShopDto>(sql).AsQueryable().Pages(model.PageIndex, model.PageSize, out int count, out int pageCount);
+            var sql = $"select s.id,s.title,s.content,s.logoPic,s.types,s.openTime,s.longitude,s.latitude,s.closeTime,s.phoneNum,u.pic,u.nickName,st_distance_sphere(point({model.Longitude},{model.Latitude}),point(s.longitude,s.latitude))/1000 distance from shop s left join user u on s.userId=u.id where s.status=1 order by distance;";
+            var scenic = base.dbConnection.Query<ShopDto2>(sql).AsQueryable().Pages(model.PageIndex, model.PageSize, out int count, out int pageCount);
             result.PageCount = pageCount;
             result.RecordCount = count;
             result.Data = scenic;

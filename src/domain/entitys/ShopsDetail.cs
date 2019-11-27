@@ -9,7 +9,7 @@ namespace domain.entitys
         public int ShopId { get; set; }
         public string Pic { get; set; }
         public string Content { get; set; }
-        public int? IsDel { get; set; }
+        public int IsDel { get; set; }
         public DateTime CreateTime { get; set; }
         public DateTime UpdateTime { get; set; }
     }

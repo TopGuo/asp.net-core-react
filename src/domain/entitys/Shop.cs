@@ -17,8 +17,8 @@ namespace domain.entitys
         public int ShopType { get; set; }
         public decimal? Latitude { get; set; }
         public decimal? Longitude { get; set; }
-        public int OpenTime { get; set; }
-        public int CloseTime { get; set; }
+        public string OpenTime { get; set; }
+        public string CloseTime { get; set; }
         public string PhoneNum { get; set; }
         public DateTime CreateTime { get; set; }
         public DateTime UpdateTime { get; set; }

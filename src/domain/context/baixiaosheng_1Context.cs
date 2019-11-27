@@ -448,7 +448,7 @@ namespace domain.entitys
                 .HasColumnName("lookCount")
                 .HasColumnType("int(11)")
                 .HasDefaultValueSql("'0'");
-                
+
                 entity.Property(e => e.IsDel)
                 .HasColumnName("isDel")
                 .HasColumnType("int(2)")
@@ -507,7 +507,7 @@ namespace domain.entitys
 
                 entity.Property(e => e.CloseTime)
                     .HasColumnName("closeTime")
-                    .HasColumnType("int(2)")
+                    .HasColumnType("varchar(10)")
                     .HasDefaultValueSql("'18'");
 
                 entity.Property(e => e.Content)
@@ -543,7 +543,7 @@ namespace domain.entitys
 
                 entity.Property(e => e.OpenTime)
                     .HasColumnName("openTime")
-                    .HasColumnType("int(2)")
+                    .HasColumnType("varchar(10)")
                     .HasDefaultValueSql("'10'");
 
                 entity.Property(e => e.Order)

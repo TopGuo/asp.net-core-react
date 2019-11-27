@@ -1,21 +1,21 @@
 const CryptoJs = require("./crypto-js.js");
 const Constants = require("../configs/constants");
 
-function Post(api, data) {
+function Post(api, data = {}, method = 'Post') {
   let token = wx.getStorageSync('token') == null || wx.getStorageSync('token') == '' ? '' : wx.getStorageSync('token');
   let sign = '';
   if (token !== '') {
     sign = Sign(token);
   }
-  data.token = token;
-  data.sign = sign;
   return new Promise((resolve, reject) => {
     wx.request({
       url: Constants.baseUrl + api,
-      method: 'Post',
+      method: method,
       data: data,
       header: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'token': token,
+        'sign': sign
       },
       success(request) {
         resolve(request.data)

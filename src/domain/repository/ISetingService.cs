@@ -59,7 +59,7 @@ namespace domain.repository
         //获取店铺主要信息
         MyResult<object> GetShops(ShopDto model);
         //获取店铺详情
-        MyResult<object> GetOneShop(ShopDto model);
+        MyResult<object> GetOneShop(ShopDetailDto model);
         //修改店铺信息
         MyResult<object> UpdateShop(ShopDto model);
         //删除店铺
@@ -71,6 +71,11 @@ namespace domain.repository
         MyResult<object> DelShopDetail(ShopDetailDto model);
         //修改活动
         MyResult<object> UpdateShopDetail(ShopDetailDto model);
+
+        //检查用户申请店铺状态
+        MyResult<object> CheckUserStatus(int userId);
+        //获取用户直推
+        MyResult<object> GetMyteam(UserDto model);
 
     }
 }

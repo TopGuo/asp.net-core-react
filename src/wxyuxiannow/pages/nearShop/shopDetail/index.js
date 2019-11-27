@@ -1,4 +1,6 @@
 // pages/nearShop/shopDetail/index.js
+const Api = require('../../../utils/httpPost');
+const constants = require('../.././../configs/constants');
 Page({
 
   /**
@@ -39,7 +41,6 @@ Page({
     wx.getLocation({
       type: "gcj02",
       success(res) {
-        console.log('res=', res)
         const latitude = res.latitude
         const longitude = res.longitude
         wx.openLocation({
@@ -51,7 +52,7 @@ Page({
     })
   },
   callShopPhone: function (e) {
-    let phoneNumber = this.data.shopInfo.telphone;
+    let phoneNumber = this.data.shopInfo.phoneNum;
     wx.showModal({
       title: '拨打电话提示',
       content: `你将要给:${phoneNumber}拨打电话`,
@@ -90,6 +91,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    Api.Post('/api/ShopDetails', { shopId: this.data.shopInfo.id }).then(res => {
+      let temArr = [];
+      res.data.map((v) => {
+        let obj = v;
+        obj.pic = `${constants.baseUrl}${v.pic}`;
+        temArr.push(obj)
+      })
+      this.setData({
+        shopDetail: temArr
+      })
+      console.log(res)
+    })
 
   },
 

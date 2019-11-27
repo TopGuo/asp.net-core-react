@@ -99,3 +99,5 @@ view.text text {margin-left: 10px;line-height: 18px;}
     height: 80rpx;
     line-height: 80rpx;
   }
+.loading{color:#b0b0b0;text-align:center;margin:20rpx 0}
+.loading-gif{width:220rpx;height:42rpx;vertical-align:bottom}

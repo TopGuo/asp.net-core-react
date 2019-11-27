@@ -11,7 +11,10 @@
     "pages/mine/company/hezuo",
     "pages/mine/callFriends/index",
     "pages/mine/myTeam/index",
-    "pages/message/detail/detail"
+    "pages/message/detail/detail",
+    "pages/mine/ApplySettled/index",
+    "pages/mine/ShopManager/index",
+    "pages/mine/company/notice"
   ],
   "tabBar": {
     "list": [
@@ -53,7 +56,7 @@
   },
   "permission": {
     "scope.userLocation": {
-      "desc": "授权蔚县Now获取您的地理位置信息"
+      "desc": "授权蔚州获取您的地理位置信息"
     }
   },
   "sitemapLocation": "sitemap.json"

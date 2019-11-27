@@ -8,6 +8,7 @@ using infrastructure.utils;
 using domain.configs;
 using System.Collections.Generic;
 using infrastructure.extensions;
+using domain.models;
 
 namespace webAdmin.Controllers
 {
@@ -109,8 +110,69 @@ namespace webAdmin.Controllers
         {
             return SetingService.GetOneMessage(model);
         }
-
-
-
+        //检查状态
+        [HttpGet]
+        public MyResult<object> CheckUserStatus()
+        {
+            return SetingService.CheckUserStatus(base.TokenModel.Id);
+        }
+        //提交店铺审核
+        [HttpPost]
+        public MyResult<object> PubShop([FromBody]ShopDto model)
+        {
+            if (string.IsNullOrEmpty(base.TokenModel.Id.ToString()) || base.TokenModel.Id < 0)
+            {
+                return new MyResult<object>(-1, "请检查是否登录");
+            }
+            if (!string.IsNullOrEmpty(model.LogoPic))
+            {
+                var fileName = DateTime.Now.GetTicket().ToString();
+                var url = ImageHandlerUtil.SaveBase64Image(model.LogoPic, $"{fileName}.png", $"{Constants.Shop_Logo_Path}/{base.TokenModel.Id}");
+                model.LogoPic = url;
+            }
+            model.UserId = base.TokenModel.Id;
+            return SetingService.AddShop(model);
+        }
+        //添加店铺详情
+        [HttpPost]
+        public MyResult<object> PubShopDetail([FromBody] ShopDetailDto model)
+        {
+            if (string.IsNullOrEmpty(base.TokenModel.Id.ToString()) || base.TokenModel.Id < 0)
+            {
+                return new MyResult<object>(-1, "请检查是否登录");
+            }
+            if (!string.IsNullOrEmpty(model.Pic))
+            {
+                var fileName = DateTime.Now.GetTicket().ToString();
+                var url = ImageHandlerUtil.SaveBase64Image(model.Pic, $"{fileName}.png", $"{Constants.Shop_Detail_Path}/{base.TokenModel.Id}");
+                model.Pic = url;
+            }
+            return SetingService.AddShopDetail(model);
+        }
+        //获取shop信息
+        [HttpPost]
+        [AllowAnonymous]
+        public MyResult<object> Shops([FromBody] ShopDto model)
+        {
+            return SetingService.GetShops(model);
+        }
+        //获取商铺伤情
+        [HttpPost]
+        [AllowAnonymous]
+        public MyResult<object> ShopDetails([FromBody]ShopDetailDto model)
+        {
+            return SetingService.GetOneShop(model);
+        }
+        //获取用户直推下级
+        [HttpPost]
+        public MyResult<object> GetMyteam([FromBody] UserDto model)
+        {
+            if (string.IsNullOrEmpty(base.TokenModel.Id.ToString()) || base.TokenModel.Id < 0)
+            {
+                return new MyResult<object>(-1, "请检查是否登录");
+            }
+            model.Id = base.TokenModel.Id;
+            return SetingService.GetMyteam(model);
+        }
     }
 }

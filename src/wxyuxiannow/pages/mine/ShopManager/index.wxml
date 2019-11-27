@@ -1,0 +1,40 @@
+<!-- pages/mine/ShopManager/index.wxml -->
+<view class="container">
+    <view style="margin-top:50rpx;margin-left:10rpx" wx:if="{{status==0}}">
+        店铺正在审核中 请稍后在试 有问题请联系客服！
+    </view>
+    <view wx:else>
+        <view class="weui-cells__title">添加店铺活动</view>
+        <view class="weui-cells">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea class="weui-textarea" auto-height="{{true}}" bindblur="bindAreaBlur" placeholder="请输入商品简介" style="height: 5.3em" />
+                    <view class="weui-textarea-counter">200</view>
+                </view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <view class="weui-uploader">
+                        <view class="weui-uploader__hd">
+                            <view class="weui-uploader__title">商品图片</view>
+                            <view class="weui-uploader__info">{{images.length}}/1</view>
+                        </view>
+                        <view class="weui-uploader__bd">
+                            <view class="weui-uploader__files" id="uploaderFiles">
+                                <block wx:for="{{images}}" wx:key="*this">
+                                    <view class="weui-uploader__file" id="{{item}}">
+                                        <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                                    </view>
+                                </block>
+                            </view>
+                            <view class="weui-uploader__input-box">
+                                <view class="weui-uploader__input" bindtap="chooseImage" data-num='{{images.length}}'></view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <button type="primary" bindtap="pubMessage">提交审核</button>
+    </view>
+</view>
