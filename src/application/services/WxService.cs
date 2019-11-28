@@ -26,6 +26,13 @@ namespace application.services
         public WxService(IOptions<ConnectionStringList> connectionStrings) : base(connectionStrings)
         {
         }
+        public void SetAccessToken()
+        {
+            var getAccessTokenUrl = $"https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={Constants.WxAppId}&secret={Constants.WxSecret}";
+            var rep2 = HttpUtil.GetString(getAccessTokenUrl);
+            var repObj2 = rep2.GetModel<Code2SessionRep>();
+            MemoryCacheUtil.Set(Constants.WxAccessToken, repObj2?.Access_Token ?? "", 120);
+        }
 
         public MyResult<object> Login(WxLoginDto model)
         {
@@ -43,10 +50,6 @@ namespace application.services
             {
                 return result.SetStatus(ErrorCode.NotFound, "用户未注册");
             }
-            var getAccessTokenUrl = $"https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={Constants.WxAppId}&secret={Constants.WxSecret}";
-            var rep2 = HttpUtil.GetString(getAccessTokenUrl);
-            var repObj2 = rep2.GetModel<Code2SessionRep>();
-            user.Token = repObj2?.Access_Token ?? "";
             user.SessionKey = repObj.Session_Key;
             base.Update(user, true);
             TokenModel tokenModel = new TokenModel();
@@ -118,18 +121,24 @@ namespace application.services
             {
                 return result.SetStatus(ErrorCode.InvalidData, "用户不存在");
             }
-            var UnlimitedUrl = $"https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token={user.Token}";
+            if (!string.IsNullOrEmpty(user.UPic))
+            {
+                result.Data = PathUtil.CombineWithRoot(user.UPic);
+                return result;
+            }
+            var access_token = MemoryCacheUtil.Get(Constants.WxAccessToken);
+            if (access_token == null)
+            {
+                SetAccessToken();
+                access_token = MemoryCacheUtil.Get(Constants.WxAccessToken);
+            }
+            var UnlimitedUrl = $"https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token={access_token}";
             var _scene = $"inviter_id={userId}";
             var rep = HttpUtil.PostByte(UnlimitedUrl, new { scene = _scene, is_hyaline = false }.GetJson(), "application/json");
-            var fileName = $"1000-{userId}.png";
-            var filePath = PathUtil.MapPath(Constants.WxPic);
-            FileInfo fileInfo = new FileInfo($"{filePath}/{fileName}");
-            if (!fileInfo.Directory.Exists)
-            {
-                fileInfo.Directory.Create();
-            }
-            ImageHandlerUtil.WaterMarks(rep, $"{user.NickName}邀请你关注蔚州新时代", $"{filePath}/{fileName}", Brushes.Tomato, 24);
-            result.Data = PathUtil.CombineWithRoot($"{Constants.WxPic}/{fileName}");
+            var url = ImageHandlerUtil.SaveByteImage(rep, $"{Constants.WxPic}/{userId}");
+            user.UPic = url;
+            base.Update(user, true);
+            result.Data = PathUtil.CombineWithRoot(url);
             return result;
         }
     }

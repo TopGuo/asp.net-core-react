@@ -49,7 +49,9 @@ Page({
         })
     },
     bindPickerChange: function (e) {
+        console.log('data', JSON.stringify(this.data.array))
         let type = this.data.array[e.detail.value].types;
+        console.log('type', type)
         this.setData({
             index: e.detail.value,
             types: type

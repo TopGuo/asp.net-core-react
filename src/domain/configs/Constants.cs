@@ -46,6 +46,9 @@ namespace domain.configs
         public const string WxAppId = "wxffeedd2ae4c6df3a";
         public const string WxSecret = "33cb587c96804bbacebbde7fdd6a03f9";
         public const string WxPic = "WxPic";
-        public const string WxAccessToken = "";
+        /// <summary>
+        /// access_token
+        /// </summary>
+        public const string WxAccessToken = "access_token";
     }
 }

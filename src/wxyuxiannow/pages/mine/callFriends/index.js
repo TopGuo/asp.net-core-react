@@ -56,7 +56,6 @@ Page({
     });
   },
   showCanvas(qrcode) {
-    console.log(qrcode)
     const _this = this
     let ctx
     wx.getImageInfo({

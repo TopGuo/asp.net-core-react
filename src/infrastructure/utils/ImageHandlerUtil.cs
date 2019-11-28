@@ -51,6 +51,24 @@ namespace infrastructure.utils
         }
 
         /// <summary>
+        /// 保存Byte图片
+        /// </summary>
+        /// <param name="base64">base64</param>
+        /// <param name="path"></param>
+        /// <returns>相对url fileName</returns>
+        public static string SaveByteImage(byte[] bytes, string path)
+        {
+            var di = PathUtil.MapPath(path);
+            if (!Directory.Exists(di))
+            {
+                Directory.CreateDirectory(di);
+            }
+            var str = $"{Guid.NewGuid()}.png";
+            File.WriteAllBytes(System.IO.Path.Combine(di, str), bytes);
+            return PathUtil.Combine(path, str);
+        }
+
+        /// <summary>
         /// 保存base64 图片
         /// </summary>
         /// <param name="base64"></param>

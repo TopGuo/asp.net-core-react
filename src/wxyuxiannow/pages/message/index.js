@@ -23,6 +23,7 @@ Page({
     })
   },
   tabClick: function (e) {
+    console.log(e)
     let offset = e.currentTarget.offsetLeft;
     if (offset > 150) {
       offset = offset - 150
@@ -75,21 +76,7 @@ Page({
         })
       }
     });
-    Api.Post('/api/MessageType', {}).then(res => {
-      let tempArry = [];
-      if (res.code == 200) {
-        res.data.map((v) => {
-          let tempObj = {};
-          tempObj.icon = `${constant.baseUrl}${v.pic}`;
-          tempObj.id = v.id;
-          tempObj.name = v.title;
-          tempArry.push(tempObj);
-        });
-        this.setData({
-          categories: tempArry
-        })
-      }
-    });
+
     Api.Post('/api/Message', { types: -1 }).then(res => {
       let tempArry = [];
       if (res.code == 200) {
@@ -110,8 +97,23 @@ Page({
       }
     })
   },
+
   onShow: function () {
-    // this.getMessageList(this.data.activeCategoryId, true);
+    Api.Post('/api/MessageType', {}).then(res => {
+      let tempArry = [];
+      if (res.code == 200) {
+        res.data.map((v) => {
+          let tempObj = {};
+          tempObj.icon = `${constant.baseUrl}${v.pic}`;
+          tempObj.id = v.types;
+          tempObj.name = v.title;
+          tempArry.push(tempObj);
+        });
+        this.setData({
+          categories: tempArry
+        })
+      }
+    });
   },
   onReachBottom: function () {
     this.setData({

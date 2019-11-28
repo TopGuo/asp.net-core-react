@@ -17,6 +17,7 @@ namespace domain.entitys
         public decimal Amount { get; set; }
         public string OpenId { get; set; }
         public string SessionKey { get; set; }
+        public string UPic { get; set; }
         public DateTime CreateTime { get; set; }
         public DateTime UpdateTime { get; set; }
     }

@@ -758,6 +758,12 @@ namespace domain.entitys
                     .HasColumnName("nickName")
                     .HasColumnType("varchar(100)")
                     .HasDefaultValueSql("''");
+                    
+                entity.Property(e => e.UPic)
+                .IsRequired()
+                .HasColumnName("uPic")
+                .HasColumnType("varchar(200)")
+                .HasDefaultValueSql("''");
 
                 entity.Property(e => e.PassWord)
                     .IsRequired()
