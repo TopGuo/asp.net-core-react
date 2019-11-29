@@ -28,7 +28,8 @@ namespace webAdmin
             services.AddTransient<IPermissionService, PermissionService>();
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<ISetingService, SetingService>();
-            services.AddScoped<IUserService,UserService>();            
+            services.AddScoped<IUserService,UserService>();
+            services.AddScoped<IShopService, ShopService>();
             services.AddMvcCustomer(Constants.WEBSITE_AUTHENTICATION_SCHEME, mvcOptions =>
              {
                  mvcOptions.AuthorizationSchemes = new List<MvcAuthorizeOptions>

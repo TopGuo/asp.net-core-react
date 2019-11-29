@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Banner管理";
+    ViewData["Title"] = "店铺管理";
 }
 @using domain.enums
 <style>
@@ -12,42 +12,54 @@
 
 <div class="row search">
     <div class="form-inline">
+
         <div class="form-inline">
-            <label control-label>广告位置:</label>
-            <select class="form-control" style="display:inline-block;width:auto;" ng-model="search.types">
+            <input type="text" class="form-control" placeholder="用户名" ng-model="search.NickName" ng-keyup="enterEvent($event)" />
+        </div>
+        <div class="form-inline">
+            <input type="text" class="form-control" placeholder="店铺电话" ng-model="search.PhoneNum" ng-keyup="enterEvent($event)" />
+        </div>
+        <div class="form-inline">
+            <label control-label>审核状态:</label>
+            <select class="form-control" style="display:inline-block;width:auto;" ng-model="search.Status">
                 <option value="-1">请选择</option>
-                <option value="0">首页</option>
-                <option value="1">信息市场</option>
+                <option value="0">未审核</option>
+                <option value="1">审核通过</option>
+                <option value="2">审核失败</option>
             </select>
         </div>
-
         <button class="btn btn-primary" type="button" ng-click="pageChanged(true)">搜索</button>
     </div>
     <br />
-    <div class="form-inline">
-        <a class="btn btn-primary" href="/home/BannerAdd_Updata">添加Banner</a>
-    </div>
 </div>
 <table class="table table-hover table-condensed table-bordered" style="width:auto;">
     <thead>
         <tr style="height:35px;">
             <th style="width: 3%;">序号</th>
-            <th style="width: 5%;">类型</th>
-            <th style="width: 5%;">图片</th>
-            <th style="width: 5%;">跳转地址</th>
-            <th style="width: 7%;">操作</th>
+            <th style="width: 5%;">店铺名称</th>
+            <th style="width: 5%;">Logo</th>
+            <th style="width: 5%;">商家电话</th>
+            <th style="width: 5%;">用户ID</th>
+            <th style="width: 5%;">用户名</th>
+            <th style="width: 5%;">创建时间</th>
+            <th style="width: 5%;">状态</th>
+            <th style="width: 7%;">审核</th>
         </tr>
     </thead>
     <tbody class="wait-loaded" >
         <tr ng-repeat="m in List">
-            <td>{{$index+1}}</td>
-            <td>{{m.types==0?'首页':'信息市场'}}</td>
+            <td>{{m.id}}</td>
+            <td>{{m.title}}</td>
             <td class="_image">
-                <img ng-src="{{m.pic}}" onclick="showimage(this)" style="width:30px;height:30px" />
+                <img ng-src="{{m.logoPic}}" onclick="showimage(this)" style="width:30px;height:30px" />
             </td>
-            <td>{{m.jumpUrl}}</td>
+            <td>{{m.phoneNum}}</td>
+            <td>{{m.userId}}</td>
+            <td>{{m.nickName}}</td>
+            <td>{{m.createTime|date:'yyyy-MM-dd'}}</td>
+            <td>{{m.status==0?'未审核':m.status==1?'审核通过':'审核失败'}}</td>
             <td>
-                <a ng-click="delAdPic(m)" href="javascript:void(0);">删除</a>
+                <a ng-click="updateStatus(m)" href="javascript:void(0);">审核</a>
             </td>
         </tr>
     </tbody>
@@ -80,7 +92,7 @@
                 if (reindex) {
                     $scope.search.pageIndex = 1;
                 }
-                $query.post("/webapi/BannerManagerList", $scope.search, function (response) {
+                $query.post("/webapi/ShopList", $scope.search, function (response) {
                     if (response.code === 200) {
                         $scope.List = response.data;
                         $scope.search.recordCount = response.recordCount;
@@ -89,8 +101,8 @@
                     }
                 });
             };
-            $scope.delAdPic = function (model) {
-                $Confirm("你确定要删除该广告吗?", function () {
+            $scope.updateStatus = function (model) {
+                $Confirm("请选择审核状态", function () {
                     $query.post("/webapi/DelBannerPic", model, function (response) {
                         if (response.code === 200) {
                             $scope.pageChanged();

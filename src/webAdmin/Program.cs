@@ -23,7 +23,7 @@ namespace webAdmin
             {
                 configureLogging.AddFile();
             })
-            .UseUrls("http://127.0.0.1:50004")
+            .UseUrls("http://127.0.0.1:50003")
             .UseStartup<Startup>();
     }
 }
