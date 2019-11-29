@@ -1,5 +1,7 @@
 using System;
+using application.services;
 using domain.configs;
+using domain.entitys;
 using domain.enums;
 using domain.models;
 using domain.models.dto;
@@ -16,12 +18,16 @@ namespace webAdmin.Controllers
     {
         public IAccountService AccountService { get; set; }
         public IPermissionService PermissionService { get; set; }
+        public IUserService UserService { get; set; }
         public ISetingService SetingService { get; set; }
-        public WebApiController(IAccountService accountService, IPermissionService permissionService, ISetingService setingService)
+        public IShopService ShopService { get; set; }
+        public WebApiController(IAccountService accountService, IPermissionService permissionService, ISetingService setingService, IUserService userService,IShopService shopService)
         {
             AccountService = accountService;
             PermissionService = permissionService;
             SetingService = setingService;
+            UserService = userService;
+            ShopService = shopService;
         }
 
         #region 登录模块
@@ -83,12 +89,40 @@ namespace webAdmin.Controllers
             }
             return AccountService.UpdateAccount(model);
         }
+
         #endregion
+
 
         #region 后台用户列表
         public MyResult<object> BackstageUser([FromBody]AccountSearchModel model)
         {
             return AccountService.GetBackstageUserList(model);
+        }
+        #endregion
+
+
+        #region  微信用户列表
+        public MyResult<object> WechatUser([FromBody]UserModel model)
+        {
+            return UserService.GetUserList(model);
+        }
+        /// <summary>
+        /// 修改微信用户状态
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public MyResult<object> UpdateUserStatus([FromBody]User model)
+        {
+            if (model.Status == 1)
+            {
+                model.Status = 0;
+            }
+            else
+            {
+                model.Status = 1;
+            }
+            return UserService.UpdateStatusUser(model);
         }
         #endregion
 
@@ -233,6 +267,18 @@ namespace webAdmin.Controllers
             return SetingService.DelMessageType(model);
         }
 
+        #endregion
+
+        #region
+        /// <summary>
+        /// 店铺列表
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public MyResult<object> ShopList([FromBody]ShopModel model)
+        {
+            return ShopService.GetShopList(model);
+        }
         #endregion
     }
 }

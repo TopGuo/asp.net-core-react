@@ -1,57 +1,75 @@
 @{
-    ViewData["Title"] = "Banner管理";
+    ViewData["Title"] = "微信用户信息管理";
 }
 @using domain.enums
 <style>
-    .form-inline .col-sm-12 { line-height: 55px; }
-    .form-inline .col-sm-2 { width: 80px; }
-    .form-inline .col-sm-4 .col-sm-4 { line-height: 35px; }
-    .form-inline .control-label { text-align: right; }
-    .search .form-inline { line-height: 40px; }
+    .form-inline .col-sm-12 {
+        line-height: 55px;
+    }
+
+    .form-inline .col-sm-2 {
+        width: 80px;
+    }
+
+    .form-inline .col-sm-4 .col-sm-4 {
+        line-height: 35px;
+    }
+
+    .form-inline .control-label {
+        text-align: right;
+    }
+
+    .search .form-inline {
+        line-height: 40px;
+    }
 </style>
 
 <div class="row search">
     <div class="form-inline">
-        <div class="form-inline">
-            <label control-label>广告位置:</label>
-            <select class="form-control" style="display:inline-block;width:auto;" ng-model="search.types">
-                <option value="-1">请选择</option>
-                <option value="0">首页</option>
-                <option value="1">信息市场</option>
-            </select>
-        </div>
-
-        <button class="btn btn-primary" type="button" ng-click="pageChanged(true)">搜索</button>
+        <input type="text" class="form-control" placeholder="用户名：" ng-model="search.UserName" ng-keyup="enterEvent($event)" />
     </div>
-    <br />
     <div class="form-inline">
-        <a class="btn btn-primary" href="/home/BannerAdd_Updata">添加Banner</a>
+        <input type="text" class="form-control" placeholder="手机号：" ng-model="search.phoneNum" ng-keyup="enterEvent($event)" />
     </div>
+    <button class="btn btn-primary" type="button" ng-click="pageChanged(true)">搜索</button>
+    <br />
+
 </div>
 <table class="table table-hover table-condensed table-bordered" style="width:auto;">
     <thead>
         <tr style="height:35px;">
             <th style="width: 3%;">序号</th>
-            <th style="width: 5%;">类型</th>
-            <th style="width: 5%;">图片</th>
-            <th style="width: 5%;">跳转地址</th>
+            <th style="width: 5%;">用户名</th>
+            <th style="width: 5%;">手机号</th>
+            <th style="width: 5%;">头像</th>
+            <th style="width: 5%;">积分</th>
+            <th style="width: 5%;">注册日期</th>
+            <th style="width: 5%;">状态</th>
             <th style="width: 7%;">操作</th>
         </tr>
     </thead>
-    <tbody class="wait-loaded" >
-        <tr ng-repeat="m in List">
+    <tbody class="wait-loaded">
+        <tr ng-repeat="m in List" >
             <td>{{$index+1}}</td>
-            <td>{{m.types==0?'首页':'信息市场'}}</td>
+            <td>{{m.nickName}}</td>
+            <td>{{m.phoneNum}}</td>
             <td class="_image">
                 <img ng-src="{{m.pic}}" onclick="showimage(this)" style="width:30px;height:30px" />
             </td>
-            <td>{{m.jumpUrl}}</td>
+            <td>{{m.amount}}</td>
+            <td>{{m.createTime|date:'yyyy-MM-dd'}}</td>
+            <td style="background-color:{{m.status==1?'':'#e8fa08'}}">{{m.status==1?"有效":"禁用中"}}</td>
             <td>
-                <a ng-click="delAdPic(m)" href="javascript:void(0);">删除</a>
+                <a href="javascript:void(0);" ng-click="setStatus(m)">{{m.status==1?"禁用":"解禁"}}</a>
             </td>
         </tr>
     </tbody>
 </table>
+<div class="mypager wait-loaded">
+    <ul uib-pagination total-items="search.recordCount" items-per-page="search.pageSize" ng-change="pageChanged()" ng-model="search.pageIndex" max-size="7"
+        class="pagination-sm" boundary-links="true" num-pages="search.numPages" boundary-link-numbers="true" first-text="首页" last-text="末页" previous-text="上一页" next-text="下一页"></ul>
+    <div class="recordCount">共 {{search.recordCount}} 条</div>
+</div>
 <div class="modal fade in" id="ShowImage_Form" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document" style="height:100%">
         <div class="modal-content">
@@ -73,14 +91,21 @@
         }
     </script>
     <script type="text/javascript">
+
         $angular.add(function ($scope, $query, $timeout, $sce) {
+            $scope.enterEvent = function (e) {
+                var keycode = window.event ? e.keyCode : e.which;
+                if (keycode == 13) {
+                    $scope.pageChanged(true);
+                }
+            };
             $scope.search = { pageIndex: 1, pageSize: 10 };
             $scope.search.types = "-1";
             $scope.pageChanged = function (reindex) {
                 if (reindex) {
                     $scope.search.pageIndex = 1;
                 }
-                $query.post("/webapi/BannerManagerList", $scope.search, function (response) {
+                $query.post("/webapi/WechatUser", $scope.search, function (response) {
                     if (response.code === 200) {
                         $scope.List = response.data;
                         $scope.search.recordCount = response.recordCount;
@@ -89,20 +114,21 @@
                     }
                 });
             };
-            $scope.delAdPic = function (model) {
-                $Confirm("你确定要删除该广告吗?", function () {
-                    $query.post("/webapi/DelBannerPic", model, function (response) {
+            $scope.setStatus = function (model) {
+                var status = model.status == 1 ? "禁用" : "解禁";
+                $Confirm(`你确定要${status}该用户吗?`, function () {
+                    $query.post("/webapi/UpdateUserStatus", model, function (response) {
                         if (response.code === 200) {
                             $scope.pageChanged();
                         } else {
                             $Alert(response.message);
                         }
                     });
-                }, "消息提醒");
-            };
+                }, "操作提醒");
+            }
             $scope.pageChanged();
         });
-        
+
     </script>
 
 }

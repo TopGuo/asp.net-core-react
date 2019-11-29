@@ -30,7 +30,7 @@ namespace webAdmin
             services.AddScoped<ISetingService, SetingService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IWxService, WxService>();
-
+            services.AddScoped<IShopService, ShopService>();
             services.AddMvcCustomer(Constants.WEBSITE_AUTHENTICATION_SCHEME, mvcOptions =>
              {
                  mvcOptions.AuthorizationSchemes = new List<MvcAuthorizeOptions>
