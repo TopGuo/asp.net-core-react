@@ -55,6 +55,6 @@
       </view>
     </view>
   </block>
-  <view hidden="{{loadingHiden ? true : false}}" class="no-more-goods">没有更多啦</view>
+  <view hidden="{{loadingHiden ? true : false}}" class="loading">没有更多啦</view>
   <view class="add_icon" bindtap="pubDetail">发布</view>
 </view>

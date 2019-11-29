@@ -8,6 +8,7 @@ function login(page) {
       }).then(res => {
         if (res.code == 10005) {
           register(page);
+          return;
         }
         if (res.code != 200) {
           wx.showModal({
@@ -75,6 +76,7 @@ function checkHasLogined() {
         resolve(true);
       } else {
         wx.removeStorageSync('token')
+        wx.removeStorageSync('userInfo')
         resolve(false);
       }
     })

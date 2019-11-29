@@ -14,20 +14,7 @@ Page({
     windowHeight: App.systemInfo.windowHeight,
   },
   onShow: function (options) {
-    Api.Post('/api/Scenics', {}).then(res => {
-      let tempArry = [];
-      if (res.code == 200) {
-        res.data.map((v) => {
-          let tempObj = v;
-          tempObj.pic = `${constant.baseUrl}${v.pic}`;
-          tempObj.user.avatar = `${constant.baseUrl}/${v.user.avatar}`
-          tempArry.push(tempObj);
-        });
-        this.setData({
-          trips: tempArry
-        })
-      }
-    })
+    this.getScenicsList(false);
   },
   viewTrip(e) {
     const ds = e.currentTarget.dataset;

@@ -11,23 +11,7 @@ Page({
     curPage: 1,
     inputVal: "", // 搜索框内容
     banners: [],
-    shops: [
-      {
-        "id": 1,
-        "pic": "http://bpic.588ku.com/element_origin_min_pic/16/10/30/528aa13209e86d5d9839890967a6b9c1.jpg",
-        "name": "londis美发店",
-        "content": "美发店啦啦啦",
-        "lookCount": 300,
-        "type": 1,
-        "far": 12.6,
-        "location": "河北省石家庄市裕华区同祥城",
-        "telphone": "18333103619",
-        "latitude": 85,
-        "longitude": 100,
-        "openTime": "8:00",
-        "closeTime": "22:00"
-      }
-    ],
+    shops: [],
     dataList: [],
     indicatorDots: true,
     autoplay: true,
@@ -138,7 +122,7 @@ Page({
       latitude: that.data.latitude
     }).then(function (res) {
       wx.hideLoading()
-      if (res.data.length == 0) {
+      if (res.data.length==0) {
         let newData = {
           loadingHiden: false
         }
@@ -146,7 +130,7 @@ Page({
           newData.shops = []
         }
         that.setData(newData);
-        return
+        return;
       }
       let tempArry = [];
       if (append) {

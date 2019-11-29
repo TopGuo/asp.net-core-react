@@ -95,27 +95,7 @@ Page({
         })
       }
     });
-    Api.Post('/api/Message', {
-      types: this.data.activeCategoryId
-    }).then(res => {
-      let tempArry = [];
-      if (res.code == 200) {
-        res.data.map((v) => {
-          let tempObj = v;
-          let tempArry2 = [];
-          var picsArr = JSON.parse(v.pics);
-          picsArr.map((v) => {
-            let picObj = `${constant.baseUrl}${v}`;
-            tempArry2.push(picObj)
-          });
-          tempObj.pics = tempArry2;
-          tempArry.push(tempObj);
-        });
-        this.setData({
-          info: tempArry
-        })
-      }
-    })
+    this.getMessageList(this.data.activeCategoryId,false);
   },
   onReachBottom: function() {
     this.setData({
