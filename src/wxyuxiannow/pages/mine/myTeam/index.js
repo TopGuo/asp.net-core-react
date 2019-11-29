@@ -1,66 +1,71 @@
-// pages/mine/MyTeam/index.js
+const Api = require('../../../utils/httpPost');
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    dataList: [],
+    loadingHiden: true,
+    curPage: 1
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let that = this;
+    Api.Post('/api/GetMyteam', {}).then(res => {
+      if (res.code == 200) {
+        that.setData({
+          dataList: res.data
+        })
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
   onReachBottom: function () {
-
+    this.setData({
+      curPage: this.data.curPage + 1
+    });
+    this.getMyteam(true)
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  onPullDownRefresh: function () {
+    this.setData({
+      curPage: 1
+    });
+    this.getMyteam(false)
+    wx.stopPullDownRefresh()
+  },
+  getMyteam: function (append) {
+    var that = this;
+    wx.showLoading({
+      "mask": true
+    })
+    Api.Post('/api/GetMyteam', {
+      pageIndex: this.data.curPage
+    }).then(function (res) {
+      wx.hideLoading()
+      if (res.data.length == 0) {
+        let newData = {
+          loadingHiden: false
+        }
+        if (!append) {
+          newData.dataList = []
+        }
+        that.setData(newData);
+        return
+      }
+      let tempArry = [];
+      if (append) {
+        tempArry = that.data.dataList
+      }
+      res.data.map((v) => {
+        tempArry.push(v)
+      });
+      that.setData({
+        loadingHiden: true,
+        dataList: tempArry,
+      });
+    })
   }
 })

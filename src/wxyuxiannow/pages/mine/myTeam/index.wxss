@@ -1,1 +1,4 @@
-/* pages/mine/MyTeam/index.wxss */
+.item{background-color:#fff;color:#787878;border-top:1px solid #eaeaea;border-bottom:1px solid #eaeaea}
+.item image{display:block;width:30px;height:30px;border-radius:25}
+.item_left{ margin-left: 20px;margin-top:10px}
+.item_middle{margin-left: 50px;}

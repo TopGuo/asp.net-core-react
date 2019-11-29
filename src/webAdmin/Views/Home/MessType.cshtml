@@ -1,0 +1,181 @@
+@{
+    ViewData["Title"] = "信息类别管理";
+}
+@using domain.enums
+<style>
+    .form-inline .col-sm-12 { line-height: 55px; }
+    .form-inline .col-sm-2 { width: 80px; }
+    .form-inline .col-sm-4 .col-sm-4 { line-height: 35px; }
+    .form-inline .control-label { text-align: right; }
+    .search .form-inline { line-height: 40px; }
+</style>
+
+<div class="row search">
+    <div class="form-inline">
+        <a class="btn btn-primary" ng-click="ShowAddMessageMadal()" href="javascript:void(0);">添加类别</a>
+    </div>
+</div>
+<table class="table table-hover table-condensed table-bordered" style="width:auto;">
+    <thead>
+        <tr style="height:35px;">
+            <th style="width: 3%;">序号</th>
+            <th style="width: 5%;">标题</th>
+            <th style="width: 5%;">类型</th>
+            <th style="width: 5%;">图片</th>
+            <th style="width: 5%;">排序</th>
+            <th style="width: 7%;">操作</th>
+        </tr>
+    </thead>
+    <tbody class="wait-loaded" >
+        <tr ng-repeat="m in List">
+            <td>{{$index+1}}</td>
+            <td>{{m.title}}</td>
+            <td>{{m.types}}</td>
+            <td class="_image">
+                <img ng-src="{{m.pic}}" onclick="showimage(this)" style="width:30px;height:30px" />
+            </td>
+            <td>{{m.order}}</td>
+            <td>
+                <a ng-click="delAdPic(m)" href="javascript:void(0);">删除</a>|
+                <a ng-click="ShowAddMessageMadal(m)" href="javascript:void(0);">修改</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="modal fade in" id="ShowImage_Form" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document" style="height:100%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <div id="img_show">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade in" id="addModel" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document" style="height:100%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body" ng-form="myModel">
+                <input class="form-control" type="text" ng-model="messTypeModel.id" style="display:none;" />
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">标题:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control"  ng-model="messTypeModel.title" required placeholder="标题" />
+                            </div>
+                        </div>
+                    <div class="form-group col-sm-6">
+                        <label class="control-label col-sm-4">类别「只能为数字且不能重复」:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" required ng-model="messTypeModel.types" placeholder="类别「只能为数字且不能重复」"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">位置「越大越靠前」:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control"  ng-model="messTypeModel.order" placeholder="位置「越大越靠前」" />
+                            </div>
+                        </div>
+                    <div class="form-group col-sm-6">
+                        <label class="control-label col-sm-4">图片:</label>
+                        <div class="col-sm-8">
+                            <input type="file" ng-model="messTypeModel.pic" title="点击上传图片" class="form-control" style="position:absolute;width:100%;height:100%;opacity:0;filter:alpha(opacity=0);cursor:pointer;" accept="image/png,image/jpeg,image/bmp" required onchange="$(this).scope().uploadHeadImage(this)" />
+                            <img ng-src="{{messTypeModel.pic}}" style="max-width:250px;" title="浏览图片" alt="点击上传图片" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" ng-disabled="myModel.$invalid" ng-click="saveMessageType()">保 存</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        function showimage(obj) {
+            $("#ShowImage_Form").modal("show");
+            $("#ShowImage_Form").find("#img_show").html("<img src='" + obj.src + "' class='carousel-inner img-responsive img-rounded' />");
+        }
+    </script>
+    <script type="text/javascript">
+        $angular.add(function ($scope, $query, $timeout, $sce) {
+            $scope.search = { pageIndex: 1, pageSize: 10 };
+            $scope.messTypeModel={pic:"/images/add_pic.png"}
+            $scope.pageChanged = function (reindex) {
+                if (reindex) {
+                    $scope.search.pageIndex = 1;
+                }
+                $query.post("/webapi/MessType", $scope.search, function (response) {
+                    if (response.code === 200) {
+                        $scope.List = response.data;
+                        $scope.search.recordCount = response.recordCount;
+                    } else {
+                        $Alert(response.message);
+                    }
+                });
+            };
+            $scope.delAdPic = function (model) {
+                $Confirm("你确定要删除该类别吗?", function () {
+                    $query.post("/webapi/DelMessageType", model, function (response) {
+                        if (response.code === 200) {
+                            $scope.pageChanged();
+                        } else {
+                            $Alert(response.message);
+                        }
+                    });
+                }, "消息提醒");
+            };
+            $scope.ShowAddMessageMadal=function(model){
+                if(model!=null){
+                    $scope.messTypeModel=model;
+                }
+                $("#addModel").modal("show");
+            }
+            $scope.uploadHeadImage = function (input) {
+                var reader = new FileReader();
+                reader.onloadend = function (e) {
+                    var img = new Image();
+                    img.onload = function () {
+                        //生成比例
+                        var w = img.width;
+                        var h = img.height;
+                        //生成canvas
+                        var canvas = document.createElement('canvas');
+                        var ctx = canvas.getContext('2d');
+                        $(canvas).attr({ width: w, height: h });
+                        ctx.drawImage(img, 0, 0, w, h);
+                        $scope.messTypeModel.pic = canvas.toDataURL('image/png', 0.8);
+                        $scope.$apply();
+                    }
+                    img.src = reader.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            };
+            $scope.saveMessageType = function () {
+                $query.post("/webApi/SaveMessageType", $scope.messTypeModel, function (response) {
+                        if (response.code === 200) {
+                            var msg="添加成功!";
+                            if($scope.messTypeModel.id!=null) msg="修改成功!"
+                            $Alert(msg).then(function () {
+                                location.href = $url("/Home/MessType");
+                            });
+                        } else {
+                            $Alert(response.message)
+                        }
+                    });
+            };
+            $scope.pageChanged();
+        });
+        
+    </script>
+
+}

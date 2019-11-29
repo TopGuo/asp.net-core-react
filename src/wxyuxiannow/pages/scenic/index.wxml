@@ -4,5 +4,5 @@
     <block wx:for="{{ trips }}" wx:key="index">
         <template is="m-trip" data="{{trip: item, mode: 1}}" />
     </block>
-    <view class="loading">正在加载...</view>
+    <view hidden="{{loadingHiden ? true : false}}" class="loading">没有更多啦...</view>
 </scroll-view>

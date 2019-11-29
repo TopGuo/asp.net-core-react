@@ -28,6 +28,7 @@ namespace domain.repository
 
         //获取信息市场列表
         MyResult<object> GetMessage(MessageDto model);
+        MyResult<object> GetOneMessage(MessageDto model);
         //删除信息
         MyResult<object> DelMessage(MessageDto model);
         //添加信息
@@ -41,6 +42,7 @@ namespace domain.repository
         MyResult<object> GetMessageType(MessageTypeDto model);
         //修改消息类别
         MyResult<object> DelMessageType(MessageTypeDto model);
+        MyResult<object> UpdateMessageType(MessageTypeDto model);
 
         //添加景点
         MyResult<object> AddScenic(ScenicDto model);
@@ -57,7 +59,7 @@ namespace domain.repository
         //获取店铺主要信息
         MyResult<object> GetShops(ShopDto model);
         //获取店铺详情
-        MyResult<object> GetOneShop(ShopDto model);
+        MyResult<object> GetOneShop(ShopDetailDto model);
         //修改店铺信息
         MyResult<object> UpdateShop(ShopDto model);
         //删除店铺
@@ -69,6 +71,11 @@ namespace domain.repository
         MyResult<object> DelShopDetail(ShopDetailDto model);
         //修改活动
         MyResult<object> UpdateShopDetail(ShopDetailDto model);
+
+        //检查用户申请店铺状态
+        MyResult<object> CheckUserStatus(int userId);
+        //获取用户直推
+        MyResult<object> GetMyteam(UserDto model);
 
     }
 }

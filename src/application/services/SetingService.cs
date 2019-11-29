@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Dapper;
 using domain.configs;
@@ -6,6 +7,7 @@ using domain.enums;
 using domain.models.dto;
 using domain.repository;
 using infrastructure.extensions;
+using infrastructure.utils;
 using Microsoft.Extensions.Options;
 
 namespace application.services
@@ -56,7 +58,7 @@ namespace application.services
             Banner banner = new Banner
             {
                 Pic = model.Pic,
-                Types = model.Types
+                Types = (int)model.Types
             };
             if (!string.IsNullOrEmpty(model.JumpUrl))
             {
@@ -78,20 +80,21 @@ namespace application.services
             {
                 return result.SetStatus(ErrorCode.InvalidData, "图片数据非法");
             }
-            if (string.IsNullOrEmpty(model.Title))
-            {
-                return result.SetStatus(ErrorCode.InvalidData, "标题数据非法");
-            }
+            // if (string.IsNullOrEmpty(model.Title))
+            // {
+            //     return result.SetStatus(ErrorCode.InvalidData, "标题数据非法");
+            // }
             if (string.IsNullOrEmpty(model.Types.ToString()) || model.Types < 0)
             {
                 return result.SetStatus(ErrorCode.InvalidData, "类型数据非法");
             }
             MessageInfo messageInfo = new MessageInfo
             {
-                Title = model.Title,
+                Title = model?.Title ?? "",
                 Content = model.Content,
                 Pics = model.Pics,
-                Types = model.Types
+                Types = model.Types,
+                UserId = model.UserId
             };
             if (!string.IsNullOrEmpty(model.Order.ToString()) && model.Order > 0)
             {
@@ -120,6 +123,11 @@ namespace application.services
             if (string.IsNullOrEmpty(model.Types.ToString()) || model.Types < 0)
             {
                 return result.SetStatus(ErrorCode.InvalidData, "类型数据非法");
+            }
+            var type = base.First<MessageType>(predicate => predicate.Types.Equals(model.Types));
+            if (type != null)
+            {
+                return result.SetStatus(ErrorCode.InvalidData, "信息类别重复");
             }
             MessageType messageType = new MessageType
             {
@@ -202,9 +210,14 @@ namespace application.services
             {
                 return result.SetStatus(ErrorCode.InvalidData, "店铺Logo无效");
             }
-            if (model.Latitude.HasValue)
+            if (!model.PhoneNum.IsMobile())
             {
-
+                return result.SetStatus(ErrorCode.InvalidData, "手机号无效");
+            }
+            var isHasShop = base.First<Shop>(Predicate => Predicate.UserId.Equals(model.UserId));
+            if (isHasShop != null)
+            {
+                return result.SetStatus(ErrorCode.InvalidData, "店铺信息已存在");
             }
             Shop shop = new Shop
             {
@@ -214,7 +227,8 @@ namespace application.services
                 Content = model.Content,
                 LogoPic = model.LogoPic,
                 OpenTime = model.OpenTime,
-                CloseTime = model.CloseTime
+                CloseTime = model.CloseTime,
+                PhoneNum = model.PhoneNum
             };
             if (model.Latitude.HasValue)
             {
@@ -238,11 +252,16 @@ namespace application.services
             }
             if (string.IsNullOrEmpty(model.Pic))
             {
-                return result.SetStatus(ErrorCode.InvalidData, "图片n内容非法");
+                return result.SetStatus(ErrorCode.InvalidData, "图片内容非法");
+            }
+            var conuts = base.Count<ShopsDetail>(predicate => predicate.ShopId.Equals(model.ShopId));
+            if (conuts > 4)
+            {
+                return result.SetStatus(ErrorCode.InvalidData, "添加图片数量超出限制 如需扩容请联系管理员");
             }
             ShopsDetail shopsDetail = new ShopsDetail
             {
-                ShopId = model.ShopId,
+                ShopId = (int)model.ShopId,
                 Pic = model.Pic
             };
             if (!string.IsNullOrEmpty(model.Content))
@@ -251,6 +270,23 @@ namespace application.services
             }
             base.Add(shopsDetail, true);
             result.Data = true;
+            return result;
+        }
+
+        public MyResult<object> CheckUserStatus(int userId)
+        {
+            MyResult result = new MyResult();
+            if (userId <= 0)
+            {
+                return result.SetStatus(ErrorCode.InvalidData, "用户非法");
+            }
+            var userShop = base.First<Shop>(predicate => predicate.UserId.Equals(userId));
+            if (userShop == null)
+            {
+                result.Data = new { Id = -1, Status = -1 };
+                return result;
+            }
+            result.Data = new { Id = userShop.Id, Status = userShop.Status };
             return result;
         }
 
@@ -390,7 +426,12 @@ namespace application.services
         public MyResult<object> GetBanner(BannerDto model)
         {
             MyResult result = new MyResult();
-            var banner = base.Where<Banner>(predicate => predicate.IsDel.Equals(0)).Take(3);
+            var query = base.Query<Banner>();
+            if (model.Types.HasValue)
+            {
+                query = query.Where(predicate => predicate.Types.Equals(model.Types));
+            }
+            var banner = query.Where<Banner>(predicate => predicate.IsDel.Equals(0));
             result.Data = banner;
             return result;
         }
@@ -398,11 +439,13 @@ namespace application.services
         public MyResult<object> GetMessage(MessageDto model)
         {
             MyResult result = new MyResult();
-            var query = base.Query<MessageInfo>().Where(predicate => predicate.IsDel.Equals(0));
+            var sql = $"select miu.*,mt.title from (select mi.id,mi.content,mi.lookCount,mi.Pics,mi.types,u.nickName,u.pic,mi.createTime,mi.isDel from messageInfo mi left join user u on mi.userId=u.id) miu left join messageType mt on miu.types=mt.types where miu.isDel=0";
             if (model.Types > 0)
             {
-                query = query.Where(predicate => predicate.Types.Equals(model.Types));
+                sql = sql + $" and miu.types={model.Types}";
             }
+            sql = sql + $" order by miu.createTime desc";
+            var query = base.dbConnection.Query<MessageDto2>(sql).AsQueryable();
             query = query.Pages(model.PageIndex, model.PageSize, out int count, out int pageCount);
             result.PageCount = pageCount;
             result.RecordCount = count;
@@ -419,6 +462,16 @@ namespace application.services
             return result;
         }
 
+        public MyResult<object> GetMyteam(UserDto model)
+        {
+            MyResult result = new MyResult();
+            var user = base.Where<User>(predicate => predicate.RefId.Equals(model.Id)).Select(selector => new { selector.NickName, selector.Pic, selector.CreateTime }).Pages(model.PageIndex, model.PageSize, out int count, out int pageCount);
+            result.PageCount = pageCount;
+            result.RecordCount = count;
+            result.Data = user;
+            return result;
+        }
+
         public MyResult<object> GetOneAnnounce(int id)
         {
             MyResult result = new MyResult();
@@ -431,6 +484,21 @@ namespace application.services
             return result;
         }
 
+        public MyResult<object> GetOneMessage(MessageDto model)
+        {
+            MyResult result = new MyResult();
+            var sql = $"select miu.*,mt.title from (select mi.id,mi.content,mi.lookCount,mi.Pics,mi.types,u.nickName,u.pic,mi.createTime,mi.isDel from messageInfo mi left join user u on mi.userId=u.id) miu left join messageType mt on miu.types=mt.types where miu.isDel=0 and miu.id={model.Id}";
+            var query = base.dbConnection.QueryFirstOrDefault<MessageDto2>(sql);
+            var messageInfo = base.dbConnection.QueryFirstOrDefault<MessageInfo>($"select * from messageInfo where id={model.Id}");
+            if (messageInfo != null)
+            {
+                messageInfo.LookCount += 1;
+            }
+            base.Update(messageInfo, true);
+            result.Data = query;
+            return result;
+        }
+
         public MyResult<object> GetOneScenic(ScenicDto model)
         {
             MyResult result = new MyResult();
@@ -439,18 +507,29 @@ namespace application.services
                 return result.SetStatus(ErrorCode.InvalidData, "scenice id 非法");
             }
             var query = base.First<Scenic>(predicate => predicate.IsDel.Equals(0) && predicate.Id == model.Id);
+            if (query != null)
+            {
+                query.LookCount += 1;
+            }
+            base.Update(query, true);
             result.Data = query;
             return result;
         }
 
-        public MyResult<object> GetOneShop(ShopDto model)
+        public MyResult<object> GetOneShop(ShopDetailDto model)
         {
             MyResult result = new MyResult();
-            if (!model.Id.HasValue)
+            if (!model.ShopId.HasValue)
             {
                 return result.SetStatus(ErrorCode.InvalidData, "商户ID无效");
             }
-            var shopsDetail = base.First<ShopsDetail>(predicate => predicate.ShopId.Equals(model.Id));
+            var shopsDetail = base.Where<ShopsDetail>(predicate => predicate.ShopId.Equals(model.ShopId));
+            var shop = base.dbConnection.QueryFirstOrDefault<Shop>($"select * from shop where id={model.ShopId}");
+            if (shop != null)
+            {
+                shop.LookCount += 1;
+            }
+            base.Update(shop, true);
             result.Data = shopsDetail;
             return result;
         }
@@ -459,7 +538,7 @@ namespace application.services
         {
             MyResult result = new MyResult();
             var sql = "select id,userId,title,lTitle,lookCount,pic,mark1,mark2,createTime from scenic where isDel=0;";
-            var scenic = base.dbConnection.Query<Scenic>(sql).AsQueryable().Pages(model.PageIndex, model.PageSize, out int count, out int pageCount);
+            var scenic = base.dbConnection.Query<ScenicDto2>(sql).AsQueryable().Pages(model.PageIndex, model.PageSize, out int count, out int pageCount);
             result.PageCount = pageCount;
             result.RecordCount = count;
             result.Data = scenic;
@@ -469,8 +548,8 @@ namespace application.services
         public MyResult<object> GetShops(ShopDto model)
         {
             MyResult result = new MyResult();
-            var sql = "select s.id,s.title,s.content,s.logoPic,s.types,s.openTime,s.closeTime,s.phoneNum,u.pic,u.nickName,st_distance_sphere(point(116,22),point(s.latitude,s.longitude))/1000 distance from shop s left join user u on s.userId=u.id order by distance;";
-            var scenic = base.dbConnection.Query<ShopDto>(sql).AsQueryable().Pages(model.PageIndex, model.PageSize, out int count, out int pageCount);
+            var sql = $"select s.id,s.title,s.content,s.logoPic,s.types,s.openTime,s.lookCount,s.longitude,s.latitude,s.closeTime,s.phoneNum,u.pic,u.nickName,st_distance_sphere(point({model.Longitude},{model.Latitude}),point(s.longitude,s.latitude))/1000 distance from shop s left join user u on s.userId=u.id where s.status=1 order by distance;";
+            var scenic = base.dbConnection.Query<ShopDto2>(sql).AsQueryable().Pages(model.PageIndex, model.PageSize, out int count, out int pageCount);
             result.PageCount = pageCount;
             result.RecordCount = count;
             result.Data = scenic;
@@ -508,6 +587,49 @@ namespace application.services
         public MyResult<object> UpdateMessage(MessageDto model)
         {
             throw new System.NotImplementedException();
+        }
+
+        public MyResult<object> UpdateMessageType(MessageTypeDto model)
+        {
+            MyResult result = new MyResult();
+            if (!model.Id.HasValue)
+            {
+                return result.SetStatus(ErrorCode.InvalidData, "Id非法");
+            }
+            if (string.IsNullOrEmpty(model.Pic))
+            {
+                return result.SetStatus(ErrorCode.InvalidData, "图片数据非法");
+            }
+            if (string.IsNullOrEmpty(model.Title))
+            {
+                return result.SetStatus(ErrorCode.InvalidData, "标题数据非法");
+            }
+            if (string.IsNullOrEmpty(model.Types.ToString()) || model.Types < 0)
+            {
+                return result.SetStatus(ErrorCode.InvalidData, "类型数据非法");
+            }
+            var type = base.First<MessageType>(predicate => predicate.Types.Equals(model.Types));
+            if (type != null)
+            {
+                return result.SetStatus(ErrorCode.InvalidData, "信息类别重复");
+            }
+            var type2 = base.dbConnection.QueryFirstOrDefault<MessageType>($"select * from messageType where isDel=0 and id={model.Id}");
+            // var type2 = base.First<MessageType>(predicate => predicate.Id.Equals(model.Id));
+            if (type2 == null)
+            {
+                return result.SetStatus(ErrorCode.NotFound, "信息不存在");
+            }
+            type2.Title = model.Title;
+            type2.Pic = model.Pic;
+            type2.Types = model.Types;
+            type2.UpdateTime = DateTime.Now;
+            if (!string.IsNullOrEmpty(model.Order.ToString()) && model.Order > 0)
+            {
+                type2.Order = model.Order;
+            }
+            base.Update(type2, true);
+            result.Data = true;
+            return result;
         }
 
         public MyResult<object> UpdateScenic(ScenicDto model)

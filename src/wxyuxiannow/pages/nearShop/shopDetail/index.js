@@ -1,28 +1,13 @@
 // pages/nearShop/shopDetail/index.js
+const Api = require('../../../utils/httpPost');
+const constants = require('../.././../configs/constants');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    shopDetail: [
-      {
-        "pic": 'http://bpic.588ku.com/element_origin_min_pic/16/10/30/528aa13209e86d5d9839890967a6b9c1.jpg',
-        "content": "活动介绍 优惠大放送 大放送 来吧 来吧来吧"
-      },
-      {
-        "pic": 'http://bpic.588ku.com/element_origin_min_pic/16/10/30/528aa13209e86d5d9839890967a6b9c1.jpg',
-        "content": "活动介绍 优惠大放送 大放送 来吧 来吧来吧"
-      },
-      {
-        "pic": 'http://bpic.588ku.com/element_origin_min_pic/16/10/30/528aa13209e86d5d9839890967a6b9c1.jpg',
-        "content": "活动介绍 优惠大放送 大放送 来吧 来吧来吧"
-      },
-      {
-        "pic": 'http://bpic.588ku.com/element_origin_min_pic/16/10/30/528aa13209e86d5d9839890967a6b9c1.jpg',
-        "content": "活动介绍 优惠大放送 大放送 来吧 来吧来吧"
-      }
-    ],
+    shopDetail: [],
     shopInfo: {}
   },
 
@@ -39,7 +24,6 @@ Page({
     wx.getLocation({
       type: "gcj02",
       success(res) {
-        console.log('res=', res)
         const latitude = res.latitude
         const longitude = res.longitude
         wx.openLocation({
@@ -51,7 +35,7 @@ Page({
     })
   },
   callShopPhone: function (e) {
-    let phoneNumber = this.data.shopInfo.telphone;
+    let phoneNumber = this.data.shopInfo.phoneNum;
     wx.showModal({
       title: '拨打电话提示',
       content: `你将要给:${phoneNumber}拨打电话`,
@@ -90,34 +74,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
+    Api.Post('/api/ShopDetails', { shopId: this.data.shopInfo.id }).then(res => {
+      let temArr = [];
+      res.data.map((v) => {
+        let obj = v;
+        obj.pic = `${constants.baseUrl}${v.pic}`;
+        temArr.push(obj)
+      })
+      this.setData({
+        shopDetail: temArr
+      })
+    })
 
   },
 
@@ -125,6 +92,15 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (options) {
-    console.log(options)
+    return {
+      title: constants.shareProfile,
+      path: '/pages/message/index?inviter_id=' + wx.getStorageSync('uid'),
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
   }
 })

@@ -448,7 +448,7 @@ namespace domain.entitys
                 .HasColumnName("lookCount")
                 .HasColumnType("int(11)")
                 .HasDefaultValueSql("'0'");
-                
+
                 entity.Property(e => e.IsDel)
                 .HasColumnName("isDel")
                 .HasColumnType("int(2)")
@@ -507,7 +507,7 @@ namespace domain.entitys
 
                 entity.Property(e => e.CloseTime)
                     .HasColumnName("closeTime")
-                    .HasColumnType("int(2)")
+                    .HasColumnType("varchar(10)")
                     .HasDefaultValueSql("'18'");
 
                 entity.Property(e => e.Content)
@@ -543,7 +543,7 @@ namespace domain.entitys
 
                 entity.Property(e => e.OpenTime)
                     .HasColumnName("openTime")
-                    .HasColumnType("int(2)")
+                    .HasColumnType("varchar(10)")
                     .HasDefaultValueSql("'10'");
 
                 entity.Property(e => e.Order)
@@ -758,6 +758,12 @@ namespace domain.entitys
                     .HasColumnName("nickName")
                     .HasColumnType("varchar(100)")
                     .HasDefaultValueSql("''");
+                    
+                entity.Property(e => e.UPic)
+                .IsRequired()
+                .HasColumnName("uPic")
+                .HasColumnType("varchar(200)")
+                .HasDefaultValueSql("''");
 
                 entity.Property(e => e.PassWord)
                     .IsRequired()
@@ -774,7 +780,7 @@ namespace domain.entitys
                 entity.Property(e => e.Pic)
                     .IsRequired()
                     .HasColumnName("pic")
-                    .HasColumnType("varchar(100)")
+                    .HasColumnType("varchar(300)")
                     .HasDefaultValueSql("''");
 
                 entity.Property(e => e.RefId)

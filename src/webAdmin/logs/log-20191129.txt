@@ -1,0 +1,48 @@
+2019-11-29 12:10:37.686 +08:00 [Error] webAdmin.Controllers.Base.ApiBaseController: The key {2dd1bd1c-fea2-4428-a122-e588df6e0bc3} was not found in the key ring.
+System.Security.Cryptography.CryptographicException: The key {2dd1bd1c-fea2-4428-a122-e588df6e0bc3} was not found in the key ring.
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingBasedDataProtector.UnprotectCore(Byte[] protectedData, Boolean allowOperationsOnRevokedKeys, UnprotectStatus& status)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingBasedDataProtector.DangerousUnprotect(Byte[] protectedData, Boolean ignoreRevocationErrors, Boolean& requiresMigration, Boolean& wasRevoked)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingBasedDataProtector.Unprotect(Byte[] protectedData)
+   at Microsoft.AspNetCore.DataProtection.DataProtectionCommonExtensions.Unprotect(IDataProtector protector, String protectedData)
+   at infrastructure.utils.DataProtectionUtil.UnProtect(String protectedData) in /Users/topbrids/netcore/asp.net-core-react/src/infrastructure/utils/DataProtectionUtil.cs:line 15
+   at webAdmin.Controllers.Base.ApiBaseController.OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next) in /Users/topbrids/netcore/asp.net-core-react/src/webAdmin/Controllers/Base/ApiBaseController.cs:line 126
+2019-11-29 12:10:37.712 +08:00 [Error] webAdmin.Controllers.Base.ApiBaseController: The key {2dd1bd1c-fea2-4428-a122-e588df6e0bc3} was not found in the key ring.
+System.Security.Cryptography.CryptographicException: The key {2dd1bd1c-fea2-4428-a122-e588df6e0bc3} was not found in the key ring.
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingBasedDataProtector.UnprotectCore(Byte[] protectedData, Boolean allowOperationsOnRevokedKeys, UnprotectStatus& status)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingBasedDataProtector.DangerousUnprotect(Byte[] protectedData, Boolean ignoreRevocationErrors, Boolean& requiresMigration, Boolean& wasRevoked)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingBasedDataProtector.Unprotect(Byte[] protectedData)
+   at Microsoft.AspNetCore.DataProtection.DataProtectionCommonExtensions.Unprotect(IDataProtector protector, String protectedData)
+   at infrastructure.utils.DataProtectionUtil.UnProtect(String protectedData) in /Users/topbrids/netcore/asp.net-core-react/src/infrastructure/utils/DataProtectionUtil.cs:line 15
+   at webAdmin.Controllers.Base.ApiBaseController.OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next) in /Users/topbrids/netcore/asp.net-core-react/src/webAdmin/Controllers/Base/ApiBaseController.cs:line 126
+2019-11-29 12:10:37.701 +08:00 [Error] webAdmin.Controllers.Base.ApiBaseController: The key {2dd1bd1c-fea2-4428-a122-e588df6e0bc3} was not found in the key ring.
+System.Security.Cryptography.CryptographicException: The key {2dd1bd1c-fea2-4428-a122-e588df6e0bc3} was not found in the key ring.
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingBasedDataProtector.UnprotectCore(Byte[] protectedData, Boolean allowOperationsOnRevokedKeys, UnprotectStatus& status)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingBasedDataProtector.DangerousUnprotect(Byte[] protectedData, Boolean ignoreRevocationErrors, Boolean& requiresMigration, Boolean& wasRevoked)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingBasedDataProtector.Unprotect(Byte[] protectedData)
+   at Microsoft.AspNetCore.DataProtection.DataProtectionCommonExtensions.Unprotect(IDataProtector protector, String protectedData)
+   at infrastructure.utils.DataProtectionUtil.UnProtect(String protectedData) in /Users/topbrids/netcore/asp.net-core-react/src/infrastructure/utils/DataProtectionUtil.cs:line 15
+   at webAdmin.Controllers.Base.ApiBaseController.OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next) in /Users/topbrids/netcore/asp.net-core-react/src/webAdmin/Controllers/Base/ApiBaseController.cs:line 126
+2019-11-29 12:10:55.324 +08:00 [Error] webAdmin.Controllers.Base.ApiBaseController: The key {2dd1bd1c-fea2-4428-a122-e588df6e0bc3} was not found in the key ring.
+System.Security.Cryptography.CryptographicException: The key {2dd1bd1c-fea2-4428-a122-e588df6e0bc3} was not found in the key ring.
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingBasedDataProtector.UnprotectCore(Byte[] protectedData, Boolean allowOperationsOnRevokedKeys, UnprotectStatus& status)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingBasedDataProtector.DangerousUnprotect(Byte[] protectedData, Boolean ignoreRevocationErrors, Boolean& requiresMigration, Boolean& wasRevoked)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingBasedDataProtector.Unprotect(Byte[] protectedData)
+   at Microsoft.AspNetCore.DataProtection.DataProtectionCommonExtensions.Unprotect(IDataProtector protector, String protectedData)
+   at infrastructure.utils.DataProtectionUtil.UnProtect(String protectedData) in /Users/topbrids/netcore/asp.net-core-react/src/infrastructure/utils/DataProtectionUtil.cs:line 15
+   at webAdmin.Controllers.Base.ApiBaseController.OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next) in /Users/topbrids/netcore/asp.net-core-react/src/webAdmin/Controllers/Base/ApiBaseController.cs:line 126
+2019-11-29 12:10:55.630 +08:00 [Error] webAdmin.Controllers.Base.ApiBaseController: The key {2dd1bd1c-fea2-4428-a122-e588df6e0bc3} was not found in the key ring.
+System.Security.Cryptography.CryptographicException: The key {2dd1bd1c-fea2-4428-a122-e588df6e0bc3} was not found in the key ring.
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingBasedDataProtector.UnprotectCore(Byte[] protectedData, Boolean allowOperationsOnRevokedKeys, UnprotectStatus& status)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingBasedDataProtector.DangerousUnprotect(Byte[] protectedData, Boolean ignoreRevocationErrors, Boolean& requiresMigration, Boolean& wasRevoked)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingBasedDataProtector.Unprotect(Byte[] protectedData)
+   at Microsoft.AspNetCore.DataProtection.DataProtectionCommonExtensions.Unprotect(IDataProtector protector, String protectedData)
+   at infrastructure.utils.DataProtectionUtil.UnProtect(String protectedData) in /Users/topbrids/netcore/asp.net-core-react/src/infrastructure/utils/DataProtectionUtil.cs:line 15
+   at webAdmin.Controllers.Base.ApiBaseController.OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next) in /Users/topbrids/netcore/asp.net-core-react/src/webAdmin/Controllers/Base/ApiBaseController.cs:line 126
+2019-11-29 12:10:56.060 +08:00 [Error] webAdmin.Controllers.Base.ApiBaseController: The key {2dd1bd1c-fea2-4428-a122-e588df6e0bc3} was not found in the key ring.
+System.Security.Cryptography.CryptographicException: The key {2dd1bd1c-fea2-4428-a122-e588df6e0bc3} was not found in the key ring.
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingBasedDataProtector.UnprotectCore(Byte[] protectedData, Boolean allowOperationsOnRevokedKeys, UnprotectStatus& status)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingBasedDataProtector.DangerousUnprotect(Byte[] protectedData, Boolean ignoreRevocationErrors, Boolean& requiresMigration, Boolean& wasRevoked)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingBasedDataProtector.Unprotect(Byte[] protectedData)
+   at Microsoft.AspNetCore.DataProtection.DataProtectionCommonExtensions.Unprotect(IDataProtector protector, String protectedData)
+   at infrastructure.utils.DataProtectionUtil.UnProtect(String protectedData) in /Users/topbrids/netcore/asp.net-core-react/src/infrastructure/utils/DataProtectionUtil.cs:line 15
+   at webAdmin.Controllers.Base.ApiBaseController.OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next) in /Users/topbrids/netcore/asp.net-core-react/src/webAdmin/Controllers/Base/ApiBaseController.cs:line 126

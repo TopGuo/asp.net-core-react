@@ -50,11 +50,11 @@
       <view wx:for="{{shops}}" wx:key="index">
         <view class="flex item" data-id="{{item.id}}" data-item="{{item}}" bindtap="toShopDetail">
           <view class="item_left">
-            <image src="{{item.pic}}" />
+            <image src="{{item.logoPic}}" />
           </view>
           <view class="item_middle">
             <view>
-              <text class="title">{{item.name}}</text>
+              <text class="title">{{item.title}}</text>
             </view>
             <view>
               <text class="content">{{item.content}}</text>
@@ -65,7 +65,7 @@
           </view>
           <view class="item_right">
             <view>
-              <text class="far">距离:{{item.far}}公里</text>
+              <text class="far">距离:{{item.distance}}公里</text>
             </view>
             <view>
               <text class="type">{{item.type==1?'优惠':'砍价'}}</text>
@@ -75,7 +75,7 @@
       </view>
     </block>
     <block wx:else>
-      <view class="shop-placeholder">暂无数据...</view>
+      <view hidden="{{loadingHiden ? true : false}}" class="loading">没有更多啦...</view>
     </block>
   </view>
 </view>

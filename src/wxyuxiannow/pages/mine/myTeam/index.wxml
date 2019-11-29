@@ -1,2 +1,16 @@
-<!--pages/mine/MyTeam/index.wxml-->
-<text>pages/mine/MyTeam/index.wxml</text>
+<view wx:for="{{dataList}}" wx:key="index">
+    <view class="flex item">
+        <view class="item_left">
+            <image src="{{item.pic}}" />
+        </view>
+        <view class="item_middle">
+            <view>
+                <text class="title">{{item.nickName}}</text>
+            </view>
+            <view>
+                <text class="content">{{item.createTime}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view hidden="{{loadingHiden ? true : false}}" class="loading">没有更多啦...</view>

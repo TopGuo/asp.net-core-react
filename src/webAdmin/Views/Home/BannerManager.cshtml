@@ -75,7 +75,6 @@
     <script type="text/javascript">
         $angular.add(function ($scope, $query, $timeout, $sce) {
             $scope.search = { pageIndex: 1, pageSize: 10 };
-            $scope.search.types = "-1";
             $scope.pageChanged = function (reindex) {
                 if (reindex) {
                     $scope.search.pageIndex = 1;

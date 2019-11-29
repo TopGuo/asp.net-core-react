@@ -1,0 +1,30 @@
+<view class="content-item" data-id="{{info.id}}">
+    <view class="left">
+        <image src="{{info.pic}}" />
+    </view>
+    <view class="right">
+        <view class="all">
+            <view class="top">
+                <view>
+                    <text class="type">{{info.title}}</text>
+                    <text class="title">{{info.nickName}}</text>
+                </view>
+            </view>
+            <view class="center">
+                <view class="content">
+                    <text>{{info.content}}</text>
+                    <view>
+                        <view wx:for="{{info.pics}}" wx:key="index" wx:for-item="picData">
+                            <view class="cc">
+                                <image src="{{picData}}" mode="scaleToFill" data-index="{{index}}" data-picData="{{info.pics}}" bindtap="previewImg" />
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="bottom">
+                <text class="time">{{info.createTime}}</text>
+            </view>
+        </view>
+    </view>
+</view>

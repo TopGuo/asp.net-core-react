@@ -43,6 +43,16 @@ namespace webAdmin.Controllers.Base
                     //TODO:the last del
                     SourceType = SourceType.Web;
                 }
+                var _token = context.HttpContext.Request.Headers["token"].ToString();
+                if (!string.IsNullOrEmpty(_token))
+                {
+                    ReqParams[TOKEN_NAME] = _token;
+                }
+                var _sign = context.HttpContext.Request.Headers["sign"].ToString();
+                if (!string.IsNullOrEmpty(_sign))
+                {
+                    ReqParams[Sign] = _sign;
+                }
                 foreach (var kv in context.HttpContext.Request.Query)
                 {
                     ReqParams[kv.Key] = kv.Value.ToString();

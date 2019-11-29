@@ -1,2 +1,13 @@
 <!--pages/mine/CallFriends/index.wxml-->
-<text>pages/mine/CallFriends/index.wxml</text>
+<view class='noApply'>
+  <canvas class="canvas" style="height:{{canvasHeight}}px" canvas-id="firstCanvas"></canvas>
+  <view class="profile">扫码关注您的专属推广码，或者转发邀请好友</view>
+  <view class="weui-flex">
+    <view class="weui-flex__item qrcode-button">
+      <button class="weui-btn" type="primary" open-type="share">转发</button>
+    </view>
+    <view class="weui-flex__item qrcode-button">
+      <button class="weui-btn" type="primary" bindtap="saveToMobile">下载二维码</button>
+    </view>
+  </view>
+</view>

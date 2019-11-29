@@ -86,3 +86,5 @@ swiper-item image{width:750rpx;height:250rpx}
 }
 .center .content .imgList{flex:1;flex-direction: row;}
 .imgList view image{width:100rpx;height:100rpx;}
+.loading{color:#b0b0b0;text-align:center;margin:20rpx 0}
+.loading-gif{width:220rpx;height:42rpx;vertical-align:bottom}

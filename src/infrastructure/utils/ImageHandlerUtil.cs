@@ -51,6 +51,24 @@ namespace infrastructure.utils
         }
 
         /// <summary>
+        /// 保存Byte图片
+        /// </summary>
+        /// <param name="base64">base64</param>
+        /// <param name="path"></param>
+        /// <returns>相对url fileName</returns>
+        public static string SaveByteImage(byte[] bytes, string path)
+        {
+            var di = PathUtil.MapPath(path);
+            if (!Directory.Exists(di))
+            {
+                Directory.CreateDirectory(di);
+            }
+            var str = $"{Guid.NewGuid()}.png";
+            File.WriteAllBytes(System.IO.Path.Combine(di, str), bytes);
+            return PathUtil.Combine(path, str);
+        }
+
+        /// <summary>
         /// 保存base64 图片
         /// </summary>
         /// <param name="base64"></param>
@@ -94,7 +112,9 @@ namespace infrastructure.utils
         /// <param name="bytes">图片byte文件流</param>
         /// <param name="waterMarks"></param>
         /// <param name="filePath">图片保存物理路径</param>
-        public static void WaterMarks(byte[] bytes, string waterMarks, string filePath)
+        /// <param name="brush">default is Brushes.Red</param>
+        /// <param name="fontSize">default 20</param>
+        public static void WaterMarks(byte[] bytes, string waterMarks, string filePath, System.DrawingCore.Brush brush = null, int fontSize = 20)
         {
             MemoryStream memoryStream = new MemoryStream(bytes);
             using (Image image = Image.FromStream(memoryStream))
@@ -110,7 +130,11 @@ namespace infrastructure.utils
                         graphics.DrawImage(image, new Rectangle(0, 0, image.Width, image.Height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel);
                         StringFormat stringFormat = new StringFormat();
                         stringFormat.Alignment = StringAlignment.Center;
-                        graphics.DrawString(waterMarks, new Font("AdobeHeitiStd-Regular", 20, FontStyle.Italic | FontStyle.Bold), Brushes.Red, new PointF(image.Width / 2, image.Height - image.Height / 8), stringFormat);
+                        if (brush == null)
+                        {
+                            brush = Brushes.Red;
+                        }
+                        graphics.DrawString(waterMarks, new Font("AdobeHeitiStd-Regular", fontSize, FontStyle.Bold), brush, new PointF(image.Width / 2, image.Height - image.Height / 8), stringFormat);
                         bitmap.Save(filePath, ImageFormat.Png);
                     }
                 }
