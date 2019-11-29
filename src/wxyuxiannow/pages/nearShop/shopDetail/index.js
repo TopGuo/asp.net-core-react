@@ -7,24 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    shopDetail: [
-      {
-        "pic": 'http://bpic.588ku.com/element_origin_min_pic/16/10/30/528aa13209e86d5d9839890967a6b9c1.jpg',
-        "content": "活动介绍 优惠大放送 大放送 来吧 来吧来吧"
-      },
-      {
-        "pic": 'http://bpic.588ku.com/element_origin_min_pic/16/10/30/528aa13209e86d5d9839890967a6b9c1.jpg',
-        "content": "活动介绍 优惠大放送 大放送 来吧 来吧来吧"
-      },
-      {
-        "pic": 'http://bpic.588ku.com/element_origin_min_pic/16/10/30/528aa13209e86d5d9839890967a6b9c1.jpg',
-        "content": "活动介绍 优惠大放送 大放送 来吧 来吧来吧"
-      },
-      {
-        "pic": 'http://bpic.588ku.com/element_origin_min_pic/16/10/30/528aa13209e86d5d9839890967a6b9c1.jpg',
-        "content": "活动介绍 优惠大放送 大放送 来吧 来吧来吧"
-      }
-    ],
+    shopDetail: [],
     shopInfo: {}
   },
 

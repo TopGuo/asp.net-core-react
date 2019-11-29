@@ -13,7 +13,6 @@ Page({
     shopId: -1
   },
   onGotUserInfo(e) {
-    console.log(e.detail.userInfo)
     if (!e.detail.userInfo) {
       wx.showToast({
         title: '您已取消登录',

@@ -1,6 +1,7 @@
 using System;
 using System.DrawingCore;
 using System.IO;
+using Dapper;
 using domain.configs;
 using domain.entitys;
 using domain.enums;
@@ -26,6 +27,9 @@ namespace application.services
         public WxService(IOptions<ConnectionStringList> connectionStrings) : base(connectionStrings)
         {
         }
+        /// <summary>
+        /// 缓存过期获取access_token
+        /// </summary>
         public void SetAccessToken()
         {
             var getAccessTokenUrl = $"https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={Constants.WxAppId}&secret={Constants.WxSecret}";
@@ -51,18 +55,20 @@ namespace application.services
                 return result.SetStatus(ErrorCode.NotFound, "用户未注册");
             }
             user.SessionKey = repObj.Session_Key;
-            base.Update(user, true);
             TokenModel tokenModel = new TokenModel();
             tokenModel.Id = (int)user.Id;
             tokenModel.Mobile = user.PhoneNum;
             tokenModel.Code = repObj.OpenId;
             tokenModel.Source = domain.enums.SourceType.WeChat;
             var tokenStr = tokenModel.GetJson();
+            var enToken = DataProtectionUtil.Protect(tokenStr);
             result.Data = new
             {
-                token = DataProtectionUtil.Protect(tokenStr),
+                token = enToken,
                 uid = (int)user.Id
             };
+            user.Token = enToken;
+            base.Update(user, true);
             return result;
         }
 
@@ -139,6 +145,18 @@ namespace application.services
             user.UPic = url;
             base.Update(user, true);
             result.Data = PathUtil.CombineWithRoot(url);
+            return result;
+        }
+
+        public MyResult<object> CheckToken(int userId = 0)
+        {
+            MyResult result = new MyResult();
+            var user = base.dbConnection.QueryFirstOrDefault<User>($"select token from user where id={userId}");
+            if (user == null || string.IsNullOrEmpty(user.Token))
+            {
+                result.Data = false;
+            }
+            result.Data = true;
             return result;
         }
     }

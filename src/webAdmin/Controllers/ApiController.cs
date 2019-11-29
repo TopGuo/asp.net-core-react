@@ -174,5 +174,14 @@ namespace webAdmin.Controllers
             model.Id = base.TokenModel.Id;
             return SetingService.GetMyteam(model);
         }
+        [HttpGet]
+        public MyResult<object> CheckToken()
+        {
+            if (string.IsNullOrEmpty(base.TokenModel.Id.ToString()) || base.TokenModel.Id < 0)
+            {
+                return new MyResult<object>(-1, "请检查是否登录");
+            }
+            return WxService.CheckToken(base.TokenModel.Id);
+        }
     }
 }

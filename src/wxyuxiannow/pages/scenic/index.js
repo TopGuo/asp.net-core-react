@@ -13,11 +13,7 @@ Page({
     windowWidth: App.systemInfo.windowWidth,
     windowHeight: App.systemInfo.windowHeight,
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  onShow: function (options) {
     Api.Post('/api/Scenics', {}).then(res => {
       let tempArry = [];
       if (res.code == 200) {

@@ -15,15 +15,14 @@ Page({
     pageSize: 20,
     loadingHiden: true
   },
-  toDetail: function (e) {
+  toDetail: function(e) {
     let id = e.currentTarget.dataset.id;
     let navigateUrl = `../message/detail/detail?id=${id}`;
     wx.navigateTo({
       url: navigateUrl
     })
   },
-  tabClick: function (e) {
-    console.log(e)
+  tabClick: function(e) {
     let offset = e.currentTarget.offsetLeft;
     if (offset > 150) {
       offset = offset - 150
@@ -37,32 +36,34 @@ Page({
     });
     this.getMessageList(e.currentTarget.id, false)
   },
-  swiperchange: function (e) {
+  swiperchange: function(e) {
     this.setData({
       swiperCurrent: e.detail.current
     })
   },
-  pubDetail: function () {
+  pubDetail: function() {
     wx.navigateTo({
       url: './pubMessage/pubmessage'
     })
   },
-  previewImg: function (e) {
+  previewImg: function(e) {
     var index = e.currentTarget.dataset.index;
     var imgArr = e.currentTarget.dataset.picdata;
     wx.previewImage({
-      current: imgArr[index],     //当前图片地址
-      urls: imgArr,               //所有要预览的图片的地址集合 数组形式
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
+      current: imgArr[index], //当前图片地址
+      urls: imgArr, //所有要预览的图片的地址集合 数组形式
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    Api.Post('/api/Banners', { types: 1 }).then(res => {
+  onLoad: function(options) {
+    Api.Post('/api/Banners', {
+      types: 1
+    }).then(res => {
       let tempArry = [];
       if (res.code == 200) {
         res.data.map((v) => {
@@ -76,8 +77,27 @@ Page({
         })
       }
     });
+  },
 
-    Api.Post('/api/Message', { types: -1 }).then(res => {
+  onShow: function() {
+    Api.Post('/api/MessageType', {}).then(res => {
+      let tempArry = [];
+      if (res.code == 200) {
+        res.data.map((v) => {
+          let tempObj = {};
+          tempObj.icon = `${constant.baseUrl}${v.pic}`;
+          tempObj.id = v.types;
+          tempObj.name = v.title;
+          tempArry.push(tempObj);
+        });
+        this.setData({
+          categories: tempArry
+        })
+      }
+    });
+    Api.Post('/api/Message', {
+      types: this.data.activeCategoryId
+    }).then(res => {
       let tempArry = [];
       if (res.code == 200) {
         res.data.map((v) => {
@@ -97,38 +117,20 @@ Page({
       }
     })
   },
-
-  onShow: function () {
-    Api.Post('/api/MessageType', {}).then(res => {
-      let tempArry = [];
-      if (res.code == 200) {
-        res.data.map((v) => {
-          let tempObj = {};
-          tempObj.icon = `${constant.baseUrl}${v.pic}`;
-          tempObj.id = v.types;
-          tempObj.name = v.title;
-          tempArry.push(tempObj);
-        });
-        this.setData({
-          categories: tempArry
-        })
-      }
-    });
-  },
-  onReachBottom: function () {
+  onReachBottom: function() {
     this.setData({
       curPage: this.data.curPage + 1
     });
     this.getMessageList(this.data.activeCategoryId, true)
   },
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     this.setData({
       curPage: 1
     });
     this.getMessageList(this.data.activeCategoryId, false)
     wx.stopPullDownRefresh()
   },
-  getMessageList: function (type, append) {
+  getMessageList: function(type, append) {
     var that = this;
     wx.showLoading({
       "mask": true
@@ -136,7 +138,7 @@ Page({
     Api.Post('/api/Message', {
       pageIndex: this.data.curPage,
       types: type
-    }).then(function (res) {
+    }).then(function(res) {
       wx.hideLoading()
       if (res.data.length == 0) {
         let newData = {
@@ -173,7 +175,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

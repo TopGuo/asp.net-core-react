@@ -507,6 +507,11 @@ namespace application.services
                 return result.SetStatus(ErrorCode.InvalidData, "scenice id 非法");
             }
             var query = base.First<Scenic>(predicate => predicate.IsDel.Equals(0) && predicate.Id == model.Id);
+            if (query != null)
+            {
+                query.LookCount += 1;
+            }
+            base.Update(query, true);
             result.Data = query;
             return result;
         }
@@ -519,6 +524,12 @@ namespace application.services
                 return result.SetStatus(ErrorCode.InvalidData, "商户ID无效");
             }
             var shopsDetail = base.Where<ShopsDetail>(predicate => predicate.ShopId.Equals(model.ShopId));
+            var shop = base.dbConnection.QueryFirstOrDefault<Shop>($"select * from shop where id={model.ShopId}");
+            if (shop != null)
+            {
+                shop.LookCount += 1;
+            }
+            base.Update(shop, true);
             result.Data = shopsDetail;
             return result;
         }
@@ -537,7 +548,7 @@ namespace application.services
         public MyResult<object> GetShops(ShopDto model)
         {
             MyResult result = new MyResult();
-            var sql = $"select s.id,s.title,s.content,s.logoPic,s.types,s.openTime,s.longitude,s.latitude,s.closeTime,s.phoneNum,u.pic,u.nickName,st_distance_sphere(point({model.Longitude},{model.Latitude}),point(s.longitude,s.latitude))/1000 distance from shop s left join user u on s.userId=u.id where s.status=1 order by distance;";
+            var sql = $"select s.id,s.title,s.content,s.logoPic,s.types,s.openTime,s.lookCount,s.longitude,s.latitude,s.closeTime,s.phoneNum,u.pic,u.nickName,st_distance_sphere(point({model.Longitude},{model.Latitude}),point(s.longitude,s.latitude))/1000 distance from shop s left join user u on s.userId=u.id where s.status=1 order by distance;";
             var scenic = base.dbConnection.Query<ShopDto2>(sql).AsQueryable().Pages(model.PageIndex, model.PageSize, out int count, out int pageCount);
             result.PageCount = pageCount;
             result.RecordCount = count;
