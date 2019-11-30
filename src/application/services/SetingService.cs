@@ -691,5 +691,18 @@ namespace application.services
         {
             throw new System.NotImplementedException();
         }
+
+        public bool UserStatus(int userId)
+        {
+            var user = base.Count<User>(predicate => predicate.Id==userId);
+            if (user > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

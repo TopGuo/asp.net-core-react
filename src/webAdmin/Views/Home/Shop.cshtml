@@ -59,7 +59,7 @@
             <td>{{m.createTime|date:'yyyy-MM-dd'}}</td>
             <td>{{m.status==0?'未审核':m.status==1?'审核通过':'审核失败'}}</td>
             <td>
-                <a ng-click="updateStatus(m)" href="javascript:void(0);">审核</a>
+                <a ng-click="showUpdateStatusModal(m)" href="javascript:void(0);">审核</a>
             </td>
         </tr>
     </tbody>
@@ -77,6 +77,40 @@
         </div>
     </div>
 </div>
+<div class="modal fade in" id="addModel" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document" style="height:100%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body" ng-form="myModel">
+                <input class="form-control" type="text" ng-model="shop.id" style="display:none;" />
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">请选择:</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" style="display:inline-block;width:auto;" ng-model="shop.Status">
+                                    <option value="-1">请选择</option>
+                                    <option value="1">同意</option>
+                                    <option value="2">拒绝</option>
+                                </select>
+                            </div>
+                        </div>
+                    <div class="form-group col-sm-6">
+                        <label class="control-label col-sm-4">驳回原因:</label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control" style="height:120px;max-width:none;" ng-model="shop.content" placeholder="驳回原因">
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" ng-disabled="myModel.$invalid" ng-click="updateStatus()">保 存</button>
+            </div>
+        </div>
+    </div>
+</div>
 @section Scripts{
     <script type="text/javascript">
         function showimage(obj) {
@@ -87,7 +121,7 @@
     <script type="text/javascript">
         $angular.add(function ($scope, $query, $timeout, $sce) {
             $scope.search = { pageIndex: 1, pageSize: 10 };
-            $scope.search.types = "-1";
+            $scope.search.Status = "-1";
             $scope.pageChanged = function (reindex) {
                 if (reindex) {
                     $scope.search.pageIndex = 1;
@@ -101,17 +135,17 @@
                     }
                 });
             };
-            $scope.updateStatus = function (model) {
-                $Confirm("请选择审核状态", function () {
-                    $query.post("/webapi/DelBannerPic", model, function (response) {
-                        if (response.code === 200) {
-                            $scope.pageChanged();
-                        } else {
-                            $Alert(response.message);
-                        }
-                    });
-                }, "消息提醒");
+            $scope.showUpdateStatusModal = function (model) {
+                $scope.shop={id:model.id,Status:"-1"};
+                $("#addModel").modal("show");
             };
+            $scope.updateStatus = function(){
+                $query.get(`/webapi/UpdateShopStatus?id=${$scope.shop.id}&status=${$scope.shop.Status}`,res=>{
+                    $scope.pageChanged();
+                    $("#addModel").modal("hide");
+                    $Alert("审核通过");
+                });
+            }
             $scope.pageChanged();
         });
         

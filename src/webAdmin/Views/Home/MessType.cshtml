@@ -137,6 +137,8 @@
             $scope.ShowAddMessageMadal=function(model){
                 if(model!=null){
                     $scope.messTypeModel=model;
+                }else{
+                    $scope.messTypeModel={}
                 }
                 $("#addModel").modal("show");
             }

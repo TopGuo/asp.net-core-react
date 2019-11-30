@@ -76,6 +76,7 @@ namespace domain.repository
         MyResult<object> CheckUserStatus(int userId);
         //获取用户直推
         MyResult<object> GetMyteam(UserDto model);
+        bool UserStatus(int userId);
 
     }
 }

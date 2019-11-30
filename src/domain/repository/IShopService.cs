@@ -10,5 +10,7 @@ namespace domain.repository
     {
         MyResult<object> GetShopList(ShopModel model);
         MyResult<object> UpdateStatus(Shop model);
+        MyResult<object> UpdateShopStatus(int? Id, int? Status);
+        
     }
 }

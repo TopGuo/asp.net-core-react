@@ -21,7 +21,7 @@ namespace webAdmin.Controllers
         public IUserService UserService { get; set; }
         public ISetingService SetingService { get; set; }
         public IShopService ShopService { get; set; }
-        public WebApiController(IAccountService accountService, IPermissionService permissionService, ISetingService setingService, IUserService userService,IShopService shopService)
+        public WebApiController(IAccountService accountService, IPermissionService permissionService, ISetingService setingService, IUserService userService, IShopService shopService)
         {
             AccountService = accountService;
             PermissionService = permissionService;
@@ -278,6 +278,11 @@ namespace webAdmin.Controllers
         public MyResult<object> ShopList([FromBody]ShopModel model)
         {
             return ShopService.GetShopList(model);
+        }
+        [HttpGet]
+        public MyResult<object> UpdateShopStatus(int Id, int Status)
+        {
+            return ShopService.UpdateShopStatus(Id, Status);
         }
         #endregion
     }

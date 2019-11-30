@@ -84,6 +84,12 @@ namespace webAdmin.Controllers
             {
                 return new MyResult<object>(-1, "请检查是否登录");
             }
+            //判断是否禁用
+            var flag = SetingService.UserStatus(base.TokenModel.Id);
+            if (flag)
+            {
+                return new MyResult<object>(-1, "用户已被禁用");
+            }
             List<string> urlList = new List<string>();
             if (model.BasePics.Count > 0)
             {
@@ -141,6 +147,12 @@ namespace webAdmin.Controllers
             {
                 return new MyResult<object>(-1, "请检查是否登录");
             }
+            //判断是否禁用
+            var flag = SetingService.UserStatus(base.TokenModel.Id);
+            if (flag)
+            {
+                return new MyResult<object>(-1, "用户已被禁用");
+            }
             if (!string.IsNullOrEmpty(model.Pic))
             {
                 var fileName = DateTime.Now.GetTicket().ToString();
@@ -183,5 +195,6 @@ namespace webAdmin.Controllers
             }
             return WxService.CheckToken(base.TokenModel.Id);
         }
+
     }
 }

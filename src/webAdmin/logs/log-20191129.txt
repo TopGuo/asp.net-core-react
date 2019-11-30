@@ -46,3 +46,36 @@ System.Security.Cryptography.CryptographicException: The key {2dd1bd1c-fea2-4428
    at Microsoft.AspNetCore.DataProtection.DataProtectionCommonExtensions.Unprotect(IDataProtector protector, String protectedData)
    at infrastructure.utils.DataProtectionUtil.UnProtect(String protectedData) in /Users/topbrids/netcore/asp.net-core-react/src/infrastructure/utils/DataProtectionUtil.cs:line 15
    at webAdmin.Controllers.Base.ApiBaseController.OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next) in /Users/topbrids/netcore/asp.net-core-react/src/webAdmin/Controllers/Base/ApiBaseController.cs:line 126
+2019-11-29 21:27:37.939 +08:00 [Error] application.middleware.ErrorHandlerMiddleware: [ErrorHandler中间件：]MySql.Data.MySqlClient.MySqlException (0x80004005): Connect Timeout expired. ---> System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Net.Sockets.Socket'.
+   at System.Net.Sockets.Socket.GetSocketOption(SocketOptionLevel optionLevel, SocketOptionName optionName)
+   at MySqlConnector.Core.ServerSession.OpenTcpSocketAsync(ConnectionSettings cs, ILoadBalancer loadBalancer, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ServerSession.cs:line 883
+   at MySqlConnector.Core.ServerSession.OpenTcpSocketAsync(ConnectionSettings cs, ILoadBalancer loadBalancer, IOBehavior ioBehavior, CancellationToken cancellationToken)
+   at MySqlConnector.Core.ServerSession.ConnectAsync(ConnectionSettings cs, ILoadBalancer loadBalancer, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ServerSession.cs:line 336
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ConnectionPool.cs:line 112
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ConnectionPool.cs:line 141
+   at MySql.Data.MySqlClient.MySqlConnection.CreateSessionAsync(ConnectionPool pool, Nullable`1 ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 610
+   at MySql.Data.MySqlClient.MySqlConnection.OpenAsync(Nullable`1 ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 310
+   at MySql.Data.MySqlClient.MySqlConnection.Open() in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 277
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+   at System.Collections.Generic.List`1.AddEnumerable(IEnumerable`1 enumerable)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at application.services.PermissionService.<get_RolePermissions>b__11_1(RoleModel t) in /Users/topbrids/netcore/asp.net-core-react/src/application/services/PermissionService.cs:line 155
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at application.services.PermissionService.get_RolePermissions() in /Users/topbrids/netcore/asp.net-core-react/src/application/services/PermissionService.cs:line 153
+   at application.services.PermissionService.HasPermission(ActionExecutingContext context, String actionId) in /Users/topbrids/netcore/asp.net-core-react/src/application/services/PermissionService.cs:line 335
+   at webAdmin.Controllers.Base.WebBaseController.OnActionExecuting(ActionExecutingContext context) in /Users/topbrids/netcore/asp.net-core-react/src/webAdmin/Controllers/Base/WebBaseController.cs:line 52
+   at Microsoft.AspNetCore.Mvc.Controller.OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at application.middleware.ErrorHandlerMiddleware.Invoke(HttpContext context) in /Users/topbrids/netcore/asp.net-core-react/src/application/middleware/ErrorHandlerMiddleware.cs:line 33
