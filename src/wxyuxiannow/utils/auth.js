@@ -1,11 +1,16 @@
 const Api = require('./httpPost');
 
 function login(page) {
+  wx.showLoading({
+    title: '登录中...',
+    mask: true
+  })
   wx.login({
     success: function(res) {
       Api.Post("/api/WxLogin", {
         code: res.code
       }).then(res => {
+        wx.hideLoading();
         if (res.code == 10005) {
           register(page);
           return;

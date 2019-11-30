@@ -36,8 +36,8 @@
             </view>
           </view>
           <view class="center">
-            <view class="content" bindtap="toDetail" data-id="{{item.id}}">
-              <text>{{item.content}}</text>
+            <view class="content">
+              <text bindtap="toDetail" data-id="{{item.id}}">{{item.content}}</text>
               <view>
                 <view wx:for="{{item.pics}}" wx:key="index" wx:for-item="picData">
                   <view class="cc">

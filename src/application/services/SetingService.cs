@@ -694,7 +694,7 @@ namespace application.services
 
         public bool UserStatus(int userId)
         {
-            var user = base.Count<User>(predicate => predicate.Id==userId);
+            var user = base.Count<User>(predicate => predicate.Id == userId && predicate.Status == 0);
             if (user > 0)
             {
                 return true;
