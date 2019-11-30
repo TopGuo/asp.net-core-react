@@ -58,9 +58,9 @@
             </td>
             <td>{{m.amount}}</td>
             <td>{{m.createTime|date:'yyyy-MM-dd'}}</td>
-            <td style="background-color:{{m.status==1?'':'#e8fa08'}}">{{m.status==1?"有效":"禁用中"}}</td>
+            <td style="background-color:{{m.status==0?'':'#e8fa08'}}">{{m.status==0?"有效":"禁用中"}}</td>
             <td>
-                <a href="javascript:void(0);" ng-click="setStatus(m)">{{m.status==1?"禁用":"解禁"}}</a>
+                <a href="javascript:void(0);" ng-click="setStatus(m)">{{m.status==0?"禁用":"解禁"}}</a>
             </td>
         </tr>
     </tbody>

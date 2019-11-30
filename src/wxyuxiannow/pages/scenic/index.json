@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText":"景点旅游",
   "enablePullDownRefresh": true,
-  "navigationBarTitleText":"景点旅游"
+  "backgroundTextStyle": "dark"
 }

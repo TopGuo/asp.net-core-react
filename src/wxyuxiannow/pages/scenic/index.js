@@ -13,8 +13,8 @@ Page({
     windowWidth: App.systemInfo.windowWidth,
     windowHeight: App.systemInfo.windowHeight,
   },
-  onShow: function (options) {
-    this.getScenicsList(false);
+  onShow: function(options) {
+    this.getScenicsList(true);
   },
   viewTrip(e) {
     const ds = e.currentTarget.dataset;
@@ -25,43 +25,37 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
-  loadMore: function () {
+  onReachBottom: function() {
     this.setData({
       curPage: this.data.curPage + 1
     });
     this.getScenicsList(true)
   },
-  onReachBottom: function () {
-    this.setData({
-      curPage: this.data.curPage + 1
-    });
-    this.getScenicsList(true)
-  },
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     this.setData({
       curPage: 1
     });
     this.getScenicsList()
-    // wx.stopPullDownRefresh()
+    wx.stopPullDownRefresh()
   },
-  getScenicsList: function (append) {
+  getScenicsList: function(append) {
     var that = this;
     wx.showLoading({
       "mask": true
     })
     Api.Post('/api/Scenics', {
       pageIndex: this.data.curPage
-    }).then(function (res) {
+    }).then(function(res) {
       wx.hideLoading()
       if (res.data.length == 0) {
         let newData = {
           loadingHiden: false
         }
         if (!append) {
-          newData.goods = []
+          newData.trips = []
         }
         that.setData(newData);
         return

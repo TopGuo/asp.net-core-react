@@ -95,7 +95,7 @@ Page({
         })
       }
     });
-    this.getMessageList(this.data.activeCategoryId,false);
+    this.getMessageList(this.data.activeCategoryId,true);
   },
   onReachBottom: function() {
     this.setData({
